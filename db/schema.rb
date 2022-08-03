@@ -87,11 +87,11 @@ ActiveRecord::Schema.define(version: 2022_08_03_101512) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", null: false
-    t.text "introduction", null: false
-    t.string "hobby", null: false
-    t.boolean "is_deleted", default: false, null: false
-    t.string "announcement", null: false
-    t.integer "achieve_status", default: 0, null: false
+    t.text "introduction"
+    t.string "hobby"
+    t.boolean "is_deleted", default: false
+    t.string "announcement"
+    t.integer "achieve_status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
