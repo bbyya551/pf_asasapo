@@ -1,24 +1,28 @@
-# README
+# 朝サポ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+同じ朝活をしたい人同士でコミュニティを作り、コミュニティのメンバーに、自分がどんな朝活を行うのか宣言し、自分が行った朝活の内容を投稿することができるコミュニティサイト
 
-Things you may want to cover:
+### テーマを選んだ理由
+朝活をしようと思い立っても、一人ではなかなか継続できないなと感じることが多かったです。しかし同じ朝活をしている人と仲間になり、自分の朝活宣言を行うことで、朝活を続けられる人が多くなればいいなと思い、このテーマにしました。
 
-* Ruby version
+### ターゲットユーザ
+朝活を始めたい、継続したいと思っている人
 
-* System dependencies
+### 主な利用シーン
+自分が興味のある朝活のコミュニティに入り、イベントに参加したり、朝活内容を投稿することができる
 
-* Configuration
+## 設計書
 
-* Database creation
 
-* Database initialization
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
