@@ -14,12 +14,15 @@ class Public::AnnouncementsController < ApplicationController
   end
 
   def edit
+    # binding.pry
     @user = User.find(params[:user_id])
+    @announcement = Announcement.find(params[:id])
   end
 
-  def updated
+  def update
     @user = User.find(params[:user_id])
-    if announcement.update(announcement_params)
+    @announcement = Announcement.find(params[:id])
+    if @announcement.update(announcement_params)
       redirect_to user_path(@user), notice: "You have updated unnouncement successfully."
     else
       render "edit"
@@ -27,6 +30,9 @@ class Public::AnnouncementsController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:user_id])
+    Announcement.find(params[:id]).destroy
+    redirect_to user_path(@user.id)
   end
 
   private

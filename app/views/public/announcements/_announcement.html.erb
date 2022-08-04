@@ -3,10 +3,15 @@
   <tr>
     <td>
       <li style="list-style: none;">
-        <%= announcement.announcement %>
-        <span class="text-success"><<%= announcement.achieve_status_i18n %>></span>
         <% if announcement.user_id == current_user.id %>
-          <%= link_to 'Edit', edit_user_announcement_path(announcement.user, announcement.id), class: "btn btn-outline-warning ml-5" %>
+          <%= link_to announcement.announcement, edit_user_announcement_path(announcement.user, announcement.id) %>
+        <% else %>
+          <%= announcement.announcement %>
+        <% end %>
+        <% if announcement.achieve_status == "nonachieve" %>
+          <span class="btn btn-outline-danger"><%= announcement.achieve_status_i18n %></span>
+        <% else %>
+          <span class="btn btn-outline-success"><%= announcement.achieve_status_i18n %></span>
         <% end %>
       </li>
     </td>
