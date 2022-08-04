@@ -13,10 +13,12 @@
     </div>
     <div class='col-md-6 offset-md-1'>
       <div class="border rounded-circle p-2 text-center">
-        <%= render 'public/announcements/announcement', announcements: @announcements %>をします!
-        <% if @user.id == current_user.id %>
-          <%= link_to '宣言する!', new_user_announcement_path(@user.id) %>
-        <% end %>
+        私は今日、<%= render 'public/announcements/announcement', announcements: @announcements %>朝活をします!
+        <div class="text-center">
+          <% if @user.id == current_user.id %>
+            <%= link_to '宣言する!', new_user_announcement_path(@user.id), class: 'btn btn-outline-warning' %>
+          <% end %>
+        </div>
       </div>
       <h2><%= @user.name %>さんの投稿</h2>
       <%#= render 'books/index',books: @books %>
