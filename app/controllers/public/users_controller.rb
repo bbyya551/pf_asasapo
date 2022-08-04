@@ -3,8 +3,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user = current_user
-    # @announcement = Announcement.new
+    # @user = current_user
     @announcements = @user.announcements
   end
 
