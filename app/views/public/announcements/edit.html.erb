@@ -1,0 +1,25 @@
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>朝活宣言編集</h2>
+    <%= form_with model: [:public, @user, @announcement], url: user_announcement_path(@announcement.user, @announcement), method: :patch, local: true do |f| %>
+      <%#= render 'layouts/errors', obj: @user %>
+      <div class="form-group">
+        <%= f.label :announcement, "朝活宣言" %>
+        <%= f.text_field :announcement, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.radio_button :achieve_status, Announcement.achieve_status.key(0) %>
+        <%= f.label :achieve_status, Announcement.achieve_status_i18n[:nonachieve] %>
+
+        <%= f.radio_button :achieve_status, Announcement.achieve_status.key(1) %>
+        <%= f.label :achieve_status, Announcement.achieve_status_i18n[:achieve]%>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit class: 'btn btn-outline-warning' %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

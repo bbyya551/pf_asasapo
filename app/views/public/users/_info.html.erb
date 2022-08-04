@@ -1,5 +1,5 @@
 <table class='table table-borderless'>
-  <!--<tr><%#= image_tag user.get_profile_image, size:'100x100' %></tr>-->
+  <tr><%= image_tag user.get_profile_image(100, 100) %></tr>
   <tr>
 	  <th>ユーザー名</th>
 	  <th><%= user.name %></th>

@@ -1,0 +1,15 @@
+<tbody>
+  <% announcements.each do |announcement| %>
+  <tr>
+    <td>
+      <li style="list-style: none;">
+        <%= announcement.announcement %>
+        <span class="text-success"><<%= announcement.achieve_status_i18n %>></span>
+        <% if announcement.user_id == current_user.id %>
+          <%= link_to 'Edit', edit_user_announcement_path(announcement.user, announcement.id), class: "btn btn-outline-warning ml-5" %>
+        <% end %>
+      </li>
+    </td>
+  </tr>
+  <% end %>
+</tbody>

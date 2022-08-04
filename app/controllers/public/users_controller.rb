@@ -4,6 +4,8 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @user = current_user
+    # @announcement = Announcement.new
+    @announcements = @user.announcements
   end
 
   def edit
@@ -20,11 +22,13 @@ class Public::UsersController < ApplicationController
   end
 
   def index
+    @users = User.all
+    @user = current_user
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :hobby)
+    params.require(:user).permit(:name, :introduction, :hobby, :profile_image)
   end
 end

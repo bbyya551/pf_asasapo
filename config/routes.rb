@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'announcements/edit'
+  end
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -21,7 +24,10 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
 
-    resources :users, only: [:show, :edit, :update, :index]
+    resources :users, only: [:show, :edit, :update, :index] do
+      resources :announcements, only: [:new,:create, :edit, :update, :destroy]
+    end
+
     resources :posts do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]

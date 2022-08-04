@@ -35,8 +35,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.text :introduction
       t.string :hobby
       t.boolean :is_deleted, default: false
-      t.string :announcement
-      t.integer :achieve_status, default: 0
 
       t.timestamps null: false
     end

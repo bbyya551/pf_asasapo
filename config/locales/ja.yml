@@ -1,0 +1,6 @@
+ja:
+ enums:
+  announcement:
+   achieve_status:
+    nonachieve: "未達成"
+    achieve: "達成"

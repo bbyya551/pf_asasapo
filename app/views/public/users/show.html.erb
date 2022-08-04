@@ -7,7 +7,8 @@
       <%#= render 'books/form', book: @book %>
     </div>
     <div class='col-md-6 offset-md-1'>
-      <h1>私は明日、をします!</h1>
+      <%= render 'public/announcements/announcement', announcements: @announcements %>をします!
+      <%= link_to '宣言する!', new_user_announcement_path(@user.id) %>
       <h2><%= @user.name %>さんの投稿</h2>
       <%#= render 'books/index',books: @books %>
     </div>

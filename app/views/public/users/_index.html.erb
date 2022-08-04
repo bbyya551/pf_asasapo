@@ -1,0 +1,36 @@
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th></th>
+      <th>名前</th>
+      <th>自己紹介文</th>
+      <th>趣味</th>
+      <th></th></th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td>
+          <%= image_tag user.get_profile_image(50, 50) %>
+        </td>
+        <td>
+          <%= user.name %>
+        </td>
+        <td>
+          <%= user.introduction %>
+        </td>
+        <td>
+          <%= user.hobby %>
+        </td>
+
+        <td>
+          <%= link_to "Show", user_path(user.id) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
