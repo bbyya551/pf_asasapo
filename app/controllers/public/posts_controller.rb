@@ -11,12 +11,22 @@ class Public::PostsController < ApplicationController
   end
 
   def index
+    @posts = Post.all
+    @user = current_user
   end
 
   def show
+    @post = Post.find(params[:id])
+    @user = @post.user
   end
 
   def edit
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
   end
 
   private
