@@ -1,4 +1,6 @@
 class Public::PostsController < ApplicationController
+  before_action :correct_user, only: [:edit, :update]
+
   def new
    @post = Post.new
   end
@@ -18,6 +20,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @post_comment = PostComment.new
   end
 
   def edit
@@ -33,5 +36,13 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:post_image, :title, :body)
+  end
+
+  def correct_user
+    @post = Post.find(params[:id])
+    @user = @post.user
+    unless @user == current_user
+      redirect_to posts_path
+    end
   end
 end

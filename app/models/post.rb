@@ -9,4 +9,5 @@ class Post < ApplicationRecord
     post_image.variant(resize_to_limit: [width, height]).processed
   end
   belongs_to :user
+  has_many :post_comments, dependent: :destroy
 end
