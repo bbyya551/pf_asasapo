@@ -6,12 +6,11 @@ class Public::PostCommentsController < ApplicationController
     @post_comment.user_id = current_user.id
     @post_comment.post_id = @post.id
     @post_comment.save
-    redirect_to request.referer
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
     PostComment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-    redirect_to request.referer
   end
 
   private
