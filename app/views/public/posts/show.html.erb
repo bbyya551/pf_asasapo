@@ -19,7 +19,7 @@
           <h4 class="card-title">
             <%= @post.title %>
           </h4>
-          <h5><%= @post.created_at.strftime('%Y/%m/%d') %>  コメント数:<%= @post.post_comments.count %>  <%= render "public/favorites/btn", post: @post %></h5>
+          <h5 id="post_<%= @post.id %>"><%= @post.created_at.strftime('%Y/%m/%d') %>  コメント数:<%= @post.post_comments.count %>  <span class="favorite-btn"><%= render "public/favorites/btn", post: @post %></span></h5>
           <p class="card-text"><%= @post.body %></p>
           <% if @post.user == current_user %>
             <%= link_to "削除する", post_path(@post.id), method: :delete, class: "btn btn-outline-danger" %>
