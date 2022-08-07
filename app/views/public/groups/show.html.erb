@@ -2,24 +2,27 @@
   <div class='row'>
     <div class='col-md-8 offset-md-1'>
   		<h2>コミュニティ詳細</h2>
-      <div class="card", style="max-width: 50rem;">
+      <div class="card", style="max-width: 50rem;", id="group_<%= @group.id %>">
         <%= image_tag @group.get_image(100, 100), class: "card-image-top" %>
         <div class="card-body">
           <h4 class="card-title"><%= @group.name %></h4>
           <p class="card-text"><%= @group.introduction %></p>
           <% if @group.owner_id == current_user.id %>
             <%= link_to "編集", edit_group_path(@group.id), class: "btn btn-outline-success" %>
+            <!--ここにメール作成ボタンも追加-->
           <% end %>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">リスト01</li>
-          <li class="list-group-item">リスト02</li>
-          <li class="list-group-item">リスト03</li>
+          <%= render 'group_show', group: @group %>
         </ul>
         <div class="card-body">
           <% if @group.owner_id != current_user.id %>
             <!--ここにif文で条件分岐-->
-            <%= link_to 'このコミュニティに参加', "#", class: "btn btn-outline-primary" %>
+            <% if @group.includesUser?(current_user) %>
+              <%= link_to 'コミュニティから脱退', group_group_users_path(@group), method: :delete, class: "btn btn-outline-danger" %>
+            <% else %>
+              <%= link_to 'このコミュニティに参加', group_group_users_path(@group), method: :post, class: "btn btn-outline-primary" %>
+            <% end %>
           <% end %>
         </div>
       </div>

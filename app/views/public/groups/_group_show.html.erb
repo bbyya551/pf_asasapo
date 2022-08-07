@@ -1,0 +1,7 @@
+<h5>メンバー</h5>
+<% group.users.each do |user| %>
+  <li class="list-group-item">
+    <%= image_tag user.get_profile_image(50, 50) %>
+    <%= link_to user.name, user_path(user.id) %>
+  </li>
+<% end %>
