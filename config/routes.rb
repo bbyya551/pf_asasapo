@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    resources :groups
+    resources :groups, except: [:destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

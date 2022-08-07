@@ -1,2 +1,28 @@
-<h1>Public::Groups#show</h1>
-<p>Find me in app/views/public/groups/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>コミュニティ詳細</h2>
+      <div class="card", style="max-width: 50rem;">
+        <%= image_tag @group.get_image(100, 100), class: "card-image-top" %>
+        <div class="card-body">
+          <h4 class="card-title"><%= @group.name %></h4>
+          <p class="card-text"><%= @group.introduction %></p>
+          <% if @group.owner_id == current_user.id %>
+            <%= link_to "編集", edit_group_path(@group.id), class: "btn btn-outline-success" %>
+          <% end %>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">リスト01</li>
+          <li class="list-group-item">リスト02</li>
+          <li class="list-group-item">リスト03</li>
+        </ul>
+        <div class="card-body">
+          <% if @group.owner_id != current_user.id %>
+            <!--ここにif文で条件分岐-->
+            <%= link_to 'このコミュニティに参加', "#", class: "btn btn-outline-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
