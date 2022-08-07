@@ -1,0 +1,8 @@
+<% if group.owner_id != current_user.id %>
+  <!--ここにif文で条件分岐-->
+  <% if group.includesUser?(current_user) %>
+    <%= link_to 'コミュニティから脱退', group_group_users_path(group), method: :delete, remote: true, class: "btn btn-outline-danger" %>
+  <% else %>
+    <%= link_to 'このコミュニティに参加', group_group_users_path(group), method: :post, remote: true, class: "btn btn-outline-primary" %>
+  <% end %>
+<% end %>

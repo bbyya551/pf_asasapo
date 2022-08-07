@@ -12,18 +12,11 @@
             <!--ここにメール作成ボタンも追加-->
           <% end %>
         </div>
-        <ul class="list-group list-group-flush">
-          <%= render 'group_show', group: @group %>
+        <ul class="list-group list-group-flush group-member">
+          <%= render 'member', group: @group %>
         </ul>
-        <div class="card-body">
-          <% if @group.owner_id != current_user.id %>
-            <!--ここにif文で条件分岐-->
-            <% if @group.includesUser?(current_user) %>
-              <%= link_to 'コミュニティから脱退', group_group_users_path(@group), method: :delete, class: "btn btn-outline-danger" %>
-            <% else %>
-              <%= link_to 'このコミュニティに参加', group_group_users_path(@group), method: :post, class: "btn btn-outline-primary" %>
-            <% end %>
-          <% end %>
+        <div class="card-body join-btn">
+          <%= render 'join_btn', group: @group %>
         </div>
       </div>
     </div>
