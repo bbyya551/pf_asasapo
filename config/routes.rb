@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     resources :groups, except: [:destroy] do
       resource :group_users, only: [:create, :destroy]
     end
+
+    get '/search', to: 'searches#search'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

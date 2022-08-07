@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
-
+        <%= render 'public/searches/form' %>
         <li class="nav-item">
           <%= link_to "マイページ", user_path(current_user.id), method: :get, class: 'nav-link text-dark' %>
         </li>
