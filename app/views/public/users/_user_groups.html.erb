@@ -10,7 +10,7 @@
   <tbody>
     <% user.groups.each do |group| %>
       <tr>
-        <td><%= image_tag group.get_image(50, 50) %></td>
+        <td><%= image_tag group.get_image(50, 50), class:"rounded-circle"; %></td>
         <td><%= link_to group.name, group_path(group.id) %></td>
         <td><%= group.group_users.count %>人</td>
       </tr>

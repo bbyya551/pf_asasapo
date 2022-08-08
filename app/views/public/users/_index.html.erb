@@ -14,7 +14,7 @@
     <% users.each do |user| %>
       <tr>
         <td>
-          <%= image_tag user.get_profile_image(50, 50) %>
+          <%= image_tag user.get_profile_image(50, 50), class:"rounded-circle"; %>
         </td>
         <td>
           <%= user.name %>
