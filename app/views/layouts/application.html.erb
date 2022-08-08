@@ -14,6 +14,14 @@
   <body class="d-flex flex-column vh-100">
     <%= render "layouts/header" %>
     <p id="notice"><%= notice %></p>
+    <% if user_signed_in? %>
+      <div class="container">
+        <div class="row justify-content-start mb-2">
+          <%= render 'public/searches/form' %>
+          <%= render 'public/searches/genre_form' %>
+        </div>
+      </div>
+    <% end %>
     <%= yield %>
     <%= render "layouts/footer" %>
   </body>

@@ -11,6 +11,8 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :post_genres, dependent: :destroy
+  has_many :genres, through: :post_genres
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
@@ -25,6 +27,31 @@ class Post < ApplicationRecord
       Post.where('title LIKE ?', '%'+content)
     else
       Post.where('title LIKE ?', '%'+content+'%')
+    end
+  end
+
+  # postsコントローラで配列化した値を引数で受け取る
+  # binding.pry
+  def save_genres(genre_list)
+    genre_list.each do |genre|
+      # 受け取った値を小文字に変換して、DBを検索して存在しない場合は
+      # find_genreに nil が代入され　nil となるのでgenreの作成開始
+      unless find_genre = Genre.find_by(name: genre.downcase)
+        begin
+          # create メソッドでgenreの作成
+          # create! としているのは、保存が成功しても失敗してもオブジェクト
+          # を返してしまうため、例外を発生させたい
+          self.genres.create!(name: genre)
+
+          # 例外が発生すると rescue 内の処理が走り nil になる
+          # 値は保存されず次の処理へ
+        rescue
+          nil
+        end
+      else
+        # find_genreでDB にgenreが存在した場合、中間テーブルにpostとgenreを紐付けている
+        PostGenre.create!(post_id: self.id, genre_id: find_genre.id)
+      end
     end
   end
 end

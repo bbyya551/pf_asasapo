@@ -1,7 +1,7 @@
 <% if @model == 'user' %>
  <h3>"<%= @content %>"のユーザー検索結果</h3>
  <%= render 'public/users/index', users: @records %>
-<% elsif @model == 'post' %>
+<% elsif @model == 'post' || @model == 'genre' %>
  <h3>"<%= @content %>"の投稿検索結果</h3>
  <%= render 'public/posts/index', posts: @records %>
 <% elsif @model == 'group' %>

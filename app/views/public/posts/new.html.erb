@@ -13,6 +13,10 @@
         <%= f.text_field :title, class: "form-control" %>
       </div>
       <div class="form-group">
+        <%= f.label :genre_name, "投稿ジャンル(,で複数ジャンル付けできます)" %>
+        <%= f.text_field :genre_name, class: 'form-control book_tag_name' %>
+      </div>
+      <div class="form-group">
         <%= f.label :body, "投稿本文" %>
         <%= f.text_area :body, class: "form-control" %>
       </div>

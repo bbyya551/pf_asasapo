@@ -9,8 +9,14 @@ class Public::PostsController < ApplicationController
     # binding.pry
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to post_path(@post.id)
+    genre_list = params[:post][:genre_name].split(',')
+    # binding.pry
+    if @post.save
+      @post.save_genres(genre_list)
+      redirect_to post_path(@post.id), notice: "You have created post successfully"
+    else
+      render 'new'
+    end
   end
 
   def index

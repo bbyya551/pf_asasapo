@@ -25,6 +25,12 @@
             <%= link_to "削除する", post_path(@post.id), method: :delete, class: "btn btn-outline-danger" %>
           <% end %>
         </div>
+        <div class="card-footer">
+          <h4>投稿ジャンル</h4>
+          <% @post.genres.each do |genre| %>
+            <li style="list-style: none;"><%= genre.name %></li>
+          <% end %>
+        </div>
       </div>
       <div class="post_comments">
         <%= render "public/post_comments/index", post: @post %>

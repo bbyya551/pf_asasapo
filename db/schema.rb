@@ -99,12 +99,12 @@ ActiveRecord::Schema.define(version: 2022_08_07_051929) do
   end
 
   create_table "post_genres", force: :cascade do |t|
-    t.integer "book_id", null: false
+    t.integer "post_id", null: false
     t.integer "genre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_id"], name: "index_post_genres_on_book_id"
     t.index ["genre_id"], name: "index_post_genres_on_genre_id"
+    t.index ["post_id"], name: "index_post_genres_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -135,6 +135,6 @@ ActiveRecord::Schema.define(version: 2022_08_07_051929) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
-  add_foreign_key "post_genres", "books"
   add_foreign_key "post_genres", "genres"
+  add_foreign_key "post_genres", "posts"
 end
