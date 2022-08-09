@@ -3,7 +3,7 @@
  <%= render 'public/users/index', users: @records %>
 <% elsif @model == 'post' || @model == 'genre' %>
  <h3>"<%= @content %>"の投稿検索結果</h3>
- <%= render 'public/posts/index', posts: @records %>
+ <%= render 'public/posts/index_nopage', posts: @records %>
 <% elsif @model == 'group' %>
  <h3>"<%= @content %>"のコミュニティ検索結果</h3>
  <%= render 'public/groups/index', groups: @records %>
