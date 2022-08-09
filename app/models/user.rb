@@ -22,6 +22,10 @@ class User < ApplicationRecord
   has_many :group_users
   has_many :groups, through: :group_users
 
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
+
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
 
