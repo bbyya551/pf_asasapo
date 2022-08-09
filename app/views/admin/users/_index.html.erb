@@ -1,0 +1,38 @@
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>プロフィール写真</th>
+      <th>ユーザー名</th>
+      <th>email</th>
+      <th>会員ステータス</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td>
+          <%= user.id %>
+        </td>
+        <td>
+          <%= image_tag user.get_profile_image(50, 50), class:"rounded-circle"; %>
+        </td>
+        <td>
+          <%= link_to user.name, admin_user_path(user.id) %>
+        </td>
+        <td>
+          <%= user.email %>
+        </td>
+        <td>
+          <% if user.is_deleted == false %>
+           <p class="text-success">有効会員</p>
+          <% elsif user.is_deleted == true %>
+           <p class="text-danger">利用停止</p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

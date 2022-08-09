@@ -23,7 +23,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.where(is_deleted: "false")
     @user = current_user
   end
 

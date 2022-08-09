@@ -1,0 +1,22 @@
+<table>
+  <tbody>
+    <% if post.post_comments.exists? %>
+      <% post.post_comments.each do |post_comment| %>
+      <tr>
+        <td>
+          <%= link_to user_path(post_comment.user.id) do %>
+            <%= image_tag post_comment.user.get_profile_image(50, 50) %>
+            <%= post_comment.user.name %>
+          <% end %>
+        </td>
+        <td><%= post_comment.comment %></td>
+        <td>
+          <%= link_to "削除する", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, class: "btn btn-outline-danger" %>
+        </td>
+      </tr>
+      <% end %>
+    <% else %>
+      <h3>投稿"<%= post.title %>"に対するコメントはありません</h3>
+    <% end %>
+  </tbody>
+</table>

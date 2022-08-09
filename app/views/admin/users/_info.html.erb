@@ -1,0 +1,34 @@
+<table class='table table-borderless'>
+  <tr>
+	  <th>会員ID</th>
+	  <th><%= user.id %></th>
+  </tr>
+  <tr>
+	  <th>ユーザー名</th>
+	  <th><%= user.name %></th>
+  </tr>
+  <tr>
+	  <th>自己紹介</th>
+	  <th><%= user.introduction %></th>
+  </tr>
+  <tr>
+    <th>趣味</th>
+    <th><%= user.hobby %></th>
+  </tr>
+  <tr>
+	  <th>メールアドレス</th>
+	  <th><%= user.email %></th>
+  </tr>
+  <tr>
+	  <th>会員ステータス</th>
+	  <th>
+	    <% if user.is_deleted == false %>
+       <span class="text-success">有効会員</span>
+       <%= link_to '変更', edit_admin_user_path(user.id), class: "btn btn-outline-success" %>
+      <% elsif user.is_deleted == true %>
+       <span class="text-danger">利用停止</span>
+       <%= link_to '変更', edit_admin_user_path(user.id), class: "btn btn-outline-success" %>
+      <% end %>
+	  </th>
+  </tr>
+</table>

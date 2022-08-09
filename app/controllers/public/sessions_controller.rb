@@ -3,6 +3,7 @@
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :user_state, only: [:create]
   # GET /resource/sign_in
   # def new
   #   super
@@ -27,6 +28,14 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   protected
+
+  def user_state
+    @user = User.find_by(email: params[:user][:email])
+    return if !@user
+    if @user.valid_password?(params[:user][:password]) && @user.is_deleted == true
+      redirect_to new_user_registration_path, notice: "You can not use this service"
+    end
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
