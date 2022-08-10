@@ -36,6 +36,8 @@ Rails.application.routes.draw do
       resource :group_users, only: [:create, :destroy]
     end
 
+    resources :notifications, only: [:index]
+
     get '/search', to: 'searches#search'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

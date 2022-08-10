@@ -10,6 +10,18 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
         <li class="nav-item">
+          <%= link_to notifications_path do %>
+            <% if unchecked_notifications.any? %>
+              <span class="fa-stack">
+                <i class="far fa-bell fa-lg fa-stack-2x" style="font-size: 1.5rem;"></i>
+                <i class="fas fa-circle n-circle fa-stack-1x"></i>
+              </span>
+            <% else %>
+              <i class="far fa-bell fa-lg" style="font-size: 1.5em;"></i>
+            <% end %>
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to "マイページ", user_path(current_user.id), method: :get, class: 'nav-link text-dark' %>
         </li>
 
