@@ -1,0 +1,26 @@
+<table class='table table-borderless'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>コミュニティ名</th>
+      <th>参加中メンバー</th>
+      <th></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% groups.each do |group| %>
+      <tr class="table-warning">
+        <td><%= image_tag group.get_image(50, 50), class:"rounded-circle"; %></td>
+        <td><strong><%= link_to group.name, new_user_registration_path %></strong></td>
+        <td><%= group.group_users.count %></td>
+        <td>
+        <!--<%# if group.owner_id == current_user.id %>-->
+        <!--  <%#= link_to '編集', edit_group_path(group.id), class: 'btn btn-outline-success' %>-->
+        <!--<%# end %>-->
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%#= paginate posts %>

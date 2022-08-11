@@ -1,0 +1,23 @@
+<div class="card-group h-125">
+  <% posts.each do |post| %>
+   <% unless post.user.is_deleted %>
+    <div class="card w-200 mx-auto mt-4 h-125 shadow-lg">
+      <%= image_tag post.get_post_image(200, 200), class: "card-image-top h-50" %>
+      <div class="card-body">
+        <h4 class="card-title">
+          <%= link_to new_user_registration_path, class: "text-dark" do %>
+            <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
+          <% end %>
+        </h4>
+        <h6 id="post_<%= post.id %>"><%= post.created_at.strftime('%Y/%m/%d') %>
+          <br><span class="comments-count">コメント数:<%= post.post_comments.count %></span>
+          <!--<br><span class="favorite-btn"><%#= render "public/favorites/btn", post: post %></span>-->
+        </h6>
+        <p class="card-text">説明:<%= post.body %></p>
+        <!--<span><i class="fas fa-user"></i> By<%#= image_tag post.user.get_profile_image(30,30), class:"rounded-circle"; %><%= post.user.name %></span>-->
+      </div>
+    </div>
+   <% end %>
+  <% end %>
+</div>
+<%#= paginate posts %>
