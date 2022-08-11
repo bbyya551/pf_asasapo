@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- @import "skippr";
+// @import "skippr";
 .n-circle {
   position: absolute;
   padding-left: 1rem;
@@ -25,20 +25,24 @@
   color: #000000;
 }
 
+.carousel-item {
+  height: 70vh;
+}
+
 .image1 {
-  background-image: url(image1.jpg);
+  background-image: url("image1.jpg");
 }
 .image2 {
-  background-image: url(image2.jpg);
+  background-image: url("image2.jpg");
 }
 .image3 {
-  background-image: url(image3.jpg);
+  background-image: url("image3.jpg");
 }
 .image4 {
-  background-image: url(image4.jpg);
+  background-image: url("image4.jpg");
 }
 .image5 {
-  background-image: url(image5.jpg);
+  background-image: url("image5.jpg");
 }
 
 #container{

@@ -15,8 +15,14 @@
 
 </table>
 
-<div class='row'>
-  <%= link_to edit_user_path(user.id), class: "btn btn-outline-warning" do %>
+<div class='row d-flex align-items-center justify-content-center'>
+  <%= link_to edit_user_path(user.id), class: "btn btn-outline-warning mr-2" do %>
     <i class="fa-solid fa-user-pen"></i>
+  <% end %>
+  <%= link_to new_post_path, class: 'btn btn-outline-warning' do %>
+    <i class="fa-solid fa-pen-to-square"></i>
+  <% end %>
+  <%= link_to favorites_user_path(user), class: 'btn btn-outline-warning ml-2' do %>
+    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
   <% end %>
 </div>

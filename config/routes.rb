@@ -26,6 +26,9 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show, :edit, :update, :index] do
       resources :announcements, only: [:new,:create, :edit, :update, :destroy]
+      member do
+        get :favorites
+      end
     end
 
     resources :posts do

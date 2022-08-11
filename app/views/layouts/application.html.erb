@@ -6,14 +6,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="d-flex flex-column vh-100">
     <%= render "layouts/header" %>
-    <p id="notice"><%= notice %></p>
+    <!--<%# unless notice.nil? %>-->
+    <!--  <p id="notice"><%#= notice %></p>-->
+    <!--<%# end %>-->
     <% if user_signed_in? %>
       <div class="container">
         <div class="row justify-content-start mb-2">

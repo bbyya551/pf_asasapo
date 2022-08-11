@@ -13,8 +13,13 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
-import "skippr.min"
-import "script.js"
+
+// import "skippr.min"
+
+// import "script.js"
+
+// require("skippr.min")
+// require("script")
 
 Rails.start()
 Turbolinks.start()

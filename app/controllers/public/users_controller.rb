@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update]
+  before_action :set_user, only: [:favorites]
 
   def show
     @user = User.find(params[:id])
@@ -27,7 +28,22 @@ class Public::UsersController < ApplicationController
     @user = current_user
   end
 
+  def favorites
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    # @favorite_posts =
+    # favorites.each do |favorite|
+    #   favorite_post = Post.where(id: favorite)
+    # end
+    #whereは複数のidを指定可能
+    @favorite_posts = Post.where(id: favorites).page(params[:page])
+    @announcements = @user.announcements
+  end
+
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :introduction, :hobby, :profile_image)

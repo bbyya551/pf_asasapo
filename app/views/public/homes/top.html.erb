@@ -1,25 +1,87 @@
-<%= stylesheet_link_tag "application", :media => "all" %>
-<div id="container">
-  <div id="theTarget">
+<%#= stylesheet_link_tag "application", :media => "all" %>
+<!--<div id="container">-->
+<!--  <div id="theTarget">-->
 
-    <div class="image1">
-      <div class='container px-5 px-sm-0'>
-        <div class='row'>
-          <div class='col-md-8'>
-             <h2>新着投稿(3件)</h2>
-             <%= render 'public/homes/top_posts',posts: @posts %>
-          </div>
-          <div class='col-md-4'>
-            <h2 class="mt-3">新着コミュニティ(6件)</h2>
+<!--    <div class="image1">-->
+<!--      <div class='container px-5 px-sm-0'>-->
+<!--        <div class='row'>-->
+<!--          <div class='col-md-8'>-->
+<!--             <h2>新着投稿(3件)</h2>-->
+<!--             <%#= render 'public/homes/top_posts',posts: @posts %>-->
+<!--          </div>-->
+<!--          <div class='col-md-4'>-->
+<!--            <h2 class="mt-3">新着コミュニティ(6件)</h2>-->
+<!--            <%#= render 'public/homes/top_groups', groups: @groups %>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--  　</div>-->
+
+<!--    <div class="image2"></div>-->
+<!--    <div class="image3"></div>-->
+<!--    <div class="image4"></div>-->
+<!--    <div class="image5"></div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--#With indicators with indicators https://getbootstrap.jp/docs/4.3/components/carousel/-->
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+    <!--<li data-target="#carouselExampleIndicators" data-slide-to="5"></li>-->
+  </ol>
+  <div class="carousel-inner">
+
+    <div class="image1 carousel-item active">
+      <div class="carousel-caption d-none d-md-block">
+        <h1>さあ、朝活を始めようか。</h1>
+        <h3>〜朝活で日本を元気に~</h3>
+      </div>
+    </div>
+    <div class="image2 carousel-item">
+      <div class="carousel-caption d-none d-md-block">
+        <h1>何ができるの?</h1>
+        <h3>朝活仲間を作り、朝活を継続できるようになります。</h3>
+      </div>
+    </div>
+    <div class="image3 carousel-item">
+      <div class="carousel-caption d-none d-md-block">
+        <h1>どうやってやるの?</h1>
+        <h3>朝活コミュニティ</h3><br>
+        <h3>朝活宣言</h3><br>
+        <h3>朝活投稿</h3>
+      </div>
+    </div>
+    <div class="image4 carousel-item">
+      <div class="container px-5 px-sm-0">
+        <div class='row d-flex align-items-center justify-content-center'>
+          <div class='col-md-10'>
+            <h2 class="mt-3 text-warning">新着コミュニティ(3件)</h2>
             <%= render 'public/homes/top_groups', groups: @groups %>
           </div>
         </div>
       </div>
-  　</div>
-
-    <div class="image2"></div>
-    <div class="image3"></div>
-    <div class="image4"></div>
-    <div class="image5"></div>
+    </div>
+    <div class="image5 carousel-item">
+      <div class="container px-5 px-sm-0">
+        <div class='row d-flex align-items-center justify-content-center'>
+          <div class='col-md-10'>
+             <h2 class="mt-3 text-warning">新着投稿(3件)</h2>
+             <%= render 'public/homes/top_posts',posts: @posts %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>

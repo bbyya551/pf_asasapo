@@ -1,7 +1,8 @@
-<div class="card-group">
+<div class="card-deck">
   <% posts.each do |post| %>
    <% unless post.user.is_deleted %>
-    <div class="card w-200 mx-auto mt-4 h-500 shadow-lg">
+    <!--<div class="card w-200 mx-auto mt-4 h-500 shadow-lg">-->
+    <div class="card mt-4 shadow-lg">
       <%= image_tag post.get_post_image(200, 200), class: "card-image-top h-50" %>
       <div class="card-body">
         <h4 class="card-title">
