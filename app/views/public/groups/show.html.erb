@@ -17,6 +17,9 @@
         </ul>
         <div class="card-body join-btn">
           <%= render 'join_btn', group: @group %>
+          <% if @group.owner_id == current_user.id %>
+            <%= link_to '朝活を開催', group_new_mail_path(@group) %>
+          <% end %>
         </div>
       </div>
     </div>

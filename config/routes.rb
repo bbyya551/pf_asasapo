@@ -37,6 +37,8 @@ Rails.application.routes.draw do
     end
     resources :groups, except: [:destroy] do
       resource :group_users, only: [:create, :destroy]
+      get "new/mail" => "groups#new_mail"
+      get "send/mail" => "groups#send_mail"
     end
 
     resources :notifications, only: [:index]
