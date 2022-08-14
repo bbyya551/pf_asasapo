@@ -9,8 +9,11 @@ class Public::AnnouncementsController < ApplicationController
     @user = User.find(params[:user_id])
     @announcement = Announcement.new(announcement_params)
     @announcement.user_id = @user.id
-    @announcement.save
-    redirect_to user_path(@user), notice: "You have created announcement successfully."
+    if @announcement.save
+      redirect_to user_path(@user), notice: "You have created announcement successfully."
+    else
+      render 'new'
+    end
   end
 
   def edit

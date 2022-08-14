@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>新規投稿</h2>
     <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
-      <%#= render 'layouts/errors', obj: @user %>
+      <%= render 'layouts/errors', obj: @post %>
       <div class="form-group">
         <%= f.label :post_image, "投稿写真" %>
         <%= f.file_field :post_image, class: "form-control-file user_image", accept: 'image/png,image/gif,image/jpeg' %>
