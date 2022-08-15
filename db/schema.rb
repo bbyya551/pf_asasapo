@@ -148,8 +148,4 @@ ActiveRecord::Schema.define(version: 2022_08_09_111851) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "group_users", "groups"
-  add_foreign_key "group_users", "users"
-  add_foreign_key "post_genres", "genres"
-  add_foreign_key "post_genres", "posts"
 end
