@@ -8,6 +8,7 @@ class Public::UsersController < ApplicationController
     @posts = @user.posts.page(params[:page])
     # @user = current_user
     @announcements = @user.announcements
+    # byebug
   end
 
   def edit

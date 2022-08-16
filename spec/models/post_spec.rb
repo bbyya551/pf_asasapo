@@ -4,8 +4,10 @@ require 'rails_helper'
 #user_idは定義しなくていいですか
 RSpec.describe Post, "モデルに関するテスト", type: :model do
   describe '実際に保存してみる' do
+    #ここから
     let(:user) { create(:user) }
     let!(:post) { build(:post, user_id: user.id) }
+    #ここまではいらないかもしれない
 
     it "有効な投稿内容の場合は保存されるか" do
       expect(FactoryBot.build(:post)).to be_valid
@@ -13,6 +15,7 @@ RSpec.describe Post, "モデルに関するテスト", type: :model do
   end
   context "空白のバリデーションチェツク" do
     it "titleが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+      #記述はFactoryBotを使用しよう。
       post = FactoryBot.build(:post, title: '', body: 'hoge')
       # post = Post.new(title: '', body: 'hoge')
       expect(post).to be_invalid

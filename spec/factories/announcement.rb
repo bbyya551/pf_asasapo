@@ -1,7 +1,6 @@
 FactoryBot.define do
-  factory :post do
+  factory :announcement do
     user#この記述で、spec/factories/user.rbをまるっきり呼び出せる。
-    title { Faker::Lorem.characters(number: 5) }
-    body { Faker::Lorem.characters(number:20) }
+    announcement { Faker::Lorem.characters(number: 30) }
    end
 end
