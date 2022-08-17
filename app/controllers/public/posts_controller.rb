@@ -9,6 +9,7 @@ class Public::PostsController < ApplicationController
     # binding.pry
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    #:genre_nameジャンルモデルのnameという意味?
     genre_list = params[:post][:genre_name].split(',')
     # binding.pry
     if @post.save

@@ -20,7 +20,7 @@ class Public::GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
     if @group.save
-      redirect_to groups_path, notice: "You have created group successfully."
+      redirect_to group_path(@group), notice: "You have created group successfully."
     else
       render 'new'
     end

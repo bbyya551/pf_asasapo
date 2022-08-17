@@ -37,7 +37,7 @@
     <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
   <% end %>
   <% if current_user != user %>
-    <td><%= render "public/relationships/btn", user: user %></td>
+    <span class="ml-2"><%= render "public/relationships/btn", user: user %></span>
   <% end %>
 </div>
 
