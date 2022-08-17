@@ -25,6 +25,15 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
+  #フォローする側からのhas_manyなので、それがわかるようにforeign_keyでfollower_id(フォローする人)を指定してやる
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  #「has_many :followings」は任意の名前。意味合いは、自分がフォローしている人。
+  #すなわち、フォローされている人。すなわち、自分から見てフォローされている人全員なので、中間テーブルをthroughして、source: :followedとして自分とは反対側のfollowedモデルを参照してくる必要あり。
+  has_many :followings, through: :relationships, source: :followed
+
+  #フォローされる側からのhas_manyなので、foreign_keyでfollowed_id(フォローされる人)を指定してやる
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followers, through: :reverse_of_relationships, source: :follower
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 50 }
@@ -39,5 +48,17 @@ class User < ApplicationRecord
     else
       User.where('name LIKE ?', '%' + content + '%')
     end
+  end
+
+  def follow(user)
+    relationships.create(followed_id: user.id)
+  end
+
+  def unfollow(user)
+    relationships.find_by(followed_id: user.id).destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
   end
 end

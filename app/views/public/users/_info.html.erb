@@ -12,6 +12,14 @@
     <th>趣味</th>
     <th><%= user.hobby %></th>
   </tr>
+  <tr>
+    <th>フォロー中</th>
+    <th><%= link_to user.followings.count, user_followings_path(user) %>人</th>
+  </tr>
+  <tr>
+    <th>フォロワー</th>
+    <th><%= link_to user.followers.count, user_followers_path(user) %>人</th>
+  </tr>
 
 </table>
 
@@ -28,4 +36,13 @@
   <%= link_to favorites_user_path(user), class: 'btn btn-outline-warning ml-2' do %>
     <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
   <% end %>
+  <% if current_user != user %>
+    <td><%= render "public/relationships/btn", user: user %></td>
+  <% end %>
 </div>
+
+<!--<div class='row'>-->
+<!--  <%# if current_user != user %>-->
+<!--    <td><%#= render "public/relationships/btn", user: user %></td>-->
+<!--  <%# end %>-->
+<!--</div>-->

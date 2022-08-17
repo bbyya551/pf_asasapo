@@ -9,7 +9,7 @@ FactoryBot.define do
     trait :user_with_groups do
       #多対多のテスト
       #userが作られるとき、自動的にuser.groups(userに紐づいたgroups、すなわちgroup_user)を作るということ
-      after(:build) do |user|  # after(:build)とした場合、createの場合もcallbackが走る
+      after(:build) do |user|  # after(:build)とした場合、createの場合もcallbackが走る(記事のコメント引用)
         user.groups << build(:group)
       end
     end
