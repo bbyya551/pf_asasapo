@@ -11,6 +11,7 @@ class Public::AnnouncementsController < ApplicationController
     @announcement.user_id = @user.id
     if @announcement.save
       redirect_to user_path(@user), notice: "You have created announcement successfully."
+      @user.create_notification_announcement!(current_user, @announcement.id)
     else
       render 'new'
     end

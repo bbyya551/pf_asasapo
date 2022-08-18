@@ -72,4 +72,22 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  def create_notification_announcement!(current_user, announcement_id)
+    temp_ids = current_user.followers.select(:id)
+    unless temp_ids.blank?
+      temp_ids.each do |temp_id|
+        save_notification_announcement!(current_user, announcement_id, temp_id['id'])
+      end
+    end
+  end
+
+  def save_notification_announcement!(current_user, announcement_id, visited_id)
+    notification = current_user.active_notifications.new(
+      announcement_id: announcement_id,
+      visited_id: visited_id,
+      action: 'announcement'
+    )
+    notification.save if notification.valid?
+  end
 end

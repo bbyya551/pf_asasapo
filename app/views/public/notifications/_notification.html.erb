@@ -6,6 +6,12 @@
       <strong><%= visitor.name %></strong>
       <%= 'さんが' %>
       <% case notification.action %>
+      <% when 'announcement' then %>
+        <%= link_to user_path(visitor.id) do %>
+          <%= image_tag notification.announcement.user.get_profile_image(50, 50), class: "icon_mini" %>
+          <<%= notification.announcement.announcement %>>
+        <% end %>
+        朝活を宣言しました!
       <% when 'follow' then %>
         <%= "あなたをフォローしました" %>
       <% when 'Like' then %>

@@ -65,7 +65,7 @@ class Post < ApplicationRecord
 
   def create_notification_like!(current_user)
     #この行(temp)そのままrails console打とう
-    #インスタンスメソッド 63行目のuser_idはPost自身のuser_idのこと。idはPost自身のidのこと。
+    #インスタンスメソッド user_idはPost自身のuser_idのこと。idはPost自身のidのこと。
     #非同期でうまくいかない時はターミナルをみよう
     temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'Like'])
     if temp.blank?
