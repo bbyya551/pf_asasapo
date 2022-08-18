@@ -10,10 +10,10 @@
       </div>
       <div class="form-group">
         <%= f.radio_button :achieve_status, Announcement.achieve_statuses.key(0) %>
-        <%= f.label :achieve_status, Announcement.achieve_statuses_i18n[:nonachieve] %>
+        <%= f.label :achieve_status, Announcement.achieve_statuses_i18n[:nonachieve], value: Announcement.achieve_statuses.key(0) %>
 
         <%= f.radio_button :achieve_status, Announcement.achieve_statuses.key(1) %>
-        <%= f.label :achieve_status, Announcement.achieve_statuses_i18n[:achieve]%>
+        <%= f.label :achieve_status, Announcement.achieve_statuses_i18n[:achieve], value: Announcement.achieve_statuses.key(1) %>
       </div>
 
       <div class="form-group">

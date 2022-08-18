@@ -308,9 +308,13 @@ describe 'ユーザーログイン後のテスト' do
         expect(find_field('announcement[announcement]').text).to be_blank
       end
       it '宣言達成ステータスが表示され、未達成がチェックされていて、達成が表示されている' do
-        expect(page).to have_checked_field 'announcement[achieve_status]'
-        # expect(page).to have_checked_field('未達成')
+        # expect(page).to have_checked_field 'announcement[achieve_status]'
+        # expect(page).to have_checked_field 'announcement[nonachieve]'
+        # view側(new.html.erb)のlabelでvalueを指定したことで、この記述が可能になる。
+        expect(page).to have_checked_field('未達成')
+        expect(page).to have_field('達成')
         # expect(page).to have_field '達成'
+        # expect(page).to have_checked_field '未達成'
       end
       # it '宣言達成ステータスに未達成が選択されている' do
       #   expect(page).to have_checked_field '未達成', disabled: true
@@ -323,7 +327,11 @@ describe 'ユーザーログイン後のテスト' do
     context '登録成功のテスト' do
       before do
         fill_in 'announcement[announcement]', with: Faker::Lorem.characters(number: 5)
-        choose 'announcement[achieve_status] radio button'
+        # find('label[for=announcement_achieve_status_nonachieve]').click
+        #未達成のラジオボタンを選択して、ページに未達成が表示されるか
+        choose "announcement_achieve_status_nonachieve" #announcement_achieve_status_nonachieveは、検証ツールの「未達成」のlabel forの値
+        expect(page).to have_checked_field('未達成')
+        # choose 'announcement[achieve_status]'
       end
 
       it '新しい投稿が正しく保存される' do
