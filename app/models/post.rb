@@ -86,9 +86,9 @@ class Post < ApplicationRecord
     #インスタンスメソッド(post_id: id)は、PostCommentのpost_idは、このPostモデル自身のidという意味。(post: selfでもいける。)
     temp_ids = PostComment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
     temp_ids.each do |temp_id|
-      save_notification_comment!(current_user, post_comment_id, temp_id['user_id'])
+      save_notification_comment!(current_user, post_comment_id, temp_id['user_id']) #ここのuser_idは、コメントのuser_id
     end
-    save_notification_comment!(current_user, post_comment_id, user_id) if temp_ids.blank?
+    save_notification_comment!(current_user, post_comment_id, user_id) if temp_ids.blank? #ここのuser_idは、投稿自体のuser_id
   end
 
   def save_notification_comment!(current_user, post_comment_id, visited_id)

@@ -109,6 +109,9 @@ describe 'ユーザーログイン後のテスト' do
       it '自分の朝活宣言が表示される' do
         expect(page).to have_link announcement.announcement, href: edit_user_announcement_path(user, announcement)
       end
+      it '朝活宣言作成画面へのリンクが存在する' do
+        expect(page).to have_link '', href: new_user_announcement_path(user.id)
+      end
     end
   end
 
@@ -272,6 +275,66 @@ describe 'ユーザーログイン後のテスト' do
       it 'リダイレクト先が、保存できたコミュニティの詳細画面になっている' do
         click_button '登録する'
         expect(current_path).to eq '/posts/' + Post.last.id.to_s
+      end
+    end
+  end
+
+  describe '自分がいいねした投稿一覧画面のテスト' do
+    before do
+      visit favorites_user_path(user)
+    end
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/users/' + user.id.to_s + '/favorites'
+      end
+    end
+  end
+
+  describe '朝活宣言画面のテスト' do
+    before do
+      # user = User.first #ここまではuserのidは2できていたけど、id = 1に指定もできる。
+      visit new_user_announcement_path(user.id)
+      # byebug
+    end
+
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/users/' + user.id.to_s + '/announcements' + '/new'
+      end
+      it '朝活宣言フォームが表示される' do
+        expect(page).to have_field 'announcement[announcement]'
+      end
+      it '朝活宣言フォームに値が入っていない' do
+        expect(find_field('announcement[announcement]').text).to be_blank
+      end
+      it '宣言達成ステータスが表示され、未達成がチェックされていて、達成が表示されている' do
+        expect(page).to have_checked_field 'announcement[achieve_status]'
+        # expect(page).to have_checked_field('未達成')
+        # expect(page).to have_field '達成'
+      end
+      # it '宣言達成ステータスに未達成が選択されている' do
+      #   expect(page).to have_checked_field '未達成', disabled: true
+      # end
+      it '登録するボタンが表示される' do
+        expect(page).to have_button '登録する'
+      end
+    end
+
+    context '登録成功のテスト' do
+      before do
+        fill_in 'announcement[announcement]', with: Faker::Lorem.characters(number: 5)
+        choose 'announcement[achieve_status] radio button'
+      end
+
+      it '新しい投稿が正しく保存される' do
+        # expect { click_button '登録する' }.to change(Group.count, :count).by(1)
+        expect { click_button '登録する' }.to change{Announcement.count}.by(1)
+        # byebug
+      end
+
+      it 'リダイレクト先が、ユーザーの詳細画面になっている' do
+        click_button '登録する'
+        expect(current_path).to eq '/users/' + user.id.to_s
       end
     end
   end

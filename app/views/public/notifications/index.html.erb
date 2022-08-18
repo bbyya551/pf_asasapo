@@ -1,3 +1,5 @@
+<!--dbの中には、自分が自分に対して行う、visitor_id: current_user.idの通知もnotification.checked = true(通知済み)として登録されているので、-->
+<!--それ(自分が自分に対して行った通知)を表示させないようにする。-->
 <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
   <% if notifications.exists? %>
     <%= render notifications %>

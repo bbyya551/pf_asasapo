@@ -6,6 +6,8 @@
       <strong><%= visitor.name %></strong>
       <%= 'さんが' %>
       <% case notification.action %>
+      <% when 'follow' then %>
+        <%= "あなたをフォローしました" %>
       <% when 'Like' then %>
         <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %>
         <%= 'にいいねしました' %>
@@ -17,11 +19,11 @@
           <%= link_to post_path(notification.post.id) do %>
             <%= image_tag notification.post.user.get_profile_image(50, 50), class: "icon_mini" %>
             <strong>
-              <%= notification.post.user.name %> + 'さんの投稿' %>
+              <%= notification.post.user.name %>さんの投稿
             </strong>
           <% end %>
         <% end %>
-          "にコメントしました"
+          にコメントしました
           <P class="text-muted.mb-0">
             <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
           </P>
