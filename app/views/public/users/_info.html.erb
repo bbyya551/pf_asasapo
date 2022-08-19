@@ -20,8 +20,22 @@
     <th>フォロワー</th>
     <th><%= link_to user.followers.count, user_followers_path(user) %>人</th>
   </tr>
-
 </table>
+
+<% unless user.id == current_user.id %>
+  <% if current_user.following?(user) && user.following?(current_user) %>
+    <% if @isRoom == true %>
+      <%= link_to "チャットへ", room_path(@roomId), class: "btn btn-outline-primary" %>
+    <% else %>
+      <%= form_with model: @room do |f| %>
+        <%= fields_for @user_room do |u| %>
+          <%= u.hidden_field :user_id, value: user.id %>
+        <% end %>
+        <%= f.submit "チャットを始める", class: "btn btn-outline-primary" %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
 
 <div class='row d-flex align-items-center justify-content-center'>
   <%= link_to edit_user_path(user.id), class: "btn btn-outline-warning mr-2" do %>

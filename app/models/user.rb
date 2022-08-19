@@ -25,6 +25,10 @@ class User < ApplicationRecord
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
+  has_many :user_rooms
+  has_many :chats
+  # has_many :rooms, through: user_rooms
+
   #フォローする側からのhas_manyなので、それがわかるようにforeign_keyでfollower_id(フォローする人)を指定してやる
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   #「has_many :followings」は任意の名前。意味合いは、自分がフォローしている人。
