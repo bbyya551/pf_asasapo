@@ -1,31 +1,31 @@
-<% @user_rooms.each do |u| %>
-  <div class="user-name">
-    <strong>
-      <%= image_tag u.user.get_profile_image(50, 50) %>
-      <%= u.user.name %>さん
-    </strong>
-  </div>
-<% end %>
-<hr>
-<div class="chat">
-  <% if @chats.present? %>
-    <% @chats.each do |c| %>
-      <div class="chat-box">
-        <div class="chat-face">
-          <%= image_tag c.user.get_profile_image(50, 50) %>
-        </div>
-        <div class="chat-hukidashi"><strong><%= c.message %></strong><br>
-          <%= c.created_at.strftime("%Y-%m-%d %H:%M") %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+<!--<%# @user_rooms.each do |u| %>-->
+<!--  <div class="user-name">-->
+<!--    <strong>-->
+<!--      <%#= image_tag u.user.get_profile_image(50, 50) %>-->
+<!--      <%#= u.user.name %>さん-->
+<!--    </strong>-->
+<!--  </div>-->
+<!--<%# end %>-->
+<!--<hr>-->
+<!--<div class="chat">-->
+<!--  <%# if @chats.present? %>-->
+<!--    <%# @chats.each do |c| %>-->
+<!--      <div class="chat-box">-->
+<!--        <div class="chat-face">-->
+<!--          <%#= image_tag c.user.get_profile_image(50, 50) %>-->
+<!--        </div>-->
+<!--        <div class="chat-hukidashi"><strong><%#= c.message %></strong><br>-->
+<!--          <%#= c.created_at.strftime("%Y-%m-%d %H:%M") %>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    <%# end %>-->
+<!--  <%# end %>-->
+<!--</div>-->
 
-<div class="posts">
-  <%= form_with model: @chat, url: chats_path, method: :post do |f| %>
-    <%= f.text_field :message, placeholder: "メッセージを入力してください", size: 70, class: "form-text-field" %>
-    <%= f.hidden_field :room_id, value: @room.id %>
-    <%= f.submit "送信", class: 'form-submit' %>
-  <% end %>
-</div>
+<!--<div class="posts">-->
+<!--  <%#= form_with model: @chat, url: chats_path, method: :post do |f| %>-->
+<!--    <%#= f.text_field :message, placeholder: "メッセージを入力してください", size: 70, class: "form-text-field" %>-->
+<!--    <%#= f.hidden_field :room_id, value: @room.id %>-->
+<!--    <%#= f.submit "送信", class: 'form-submit' %>-->
+<!--  <%# end %>-->
+<!--</div>-->

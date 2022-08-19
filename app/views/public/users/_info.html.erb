@@ -22,20 +22,20 @@
   </tr>
 </table>
 
-<% unless user.id == current_user.id %>
-  <% if current_user.following?(user) && user.following?(current_user) %>
-    <% if @isRoom == true %>
-      <%= link_to "チャットへ", room_path(@roomId), class: "btn btn-outline-primary" %>
-    <% else %>
-      <%= form_with model: @room do |f| %>
-        <%= fields_for @user_room do |u| %>
-          <%= u.hidden_field :user_id, value: user.id %>
-        <% end %>
-        <%= f.submit "チャットを始める", class: "btn btn-outline-primary" %>
-      <% end %>
-    <% end %>
-  <% end %>
-<% end %>
+<!--<%# unless user.id == current_user.id %>-->
+<!--  <%# if current_user.following?(user) && user.following?(current_user) %>-->
+<!--    <%# if @isRoom == true %>-->
+<!--      <%#= link_to "チャットへ", room_path(@roomId), class: "btn btn-outline-primary" %>-->
+<!--    <%# else %>-->
+<!--      <%#= form_with model: @room do |f| %>-->
+<!--        <%#= fields_for @user_room do |u| %>-->
+<!--          <%#= u.hidden_field :user_id, value: user.id %>-->
+<!--        <%# end %>-->
+<!--        <%#= f.submit "チャットを始める", class: "btn btn-outline-primary" %>-->
+<!--      <%# end %>-->
+<!--    <%# end %>-->
+<!--  <%# end %>-->
+<!--<%# end %>-->
 
 <div class='row d-flex align-items-center justify-content-center'>
   <%= link_to edit_user_path(user.id), class: "btn btn-outline-warning mr-2" do %>
@@ -52,6 +52,12 @@
   <% end %>
   <% if current_user != user %>
     <span class="ml-2"><%= render "public/relationships/btn", user: user %></span>
+  <% end %>
+</div>
+
+<div class='row'>
+  <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
+    <%= link_to 'chatを始める', chat_path(user.id), class: "ml-3, btn btn-outline-warning" %>
   <% end %>
 </div>
 
