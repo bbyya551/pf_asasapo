@@ -50,14 +50,14 @@
   <%= link_to favorites_user_path(user), class: 'btn btn-outline-warning ml-2' do %>
     <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
   <% end %>
-  <% if current_user != user %>
-    <span class="ml-2"><%= render "public/relationships/btn", user: user %></span>
-  <% end %>
 </div>
 
-<div class='row'>
+<div class='row mt-1 d-flex align-items-center justify-content-center'>
   <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
     <%= link_to 'chatを始める', chat_path(user.id), class: "ml-3, btn btn-outline-warning" %>
+  <% end %>
+  <% if current_user != user %>
+    <span class="ml-2"><%= render "public/relationships/btn", user: user %></span>
   <% end %>
 </div>
 
