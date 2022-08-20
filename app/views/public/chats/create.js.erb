@@ -1,2 +1,25 @@
-$('.message').append("<p style='text-align: right;'><%= @chat.message %></p>");
-$('input[type=text]').val("")
+<!--$('.message').append(-->
+  <!--" <div class="chat-face" style="text-align: right;">-->
+  <!--    <%#= image_tag @chat.user.get_profile_image(50, 50), class: "rounded-circle"; %>-->
+  <!--  </div>-->
+<!--    "<p style="text-align: right;">-->
+<!--      <strong><%#= @chat.message %></strong><br>-->
+      <!--<%#= @chat.created_at.strftime("%Y-%m-%d %H:%M") %>-->
+<!--    </p>"-->
+<!-- );-->
+$(".message").html("<%= j(render 'public/chats/index', chats: @chats) %>");
+<!--$(".jscroll").html("<%#= j(render 'public/chats/index', chats: @chats) %>");-->
+$("#chat_message").val("");
+
+<!--$(window).on('scroll', function() {-->
+<!--    console.log('start');-->
+<!--    scrollHeight = $(document).height();-->
+<!--    scrollPosition = $(window).height() + $(window).scrollTop();-->
+<!--    if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {-->
+<!--          $('.jscroll').jscroll({-->
+<!--            contentSelector: '.scroll-list',-->
+<!--            nextSelector: 'a[rel=next]:last'-->
+<!--          });-->
+<!--    }-->
+<!--  });-->
+<!--$('input[type=text]').val("")-->

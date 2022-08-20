@@ -16,15 +16,22 @@ class Public::ChatsController < ApplicationController
       @room.save
       #user_roomも、user_idがcurrent_user.idと、チャット相手(@user.id)の文をそれぞれ作成
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
-      User_room.create(user_id: @user.id, room_id: @room.id)
+      UserRoom.create(user_id: @user.id, room_id: @room.id)
     end
+    # @chats = @room.chats.page(params[:page]).per(5)
     @chats = @room.chats
     @chat = Chat.new(room_id: @room.id)
   end
 
   def create
     @chat = current_user.chats.new(chat_params)
-    render :validater unless @chat.save
+    if @chat.save
+      # 非同期化を行うため、room = Room.find(params[:chat][:room_id])を一行にまとめた。
+      # インスタンス変数とローカル変数の棲み分けをしっかりしよう
+      @chats = Room.find(params[:chat][:room_id]).chats
+    else
+      render :validater
+    end
   end
 
   private
