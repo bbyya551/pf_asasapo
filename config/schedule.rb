@@ -7,7 +7,8 @@
 #
 env :PATH, ENV['PATH']
 set :output, 'log/cron.log'
-set :environment, :development
+set :environment, :production
+# set :environment, :development
 
 # set :output, "/path/to/my/cron_log.log"
 #
@@ -18,8 +19,8 @@ set :environment, :development
 # end
 #
 #JSTは+9:00なので18:00
-every 1.days, at: '9:00 am' do
-# every 2.minutes do
+# every 1.days, at: '9:00 am' do
+every 2.minutes do
   runner "MorningActiveMailer.check_notice_mail.deliver_now"
 end
 # every 4.days do
