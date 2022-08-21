@@ -1,10 +1,10 @@
 <!--$('.message').append(-->
-  <!--" <div class="chat-face" style="text-align: right;">-->
-  <!--    <%#= image_tag @chat.user.get_profile_image(50, 50), class: "rounded-circle"; %>-->
-  <!--  </div>-->
-<!--    "<p style="text-align: right;">-->
+<!--   "<div class="chat-face" style="text-align: right;">-->
+<!--      <%#= image_tag @chat.user.get_profile_image(50, 50), class: "rounded-circle"; %>-->
+<!--    </div>-->
+<!--    <p style="text-align: right;">-->
 <!--      <strong><%#= @chat.message %></strong><br>-->
-      <!--<%#= @chat.created_at.strftime("%Y-%m-%d %H:%M") %>-->
+<!--      <%#= @chat.created_at.strftime("%Y-%m-%d %H:%M") %>-->
 <!--    </p>"-->
 <!-- );-->
 $(".message").html("<%= j(render 'public/chats/index', chats: @chats) %>");
