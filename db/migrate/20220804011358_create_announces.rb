@@ -4,6 +4,7 @@ class CreateAnnounces < ActiveRecord::Migration[6.1]
       t.integer :user_id
       t.string :announcement
       t.integer :achieve_status, default: 0
+      t.datetime :start_time
 
       t.timestamps
     end

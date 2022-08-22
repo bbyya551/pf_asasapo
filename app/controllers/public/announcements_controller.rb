@@ -42,6 +42,6 @@ class Public::AnnouncementsController < ApplicationController
   private
 
   def announcement_params
-    params.require(:announcement).permit(:announcement, :achieve_status, :user_id)
+    params.require(:announcement).permit(:announcement, :achieve_status, :user_id, :start_time)
   end
 end

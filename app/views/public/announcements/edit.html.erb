@@ -16,6 +16,11 @@
         <%= f.label :achieve_status, Announcement.achieve_statuses_i18n[:achieve], value: Announcement.achieve_statuses.key(1) %>
       </div>
 
+      <div class="time">
+        <%= f.label :start_time %>
+        <%= f.datetime_select :start_time %>
+      </div>
+
       <div class="form-group">
         <%= f.submit class: 'btn btn-outline-warning' %>
         <% if @announcement.user == current_user %>
