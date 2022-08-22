@@ -2,13 +2,15 @@
 <!--もし、eventモデルを作るなら、:start_timeカラムがあるので、その日に始まるイベントを表示できる。-->
 <!--https://qiita.com/AKI3/items/109d54a35c98328d9155-->
 <!--https://qiita.com/YmBIgo/items/54235db00bde93ab45fc-->
-
-<%= month_calendar announcements: announcements do |date, announcements| %>
+<!--eventsに変数を渡してやる!!!-->
+<%= month_calendar events: announcements do |date, announcements| %>
   <%= date.day %>
 
   <% announcements.each do |announcement| %>
     <div>
-      <%= announcement.announcement %>
+      <% unless announcement.achieve_status == "nonachieve" %>
+        <i class="fa-solid fa-trophy"><%= announcement.announcement %></i>
+      <% end %>
     </div>
   <% end %>
 <% end %>
