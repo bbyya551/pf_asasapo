@@ -10,10 +10,17 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require simple_calendar
  *= require_tree .
  *= require_self
  */
 // @import "skippr";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .n-circle {
   position: absolute;
   padding-left: 1rem;
@@ -47,4 +54,63 @@
 
 #container{
   height: 500px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#tab-menu {
+  display: flex;
+}
+
+#tab-menu li {
+  list-style-type: none;
+  width: 50%;
+}
+
+#tab-menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 20px;
+  text-align: center;
+  background: #EEEEEE;
+  // border: 1px solid #000;
+  border-bottom: none;
+}
+
+#tab-menu .active {
+  background: #FFFF88;
+  color: #000;
+}
+
+#tab-contents {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#tab-contents .tab {
+  width: 100%;
+  padding: 0px;
+  background: #fff;
+  // border: 1px solid #000;
+  border-top: none;
+  height: 900px;
+}
+
+#tab-contents p {
+  color: #000;
+  line-height: 2.5;
+}
+
+.card-deck {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calender_previous {
+  display:none;
 }

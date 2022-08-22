@@ -21,8 +21,30 @@
           <% end %>
         </div>
       </div>
-      <h2><%= @user.name %>さんの投稿</h2>
-      <%= render 'public/posts/index',posts: @posts %>
+
+      <div class="wrap mt-3 mb-5">
+        <ul id="tab-menu">
+          <li><a href="#tab1" class="active"><%= @user.name %>さんの投稿</a></li>
+          <li><a href="#tab2" class="">朝活達成状況</a></li>
+        </ul>
+
+        <div id="tab-contents">
+          <div id="tab1" class="tab">
+              <!--<h2><＃= @user.name %>さんの投稿</h2>-->
+              <%= render 'public/posts/index',posts: @posts %>
+          </div>
+          <div id="tab2" class="tab">
+            <p>
+              <div id="calendar">
+                <%= render "public/users/calendar" %>
+              </div>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--<h2><%#= @user.name %>さんの投稿</h2>-->
+      <!--<%#= render 'public/posts/index',posts: @posts %>-->
     </div>
   </div>
 </div>

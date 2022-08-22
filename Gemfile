@@ -80,3 +80,4 @@ gem "net-pop"
 gem "net-imap"
 
 gem 'whenever', require: false
+gem 'simple_calendar', '~> 2.0'

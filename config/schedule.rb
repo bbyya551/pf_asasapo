@@ -28,3 +28,18 @@ end
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+
+# 1. 設定内容が問題ないか確認
+# $ RAILS_ENV=production bundle exec whenever
+
+# 2. crontabに反映する
+# $ RAILS_ENV=production bundle exec whenever --update-crontab
+
+# 3. crontabに反映した内容の確認
+# $ RAILS_ENV=production crontab  -l
+
+# 4. crontabに反映した内容を削除
+# $ RAILS_ENV=production bundle exec whenever --clear-crontab
+
+# 2.4のコマンドを繰り返し、バッチ処理の再開、停止を繰り返す!!
