@@ -3,6 +3,7 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>朝活宣言</h2>
     <%= render 'layouts/errors', obj: @announcement %>
+    <!--<%#= form_with model: [:public, @user, @announcement], url: user_announcements_path(@user.id), method: :post, local: false, data: {"turbolinks" => false} do |f| %>-->
     <%= form_with model: [:public, @user, @announcement], url: user_announcements_path(@user.id), method: :post, local: true do |f| %>
       <%#= render 'layouts/errors', obj: @user %>
 

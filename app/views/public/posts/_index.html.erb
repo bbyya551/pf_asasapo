@@ -1,4 +1,5 @@
 <div class="card-deck">
+  <!--countの初期値0-->
   <% count = 0 %>
   <!--each_with_indexで、0.1.2...とcardを繰り返す-->
   <% posts.each_with_index do |post, index| %>
@@ -20,12 +21,13 @@
         <span><i class="fas fa-user"></i> By<%= image_tag post.user.get_profile_image(30,30), class:"rounded-circle"; %><%= post.user.name %></span>
       </div>
     </div>
-    <!--ページにある投稿 + 1(投稿数1の場合は、index = 0)-->
+    <!--count = 投稿 + 1(投稿数1の場合は、index = 0)-->
    <% count = index + 1 %>
    <% end %>
   <% end %>
   <!--例えば投稿数1の場合は、count = 1になる。countが3でないとき(true)は、?の(3-(count%3))をする。countが3の時(false)は、0を返す。-->
   <!--(3-(count%3))は、例えばcount = 1の時は、3-(1 % 3)。(1 % 3)は、０余り1と言う意味。よって(3-(count%3))は3-1なので、2を返す。-->
+  <!--countが7(投稿数が7)でも、count % 3は、余りを返すので、count % 3は1-->
   <!--↓三項演算子-->
   <% col = count != 3 ? (3-(count%3)) : 0 %>
   <!--上記の結果の場合、for文で1から2までを繰り返し、その文col-4のdivタグを挿入する-->

@@ -4,9 +4,9 @@
     <td>
       <li style="list-style: none;">
         <% if announcement.user_id == current_user.id %>
-          <%= link_to announcement.announcement, edit_user_announcement_path(announcement.user, announcement.id) %> | <%= announcement.updated_at.strftime('%Y/%m/%d') %>
+          今日の朝活は、<strong><%= link_to announcement.announcement, edit_user_announcement_path(announcement.user, announcement.id) %></strong>です! <br><宣言日:<%= announcement.updated_at.strftime('%Y/%m/%d') %>>
         <% else %>
-          <%= announcement.announcement %> | <%= announcement.updated_at.strftime('%Y/%m/%d') %>
+          今日の朝活は、<strong><%= announcement.announcement %></strong>です! <br><宣言日:<%= announcement.updated_at.strftime('%Y/%m/%d') %>>
         <% end %>
         <% if announcement.achieve_status == "nonachieve" %>
           <span class="btn btn-outline-danger"><%= announcement.achieve_status_i18n %></span>
@@ -18,3 +18,11 @@
   </tr>
   <% end %>
 </tbody>
+<!--<%#= paginate announcements %>-->
+<!--<style>-->
+<!--  .pagination {-->
+<!--    display: flex;-->
+<!--    justify-content: center;-->
+<!--    align-items: center;-->
+<!--  }-->
+<!--</style>-->

@@ -13,19 +13,20 @@
       <%= render 'user_groups', user: @user %>
     </div>
     <div class='col-md-8'>
-      <div class="border rounded-circle p-2 text-center">
-        私は今日、<%= render 'public/announcements/announcement', announcements: @announcements %>朝活をします!
-        <div class="text-center">
-          <% if @user.id == current_user.id %>
-            <%= link_to '宣言する!', new_user_announcement_path(@user.id), class: 'btn btn-outline-warning' %>
-          <% end %>
-        </div>
-      </div>
+      <!--<div class="border rounded-circle p-2 text-center">-->
+      <!--  <br><h5 class="text-center"><nobr><%#= render 'public/announcements/announcement', announcements: @announcements_latest1 %></nobr></h5>-->
+      <!--  <div class="text-center">-->
+      <!--    <%# if @user.id == current_user.id %>-->
+      <!--      <%#= link_to '宣言する!', new_user_announcement_path(@user.id), class: 'btn btn-outline-warning' %>-->
+      <!--    <%# end %>-->
+      <!--  </div>-->
+      <!--</div>-->
 
       <div class="wrap mt-3 mb-5">
         <ul id="tab-menu">
           <li><a href="#tab1" class="active"><%= @user.name %>さんの投稿</a></li>
           <li><a href="#tab2" class="">朝活達成状況</a></li>
+          <li><a href="#tab3" class="">これまでの朝活宣言</a></li>
         </ul>
 
         <div id="tab-contents">
@@ -34,11 +35,12 @@
               <%= render 'public/posts/index',posts: @posts %>
           </div>
           <div id="tab2" class="tab">
-            <p>
               <div id="calendar">
-                <%= render "public/users/calendar", announcements: @announcements %>
+                <%= render "public/users/calendar", announcements: @announcements, user: @user %>
               </div>
-            </p>
+          </div>
+          <div id="tab3" class="tab">
+            <%= render 'public/announcements/announcetab', announcements: @announcements_offset1 %>
           </div>
         </div>
       </div>

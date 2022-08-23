@@ -1,5 +1,6 @@
 <div class="card-deck">
-  <% posts.each do |post| %>
+  <% count = 0 %>
+  <% posts.each_with_index do |post, index| %>
    <% unless post.user.is_deleted %>
     <div class="card shadow-lg">
       <%= image_tag post.get_post_image(200, 200), class: "card-image-top h-50" %>
@@ -17,7 +18,12 @@
         <span><i class="fas fa-user"></i> By<%= image_tag post.user.get_profile_image(30,30), class:"rounded-circle"; %><%= post.user.name %></span>
       </div>
     </div>
+    <% count = index + 1 %>
    <% end %>
+  <% end %>
+  <% col = count != 3 ? (3-(count%3)) : 0 %>
+  <% for num in 1..col %>
+    <div class="col-4"></div>
   <% end %>
 </div>
 <%= paginate @favorite_posts %>

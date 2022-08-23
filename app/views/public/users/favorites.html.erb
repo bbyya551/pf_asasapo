@@ -12,14 +12,14 @@
       <%= render 'user_groups', user: @user %>
     </div>
     <div class='col-md-8'>
-      <div class="border rounded-circle p-2 text-center">
-        私は今日、<%= render 'public/announcements/announcement', announcements: @announcements %>朝活をします!
-        <div class="text-center">
-          <% if @user.id == current_user.id %>
-            <%= link_to '宣言する!', new_user_announcement_path(@user.id), class: 'btn btn-outline-warning' %>
-          <% end %>
-        </div>
-      </div>
+      <!--<div class="border rounded-circle p-2 text-center">-->
+      <!--  私は今日、<%#= render 'public/announcements/announcement', announcements: @announcements %>朝活をします!-->
+      <!--  <div class="text-center">-->
+      <!--    <%# if @user.id == current_user.id %>-->
+      <!--      <%#= link_to '宣言する!', new_user_announcement_path(@user.id), class: 'btn btn-outline-warning' %>-->
+      <!--    <%# end %>-->
+      <!--  </div>-->
+      <!--</div>-->
       <h2><%= @user.name %>さんがいいねした投稿</h2>
       <%= render 'public/users/favorite_posts',posts: @favorite_posts %>
     </div>

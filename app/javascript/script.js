@@ -45,3 +45,39 @@ $(document).on('turbolinks:load', function () {
     event.preventDefault();
   });
 });
+
+// https://techmemo.biz/javascript/tab-direct-link/
+$(document).on('turbolinks:load', function() {
+  //URL取得とチェック
+  var url = location.href;
+  url = (url.match(/\?tab=tab\d+$/) || [])[0];
+  //取得したURLを「?」で分割
+  var params = url.split("?");
+  //params内のデータを「=」で分割
+  var tab = params[1].split("=");
+
+  //tab内のデータをtabnameに格納
+  if($(tab).length){
+    var tabname = tab[1];
+  } else{
+    var tabname = "tab1";
+  }
+
+  var hrefname = "#" + tabname;
+
+  //コンテンツ非表示&amp;タブを非アクティブ
+  $("#tab-contents .tab").hide();
+  $("#tab-menu .active").removeClass('active');
+  $(hrefname).show();
+  $(`#tab-menu li a[href='${hrefname}']`).addClass("active");
+  event.preventDefault();
+
+  //何番目のタブかを格納
+  //var tabno = $('.tabs li#' + tabname).index();
+
+  //コンテンツ表示
+  //$('.tabs .panel').eq(tabno).fadeIn();
+
+  //タブのアクティブ化
+  //$('.tabs a').eq(tabno).addClass('active');
+});

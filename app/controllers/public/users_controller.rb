@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update]
   before_action :set_user, only: [:favorites]
+  # before_action :set_announcements, only: [:show]
 
   def show
     @user = User.find(params[:id])
@@ -23,8 +24,13 @@ class Public::UsersController < ApplicationController
     # end
 
     @posts = @user.posts.page(params[:page])
+    @announcements = @user.announcements.order('created_at DESC')
+    # 新着宣言を上から1件取得
+    @announcements_latest1 = @announcements.first(1)
+    # 新着宣言1件を除く全宣言を取得 (1件以下の場合は空)
+    @announcements_offset1 = @announcements.offset(1)
     # @user = current_user
-    @announcements = @user.announcements
+    # @announcements = @user.announcements.page(params[:page]).per(3)
     # byebug
   end
 
@@ -62,6 +68,10 @@ class Public::UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+
+  # def set_announcements
+  #   @announcements = @user.announcements.order('created_at DESC')
+  # end
 
   def user_params
     params.require(:user).permit(:name, :introduction, :hobby, :profile_image)

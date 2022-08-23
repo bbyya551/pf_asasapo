@@ -1,22 +1,66 @@
-<div class="card-group">
-  <% posts.each do |post| %>
-   <% unless post.user.is_deleted %>
-    <div class="card w-200 mx-auto mt-4 h-500 shadow-lg">
-      <%= image_tag post.get_post_image(200, 200), class: "card-image-top h-50" %>
-      <div class="card-body">
-        <h4 class="card-title">
+<table class='table'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>タイトル</th>
+      <th>投稿本文</th>
+      <th></th>
+      <th></th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% posts.each do |post| %>
+    　<% unless post.user.is_deleted %>
+      <tr>
+        <td><%= image_tag post.get_post_image(100, 100), class: "rounded-circle"; %></td>
+        <td>
           <%= link_to post_path(post.id), class: "text-dark" do %>
             <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
           <% end %>
-        </h4>
-        <h6 id="post_<%= post.id %>"><%= post.created_at.strftime('%Y/%m/%d') %>
+        </td>
+        <td>説明:<%= post.body %></td>
+        <td>
+         <h6 id="post_<%= post.id %>"><%= post.created_at.strftime('%Y/%m/%d') %>
           <br><span class="comments-count">コメント数:<%= post.post_comments.count %></span>
           <br><span class="favorite-btn"><%= render "public/favorites/btn", post: post %></span>
-        </h6>
-        <p class="card-text">説明:<%= post.body %></p>
-        <span><i class="fas fa-user"></i> By<%= image_tag post.user.get_profile_image(30,30), class:"rounded-circle"; %><%= post.user.name %></span>
-      </div>
-    </div>
-   <% end %>
-  <% end %>
-</div>
+         </h6>
+        </td>
+        <td>
+          <span><i class="fas fa-user"></i> By<%= image_tag post.user.get_profile_image(30,30), class:"rounded-circle"; %><%= post.user.name %></span>
+        </td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+
+<!--<div class="card-deck">-->
+<!--  <%# count = 0 %>-->
+<!--  <%# posts.each_with_index do |post, index| %>-->
+<!--   <%# unless post.user.is_deleted %>-->
+<!--    <div class="card shadow-lg">-->
+<!--      <%#= image_tag post.get_post_image(200, 200), class: "card-image-top h-50" %>-->
+<!--      <div class="card-body">-->
+<!--        <h4 class="card-title">-->
+<!--          <%#= link_to post_path(post.id), class: "text-dark" do %>-->
+<!--            <strong><i class="far fa-flag"></i><span> <%#= post.title %></span></strong>-->
+<!--          <%# end %>-->
+<!--        </h4>-->
+<!--        <h6 id="post_<%#= post.id %>"><%#= post.created_at.strftime('%Y/%m/%d') %>-->
+<!--          <br><span class="comments-count">コメント数:<%#= post.post_comments.count %></span>-->
+<!--          <br><span class="favorite-btn"><%#= render "public/favorites/btn", post: post %></span>-->
+<!--        </h6>-->
+<!--        <p class="card-text">説明:<%#= post.body %></p>-->
+<!--        <span><i class="fas fa-user"></i> By<%#= image_tag post.user.get_profile_image(30,30), class:"rounded-circle"; %><%#= post.user.name %></span>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <%# count = index + 1 %>-->
+<!--   <%# end %>-->
+<!--  <%# end %>-->
+<!--  <%# col = count != 3 ? (3-(count%3)) : 0 %>-->
+<!--  <%# for num in 1..col %>-->
+<!--    <div class="col-4"></div>-->
+<!--  <%# end %>-->
+<!--</div>-->

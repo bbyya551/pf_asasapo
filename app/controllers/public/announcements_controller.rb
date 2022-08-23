@@ -10,8 +10,14 @@ class Public::AnnouncementsController < ApplicationController
     @announcement = Announcement.new(announcement_params)
     @announcement.user_id = @user.id
     if @announcement.save
-      redirect_to user_path(@user), notice: "You have created announcement successfully."
+      # @announcements = @user.announcements.order('created_at DESC')
+      # # 新着宣言を上から1件取得
+      # @announcements_latest1 = @announcements.first(1)
+      # # 新着宣言1件を除く全宣言を取得 (1件以下の場合は空)
+      # @announcements_offset1 = @announcements.offset(1)
+      redirect_to user_path(@user, "tab" => "tab2"), notice: "You have created announcement successfully."
       @user.create_notification_announcement!(current_user, @announcement.id)
+      # render 'create'
     else
       render 'new'
     end
@@ -27,7 +33,13 @@ class Public::AnnouncementsController < ApplicationController
     @user = User.find(params[:user_id])
     @announcement = Announcement.find(params[:id])
     if @announcement.update(announcement_params)
-      redirect_to user_path(@user), notice: "You have updated unnouncement successfully."
+      # @announcements = @user.announcements.order('created_at DESC')
+      # # 新着宣言を上から1件取得
+      # @announcements_latest1 = @announcements.first(1)
+      # # 新着宣言1件を除く全宣言を取得 (1件以下の場合は空)
+      # @announcements_offset1 = @announcements.offset(1)
+      redirect_to user_path(@user, "tab" => "tab2"), notice: "You have updated unnouncement successfully."
+      # render :update
     else
       render "edit"
     end
@@ -36,7 +48,7 @@ class Public::AnnouncementsController < ApplicationController
   def destroy
     @user = User.find(params[:user_id])
     Announcement.find(params[:id]).destroy
-    redirect_to user_path(@user.id)
+    redirect_to user_path(@user, "tab" => "tab3")
   end
 
   private
