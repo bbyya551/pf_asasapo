@@ -1,27 +1,4 @@
-<!--<tbody>-->
-<!--  <%# announcements.each do |announcement| %>-->
-<!--  <tr>-->
-<!--    <td>-->
-<!--        <%# if announcement.user_id == current_user.id %>-->
-<!--          今日の朝活は、<strong><%#= link_to announcement.announcement, edit_user_announcement_path(announcement.user, announcement.id) %></strong>です!-->
-<!--        <%# else %>-->
-<!--          今日の朝活は、<strong><%#= announcement.announcement %></strong>です!-->
-<!--        <%# end %>-->
-<!--    </td>-->
-<!--    <td>-->
-<!--      <宣言日:<%#= announcement.updated_at.strftime('%Y/%m/%d') %>>-->
-<!--    </td>-->
-<!--    <td>-->
-<!--      <%# if announcement.achieve_status == "nonachieve" %>-->
-<!--        <span class="btn btn-outline-danger"><%#= announcement.achieve_status_i18n %></span>-->
-<!--      <%# else %>-->
-<!--        <span class="btn btn-outline-success"><%#= announcement.achieve_status_i18n %></span>-->
-<!--      <%# end %>-->
-<!--    </td>-->
-<!--  </tr>-->
-<!--  <%# end %>-->
-<!--</tbody>-->
-
+<!--tab = 3(過去の一覧の方)-->
   <div class="row">
      <% announcements.each do |announcement| %>
       <% if announcement.user_id == current_user.id %>
@@ -30,20 +7,18 @@
         </div>
         <div class="col-lg-6 col-xs-12"><宣言日:<%= announcement.updated_at.strftime('%Y/%m/%d') %>>
         <% else %>
-       
+
         <div class="col-lg-6 col-xs-12">
           今日の朝活は、<strong><%= announcement.announcement %></strong>です!
         </div>
-        
+
         <div class="col-lg-6 col-xs-12"><宣言日:<%= announcement.updated_at.strftime('%Y/%m/%d') %>>
-        
         <% end %>
         <% if announcement.achieve_status == "nonachieve" %>
-          <span class="btn btn-outline-danger"><%= announcement.achieve_status_i18n %></span>
+          <span class="text-danger">(<%= announcement.achieve_status_i18n %>)</span>
         <% else %>
-          <span class="btn btn-outline-success"><%= announcement.achieve_status_i18n %></span>
+          <span class="text-success">(<%= announcement.achieve_status_i18n %>済み)</span>
       <% end %>
     </div>
     <% end %>
-  
   </div>

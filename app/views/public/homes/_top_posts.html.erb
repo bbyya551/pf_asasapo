@@ -1,7 +1,8 @@
 <div class="card-deck mt-5">
-  <% posts.each do |post| %>
+  <% count = 0 %>
+  <% posts.each_with_index do |post, index| %>
    <% unless post.user.is_deleted %>
-    <div class="card shadow-lg">
+    <div class="card px-0 shadow-lg col-4">
       <%= image_tag post.get_post_image(200, 200), class: "card-image-top h-50" %>
       <div class="card-body">
         <h4 class="card-title">
@@ -14,10 +15,15 @@
           <!--<br><span class="favorite-btn"><%#= render "public/favorites/btn", post: post %></span>-->
         </h6>
         <p class="card-text">説明:<%= post.body %></p>
-        <!--<span><i class="fas fa-user"></i> By<%#= image_tag post.user.get_profile_image(30,30), class:"rounded-circle"; %><%= post.user.name %></span>-->
+        <span><i class="fas fa-user"></i> By<%= image_tag post.user.get_profile_image(30,30), class:"rounded-circle"; %><%= post.user.name %></span>
       </div>
     </div>
+    <% count = index + 1 %>
    <% end %>
+  <% end %>
+  <% col = count != 3 ? (3-(count%3)) : 0 %>
+  <% for num in 1..col %>
+    <div class="col-4"></div>
   <% end %>
 </div>
 <%#= paginate posts %>

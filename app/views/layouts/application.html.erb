@@ -16,11 +16,12 @@
     <!--<%# unless notice.nil? %>-->
     <!--  <p id="notice"><%#= notice %></p>-->
     <!--<%# end %>-->
-    <% if user_signed_in? %>
+    <% @path = request.fullpath %>
+    <% if user_signed_in? && @path != "/" %>
       <div class="container">
         <div class="row justify-content-start mb-2">
           <%= render 'public/searches/form' %>
-          <%= render 'public/searches/genre_form' %>
+          <!--<%#= render 'public/searches/genre_form' %>-->
         </div>
       </div>
     <% end %>

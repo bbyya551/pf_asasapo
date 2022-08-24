@@ -1,31 +1,7 @@
-<!--<table class='table table-borderless'>-->
-<!--  <thead>-->
-<!--    <tr>-->
-<!--      <th></th>-->
-<!--      <th class="text-warning">コミュニティ名</th>-->
-<!--      <th class="text-warning">参加中メンバー</th>-->
-<!--      <th class="text-warning">グループ紹介</th>-->
-<!--      <th colspan="3"></th>-->
-<!--    </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-<!--    <%# groups.each do |group| %>-->
-<!--      <tr class="table-warning">-->
-<!--        <td><%#= image_tag group.get_image(50, 50), class:"rounded-circle"; %></td>-->
-<!--        <td><strong><%#= link_to group.name, new_user_registration_path %></strong></td>-->
-<!--        <td><%#= group.group_users.count %></td>-->
-<!--        <td>-->
-<!--          <%#= group.introduction %>-->
-<!--        </td>-->
-<!--      </tr>-->
-<!--    <%# end %>-->
-<!--  </tbody>-->
-<!--</table>-->
-<%#= paginate posts %>
-
 <div class="card-deck mt-5">
-  <% groups.each do |group| %>
-    <div class="card shadow-lg">
+  <% count = 0 %>
+  <% groups.each_with_index do |group, index| %>
+    <div class="card px-0 shadow-lg col-4">
       <%= image_tag group.get_image(200, 200), class: "card-image-top h-50" %>
       <div class="card-body">
         <h4 class="card-title">
@@ -33,13 +9,14 @@
             <strong><i class="far fa-flag"></i><span> <%= group.name %></span></strong>
           <% end %>
         </h4>
-        <h6>メンバー数: <%= group.group_users.count %>
+         <p class="card-text">メンバー数: <%= group.group_users.count %>
           <!--<br><span>コメント数:<%#= post.post_comments.count %></span>-->
           <!--<br><span class="favorite-btn"><%#= render "public/favorites/btn", post: post %></span>-->
-        </h6>
+        </p>
         <p class="card-text">説明:<%= group.introduction %></p>
         <!--<span><i class="fas fa-user"></i> By<%#= image_tag group.user.get_profile_image(30,30), class:"rounded-circle"; %><%#= post.user.name %></span>-->
       </div>
     </div>
+    <% count = index + 1 %>
   <% end %>
 </div>

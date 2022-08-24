@@ -16,12 +16,14 @@
         <h3>〜朝活で日本を元気に〜</h3>
       </div>
     </div>
+
     <div class="image2 carousel-item">
       <div class="carousel-caption d-none d-md-block">
         <h1>何ができるの?</h1>
         <h3>朝活仲間と共に、朝活を継続できるようになります。</h3>
       </div>
     </div>
+
     <div class="image3 carousel-item">
       <div class="carousel-caption d-none d-md-block">
         <h1>どうやってやるの?</h1>
@@ -30,26 +32,29 @@
         <h3>朝活投稿</h3>
       </div>
     </div>
+
     <div class="image4 carousel-item">
       <div class="container px-5 px-sm-0">
         <div class='row d-flex align-items-center justify-content-center'>
-          <div class='col-md-10'>
-            <h2 class="mt-3 text-warning">新着コミュニティ(3件)</h2>
-            <%= render 'public/homes/top_groups', groups: @groups %>
+          <div class='col-md-12'>
+            <h2 class="text-warning">新着コミュニティ(3件)</h2>
+              <%= render 'public/homes/top_groups', groups: @groups %>
           </div>
         </div>
       </div>
     </div>
+
     <div class="image5 carousel-item">
       <div class="container px-5 px-sm-0">
         <div class='row d-flex align-items-center justify-content-center'>
-          <div class='col-md-10'>
-             <h2 class="mt-3 text-warning">新着投稿(3件)</h2>
-             <%= render 'public/homes/top_posts',posts: @posts %>
+          <div class='col-md-12'>
+             <h2 class="text-warning">新着投稿(3件)</h2>
+               <%= render 'public/homes/top_posts', posts: @posts %>
           </div>
         </div>
       </div>
     </div>
+
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
