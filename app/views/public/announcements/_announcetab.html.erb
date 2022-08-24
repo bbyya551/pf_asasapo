@@ -1,5 +1,6 @@
 <!--tab = 3(過去の一覧の方)-->
   <div class="row">
+    <!--<%# byebug %>-->
      <% announcements.each do |announcement| %>
       <% if announcement.user_id == current_user.id %>
         <div class="col-lg-6 col-xs-12">

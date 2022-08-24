@@ -29,7 +29,9 @@ class Public::UsersController < ApplicationController
     # 新着宣言を上から1件取得
     @announcements_latest1 = @announcements.first(1)
     # 新着宣言1件を除く全宣言を取得 (1件以下の場合は空)
-    @announcements_offset1 = @announcements.offset(1).page(params[:offset_announce_page]).per(20)
+    # @announcements_offset1 = @announcements.offset(1)
+    # @announcements_offset1 = @announcements.offset(1).page(params[:offset_announce_page]).per(20)
+    @announcements_offset1 = @announcements.page(params[:offset_announce_page]).per(20)
     # respond_to do |format|
     #   format.html
     #   format.js
