@@ -3,10 +3,18 @@
 <!--https://qiita.com/AKI3/items/109d54a35c98328d9155-->
 <!--https://qiita.com/YmBIgo/items/54235db00bde93ab45fc-->
 <!--eventsに変数を渡す!-->
-<% if user.id == current_user.id %>
-  <%= link_to '宣言する!', new_user_announcement_path(user.id), class: 'btn btn-outline-warning' %>
-<% end %>
-<br><h4 class="text-center"><nobr><%= render 'public/announcements/announcement', announcements: @announcements_latest1 %></nobr></h4>
+<div class="text-center">
+  <% if user.id == current_user.id %>
+    <%= link_to '宣言する!', new_user_announcement_path(user.id), class: 'btn btn-outline-warning mb-2' %>
+  <% end %>
+</div>
+<h4 class="text-center">
+  <% if announcements.exists? %>
+    <%= render 'public/announcements/announcement', announcements: @announcements_latest1 %>
+  <% else %>
+    <strong>朝活を宣言してみましょう!</strong>
+  <% end %>
+</h4>
 <%= month_calendar events: announcements do |date, announcements| %>
   <%= date.day %>
 
