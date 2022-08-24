@@ -41,7 +41,6 @@
     <div class="col-4"></div>
   <% end %>
 </div>
-<%= paginate posts %>
 
 <style>
   .pagination {
@@ -55,8 +54,12 @@
     color: #000;
     background-color: #FFFF66;
     border-color: #FFFF00;
-}
+  }
 </style>
+
+<%= paginate posts %>
+
+
 
 
 <!--<%# posts.each do |post| %>-->
