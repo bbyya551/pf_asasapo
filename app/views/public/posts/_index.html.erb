@@ -42,7 +42,7 @@
   <% end %>
 </div>
 
-<%= paginate posts %>
+<%= paginate posts, :param_name => 'posts_page', remote: true %>
 
 <style>
   .pagination {

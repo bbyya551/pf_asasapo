@@ -10,7 +10,9 @@
       <h2><%= @user.name %>さんの<br>会員情報</h2>
       <%= render 'info', user: @user %>
       <h2 class="mt-3"><%= @user.name %>さんの<br>参加中コミュニティ</h2>
-      <%= render 'user_groups', user: @user %>
+      <div id="paginate-user">
+        <%= render 'user_groups', user_groups: @user_groups %>
+      </div>
     </div>
     <div class='col-md-8'>
       <!--<div class="border rounded-circle p-2 text-center">-->
@@ -32,7 +34,9 @@
         <div id="tab-contents">
           <div id="tab1" class="tab">
               <!--<h2><＃= @user.name %>さんの投稿</h2>-->
+            <div id="paginate-userposts">
               <%= render 'public/posts/index',posts: @posts %>
+            </div>
           </div>
           <div id="tab2" class="tab">
               <div id="calendar">

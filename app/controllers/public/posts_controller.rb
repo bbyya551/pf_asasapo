@@ -23,6 +23,11 @@ class Public::PostsController < ApplicationController
   def index
     @posts = Post.page(params[:page])
     @user = current_user
+    @user_groups = @user.groups.page(params[:user_groups_page]).per(3)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

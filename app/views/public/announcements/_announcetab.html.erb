@@ -25,7 +25,7 @@
   </div>
 
   <style>
-    nav ul.pagination {
+    span nav ul.pagination {
       display: none;
     }
 
@@ -43,5 +43,5 @@
     }
   </style>
 
-  <%= paginate announcements, :param_name => 'offset_announce_page' %>
+  <span><%= paginate announcements, :param_name => 'offset_announce_page' %></span>
 

@@ -1,1 +1,3 @@
 $("#calendar").html("<%= j(render("public/users/calendar", announcements: @announcements, user: @user)) %>");
+$('#paginate-user').html("<%= escape_javascript(render 'public/users/user_groups', user_groups: @user_groups) %>");
+$('#paginate-userposts').html("<%= escape_javascript(render 'public/posts/index', posts: @posts) %>");

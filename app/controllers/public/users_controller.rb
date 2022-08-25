@@ -24,7 +24,7 @@ class Public::UsersController < ApplicationController
     #   end
     # end
 
-    @posts = @user.posts.page(params[:page])
+    @posts = @user.posts.page(params[:posts_page])
     @announcements = @user.announcements.order('created_at DESC')
     # 新着宣言を上から1件取得
     @announcements_latest1 = @announcements.first(1)
@@ -32,10 +32,11 @@ class Public::UsersController < ApplicationController
     # @announcements_offset1 = @announcements.offset(1)
     # @announcements_offset1 = @announcements.offset(1).page(params[:offset_announce_page]).per(20)
     @announcements_offset1 = @announcements.page(params[:offset_announce_page]).per(20)
-    # respond_to do |format|
-    #   format.html
-    #   format.js
-    # end
+    @user_groups = @user.groups.page(params[:user_groups_page]).per(3)
+    respond_to do |format|
+      format.html
+      format.js
+    end
     # @user = current_user
     # @announcements = @user.announcements.page(params[:page]).per(3)
     # byebug
@@ -57,6 +58,11 @@ class Public::UsersController < ApplicationController
   def index
     @users = User.where(is_deleted: "false")
     @user = current_user
+    @user_groups = @user.groups.page(params[:user_groups_page]).per(3)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def favorites
@@ -67,7 +73,12 @@ class Public::UsersController < ApplicationController
     # end
     #whereは複数のidを指定可能
     @favorite_posts = Post.where(id: favorites).page(params[:page])
-    @announcements = @user.announcements
+    @user_groups = @user.groups.page(params[:user_groups_page]).per(3)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    # @announcements = @user.announcements
   end
 
   private

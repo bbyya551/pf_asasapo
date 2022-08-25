@@ -16,6 +16,24 @@ $(document).on('turbolinks:load', function () {
     }
   });
 });
+
+// $(document).on('turbolinks:load', function () {
+//   console.log("読み込まれました");
+//   $(window).on('scroll', function() {
+//     scrollHeight = $(document).height();
+//     // scrollTopはscroll量を調べる
+//     scrollPosition = $(window).height() + $(window).scrollTop();
+//     if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
+//       //スクロールの位置が下部5%の範囲に来た場合
+//           $('.jscroll-g').jscroll({
+//             contentSelector: '.scroll-list-g',
+//             // 'a[rel=next]:last'は、htmlのページネーションのclassはどれも同じだった。nextボタンのみ、何か指定してやる必要があり、nextボタンには、rel = nextが指定されていたので、それをNextSelecterとして指定した。
+//             nextSelector: 'a[rel=next]:last'
+//           });
+//     }
+//   });
+// });
+
 // 遷移するとき、差分を読み込んでいるだけなので、この記述(turbolinks:load)がないと動作しない。
 $(document).on('turbolinks:load', function () {
   // console.log("location.href");
