@@ -1,3 +1,5 @@
 $("#calendar").html("<%= j(render("public/users/calendar", announcements: @announcements, user: @user)) %>");
+<!--画面左下user_groupsのページネーション-->
 $('#paginate-user').html("<%= escape_javascript(render 'public/users/user_groups', user_groups: @user_groups) %>");
+<!--画面右側userの投稿のページネーション-->
 $('#paginate-userposts').html("<%= escape_javascript(render 'public/posts/index', posts: @posts) %>");

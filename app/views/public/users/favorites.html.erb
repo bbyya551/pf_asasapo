@@ -18,7 +18,9 @@
       <!--  </div>-->
       <!--</div>-->
       <h2><%= @user.name %>さんがいいねした投稿</h2>
-      <%= render 'public/users/favorite_posts',posts: @favorite_posts %>
+      <div id="favorite-posts">
+        <%= render 'public/users/favorite_posts', posts: @favorite_posts %>
+      </div>
     </div>
   </div>
 </div>

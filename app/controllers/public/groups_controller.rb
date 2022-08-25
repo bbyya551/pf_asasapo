@@ -7,7 +7,7 @@ class Public::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups = Group.page(params[:groups_page]).per(8)
     @user = current_user
     @user_groups = @user.groups.page(params[:user_groups_page]).per(3)
     respond_to do |format|

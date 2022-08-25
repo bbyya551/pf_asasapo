@@ -26,4 +26,4 @@
     <div class="col-4"></div>
   <% end %>
 </div>
-<%= paginate @favorite_posts %>
+<%= paginate posts, :param_name => 'favorite_posts_page', remote: true %>

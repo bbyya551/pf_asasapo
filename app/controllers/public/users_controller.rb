@@ -56,7 +56,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.where(is_deleted: "false")
+    @users = User.where(is_deleted: "false").page(params[:users_page]).per(8)
     @user = current_user
     @user_groups = @user.groups.page(params[:user_groups_page]).per(3)
     respond_to do |format|
@@ -72,7 +72,7 @@ class Public::UsersController < ApplicationController
     #   favorite_post = Post.where(id: favorite)
     # end
     #whereは複数のidを指定可能
-    @favorite_posts = Post.where(id: favorites).page(params[:page])
+    @favorite_posts = Post.where(id: favorites).page(params[:favorite_posts_page])
     @user_groups = @user.groups.page(params[:user_groups_page]).per(3)
     respond_to do |format|
       format.html

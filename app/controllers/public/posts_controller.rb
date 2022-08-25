@@ -21,7 +21,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page])
+    @posts = Post.page(params[:posts_page])
     @user = current_user
     @user_groups = @user.groups.page(params[:user_groups_page]).per(3)
     respond_to do |format|
