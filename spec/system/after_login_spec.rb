@@ -160,7 +160,7 @@ describe 'ユーザーログイン後のテスト' do
       it 'introductionが正しく更新される' do
         expect(user.reload.introduction).not_to eq @user_old_introduction
       end
-      it 'introductionが正しく更新される' do
+      it 'hobbyが正しく更新される' do
         expect(user.reload.hobby).not_to eq @user_old_hobby
       end
       it 'リダイレクト先が、自分のユーザ詳細画面になっている' do
@@ -342,6 +342,74 @@ describe 'ユーザーログイン後のテスト' do
 
       it 'リダイレクト先が、ユーザーの詳細画面になっている' do
         click_button '登録する'
+        expect(current_path).to eq '/users/' + user.id.to_s
+      end
+    end
+  end
+
+
+  describe '自分の朝活編集画面のテスト' do
+    before do
+      visit edit_user_announcement_path(user.id, announcement.id)
+    end
+
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/users/' + user.id.to_s + '/announcements/' + announcement.id.to_s + '/edit'
+      end
+      it '朝活宣言フォームに朝活内容が表示される' do
+        expect(page).to have_field 'announcement[announcement]', with: announcement.announcement
+      end
+      it '朝活達成ステータスで未達成が選択されている' do
+        expect(page).to have_checked_field('未達成')
+        expect(page).to have_field('達成')
+      end
+      it '更新するボタンが表示される' do
+        expect(page).to have_button '更新する'
+      end
+      it 'deleteが表示される' do
+        expect(page).to have_link 'delete', href: user_announcement_path(user.id, announcement.id)
+      end
+    end
+
+    context '朝活更新成功のテスト' do
+      before do
+        @announcement_old_announcement = announcement.announcement
+        @announcement_old_achieve_status = announcement.achieve_status
+        fill_in 'announcement[announcement]', with: Faker::Lorem.characters(number: 7)
+        choose "announcement_achieve_status_achieve" #announcement_achieve_status_achieveは、検証ツールの「未達成」のlabel forの値
+        expect(page).to have_checked_field('達成')
+        click_button '更新する'
+        save_page
+      end
+
+      it 'announcementが正しく更新される' do
+        expect(announcement.reload.announcement).not_to eq @announcement_old_announcement
+      end
+      it 'achieve_statusが正しく更新される' do
+        expect(announcement.reload.achieve_status).not_to eq  @announcement_old_achieve_status
+      end
+      it 'リダイレクト先が、自分のユーザ詳細画面になっている' do
+        expect(current_path).to eq '/users/' + user.id.to_s
+      end
+      # byebug
+    end
+
+    context 'deleteリンクのテスト' do
+      before do
+        visit edit_user_announcement_path(user.id, announcement.id)
+        # byebug ここではAnnouncement.allある。
+        click_link 'delete'
+        # byebug
+      end
+
+      it '正しく削除される' do
+        # byebug
+        # click_link 'delete'
+        expect(Announcement.all).to eq []
+      end
+
+      it 'リダイレクト先が、ユーザー詳細ページになっている' do
         expect(current_path).to eq '/users/' + user.id.to_s
       end
     end

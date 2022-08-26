@@ -28,7 +28,7 @@ class Public::AnnouncementsController < ApplicationController
     @user = User.find(params[:user_id])
     @announcement = Announcement.find(params[:id])
     if @announcement.update(announcement_params)
-      redirect_to user_path(@user, "tab" => "tab2"), notice: "You have updated unnouncement successfully."
+      redirect_to user_path(@user, "tab" => "tab2"), notice: "You have updated announcement successfully."
     else
       render "edit"
     end
