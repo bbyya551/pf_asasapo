@@ -35,5 +35,15 @@ RSpec.describe Post, "モデルに関するテスト", type: :model do
         expect(Post.reflect_on_association(:user).macro).to eq :belongs_to
       end
     end
+    context 'Genreモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(Post.reflect_on_association(:genres).macro).to eq :has_many
+      end
+    end
+    context 'Favoriteモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(Post.reflect_on_association(:favorites).macro).to eq :has_many
+      end
+    end
   end
 end

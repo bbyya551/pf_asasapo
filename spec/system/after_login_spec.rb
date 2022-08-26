@@ -398,7 +398,7 @@ describe 'ユーザーログイン後のテスト' do
     context 'deleteリンクのテスト' do
       before do
         visit edit_user_announcement_path(user.id, announcement.id)
-        # byebug ここではAnnouncement.allある。
+        # byebug ここではAnnouncement.all、一件ある。
         click_link 'delete'
         # byebug
       end
