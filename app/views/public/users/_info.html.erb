@@ -1,3 +1,5 @@
+
+
 <table class='table table-borderless'>
   <tr><%= image_tag user.get_profile_image(100, 100) %></tr>
   <tr>
@@ -38,20 +40,46 @@
 <!--<%# end %>-->
 
 <div class='row d-flex align-items-center justify-content-center'>
-  <% if user.name != "guestuser" %>
-    <%= link_to edit_user_path(user.id), class: "btn btn-outline-warning mr-2" do %>
-      <i class="fa-solid fa-user-pen"></i>
+ <div id="menu">
+   <span class="mr-3">
+    <% if user.name != "guestuser" %>
+     <span class="user-edit-btn">
+      <%= link_to edit_user_path(user.id), class: "btn btn-outline-warning" do %>
+        <i class="fa-solid fa-user-pen"></i>
+      <% end %>
+     </span>
+     <p class="arrow_box">ユーザー情報編集</p>
     <% end %>
-  <% end %>
-  <%= link_to new_group_path, class: "btn btn-outline-warning mr-2" do %>
-    <i class="fa-solid fa-people-group"></i>
-  <% end %>
-  <%= link_to new_post_path, class: 'btn btn-outline-warning' do %>
-    <i class="fa-solid fa-pen-to-square"></i>
-  <% end %>
-  <%= link_to favorites_user_path(user), class: 'btn btn-outline-warning ml-2' do %>
-    <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-  <% end %>
+   </span>
+
+  <span class="mr-3">
+    <span class="new-group-btn">
+      <%= link_to new_group_path, class: "btn btn-outline-warning" do %>
+        <i class="fa-solid fa-people-group"></i>
+      <% end %>
+    </span>
+    <p class="arrow_box">ふきだし1</p>
+  </span>
+
+  <span class="mr-3">
+    <span class="new-post-btn">
+      <%= link_to new_post_path, class: 'btn btn-outline-warning' do %>
+        <i class="fa-solid fa-pen-to-square"></i>
+      <% end %>
+    </span>
+    <p class="arrow_box">ふきだし1</p>
+  </span>
+
+  <span class="mr-3">
+    <span class="favorite-post-btn">
+      <%= link_to favorites_user_path(user), class: 'btn btn-outline-warning' do %>
+        <!--<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>-->
+        <i class="fa-solid fa-heart-circle-check" aria-hidden="true" style="color: red;"></i>
+      <% end %>
+    </span>
+    <p class="arrow_box">ふきだし1</p>
+  </span>
+</div>
 </div>
 
 <div class='row mt-1 d-flex align-items-center justify-content-center'>
@@ -62,9 +90,3 @@
     <span class="ml-2"><%= render "public/relationships/btn", user: user %></span>
   <% end %>
 </div>
-
-<!--<div class='row'>-->
-<!--  <%# if current_user != user %>-->
-<!--    <td><%#= render "public/relationships/btn", user: user %></td>-->
-<!--  <%# end %>-->
-<!--</div>-->

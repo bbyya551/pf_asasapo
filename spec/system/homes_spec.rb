@@ -73,8 +73,8 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/sign_up'
       end
-      it '「Sign up」と表示される' do
-        expect(page).to have_content 'Sign up'
+      it '「新規登録」と表示される' do
+        expect(page).to have_content '新規登録'
       end
       it 'nameフォームが表示される' do
         expect(page).to have_field 'user[name]'
@@ -122,8 +122,8 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users/sign_in'
       end
-      it '「ユーザーLog in」と表示される' do
-        expect(page).to have_content 'ユーザーLog in'
+      it '「ログイン(会員様)」と表示される' do
+        expect(page).to have_content 'ログイン(会員様)'
       end
       it 'emailフォームが表示される' do
         expect(page).to have_field 'user[email]'

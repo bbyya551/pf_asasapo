@@ -101,3 +101,57 @@ $(document).on('turbolinks:load', function() {
 
   }
 });
+
+// $(document).on('turbolinks:load', function() {
+//   $(function(){
+//       $('.user-edit-btn').mouseover(function(){
+//         $('.fa-user-pen').html('<p><strong>会員情報編集</strong></p>');
+//       });
+//       $('.user-edit-btn').mouseout(function(){
+//         $('.fa-user-pen').html('');
+//       });
+//     });
+// });
+
+// $(document).on('turbolinks:load', function() {
+//   $(function(){
+//       $('.new-group-btn').mouseover(function(){
+//         $('.fa-people-group').html('<p><strong>コミュニティ作成</strong></p>');
+//       });
+//       $('.new-group-btn').mouseout(function(){
+//         $('.fa-people-group').html('');
+//       });
+//     });
+// });
+
+// $(document).on('turbolinks:load', function() {
+//   $(function(){
+//       $('.new-post-btn').mouseover(function(){
+//         $('.fa-pen-to-square').html('<p><strong>新規投稿</strong></p>');
+//       });
+//       $('.new-post-btn').mouseout(function(){
+//         $('.fa-pen-to-square').html('');
+//       });
+//     });
+// });
+
+// $(document).on('turbolinks:load', function() {
+//   $(function(){
+//       $('.favorite-post-btn').mouseover(function(){
+//         $('.fa-heart-circle-check').html('<p><strong>いいねした投稿一覧</strong></p>');
+//       });
+//       $('.favorite-post-btn').mouseout(function(){
+//         $('.fa-heart-circle-check').html('');
+//       });
+//     });
+// });
+
+$(document).on('turbolinks:load', function() {
+  $(function () {
+    $('.user-edit-btn').hover(function() {
+      $(this).next('p').show();
+    }, function(){
+      $(this).next('p').hide();
+    });
+  });
+});

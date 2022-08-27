@@ -1,6 +1,6 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-<div class="col-md-6 mx-auto">
+<div class="col-md-6 mx-auto notice-height">
   <div class="form-inline">
     <span>
       <strong><%= visitor.name %></strong>
@@ -43,3 +43,9 @@
 </div>
 <hr>
 <%# notification.update(checked: true) %>
+
+<style>
+  div.notice-height {
+    height: 30px;
+  }
+</style>
