@@ -1,51 +1,55 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-<div class="col-md-6 mx-auto notice-height">
-  <div class="form-inline">
-    <span>
-      <strong><%= visitor.name %></strong>
-      <%= 'さんが' %>
-      <% case notification.action %>
-      <% when 'announcement' then %>
-        <%= link_to user_path(visitor.id) do %>
-          <%= image_tag notification.announcement.user.get_profile_image(50, 50), class: "icon_mini" %>
-          <<%= notification.announcement.announcement %>>
-        <% end %>
-        朝活を宣言しました!
-      <% when 'follow' then %>
-        <%= "あなたをフォローしました" %>
-      <% when 'Like' then %>
-        <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %>
-        <%= 'にいいねしました' %>
-      <% when 'comment' then %>
-        <% if notification.post.user_id == visited.id %>
-          <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %>
-        <% else %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="form-inline">
         <span>
-          <%= link_to post_path(notification.post.id) do %>
-            <%= image_tag notification.post.user.get_profile_image(50, 50), class: "icon_mini" %>
-            <strong>
-              <%= notification.post.user.name %>さんの投稿
-            </strong>
+          <strong><%= visitor.name %></strong>
+          <%= 'さんが' %>
+          <% case notification.action %>
+          <% when 'announcement' then %>
+            <%= link_to user_path(visitor.id, "tab" => "tab2") do %>
+              <%= image_tag notification.announcement.user.get_profile_image(50, 50), class: "icon_mini" %>
+              <<%= notification.announcement.announcement %>>
+            <% end %>
+            朝活を宣言しました!
+          <% when 'follow' then %>
+            <%= "あなたをフォローしました" %>
+          <% when 'Like' then %>
+            <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %>
+            <%= 'にいいねしました' %>
+          <% when 'comment' then %>
+            <% if notification.post.user_id == visited.id %>
+              <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %>
+            <% else %>
+            <span>
+              <%= link_to post_path(notification.post.id) do %>
+                <%= image_tag notification.post.user.get_profile_image(50, 50), class: "icon_mini" %>
+                <strong>
+                  <%= notification.post.user.name %>さんの投稿
+                </strong>
+              <% end %>
+            <% end %>
+              にコメントしました
+              <P class="text-muted.mb-0">
+                <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
+              </P>
+            </span>
           <% end %>
-        <% end %>
-          にコメントしました
-          <P class="text-muted.mb-0">
-            <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
-          </P>
         </span>
-      <% end %>
-    </span>
-    <div class="small text-muted text-right">
-      <%= time_ago_in_words(notification.created_at).upcase %>
+        <div class="small text-muted text-right">
+          <%= time_ago_in_words(notification.created_at).upcase %>
+        </div>
+      </div>
+      <hr>
     </div>
   </div>
 </div>
-<hr>
 <%# notification.update(checked: true) %>
 
-<style>
-  div.notice-height {
-    height: 30px;
-  }
-</style>
+<!--<style>-->
+<!--  div.notice-height {-->
+<!--    height: 30px;-->
+<!--  }-->
+<!--</style>-->

@@ -1,14 +1,24 @@
 <div class="container">
-  <h3 class="margin_top text-center">送信が完了しました</h3>
-    <div class="main_width">
-      <div class="margin_top">
-        内容は以下の通りです。
+  <h1 class="margin_top text-center">送信が完了しました<i class="fa-solid fa-envelope-circle-check"></i></h1>
+  <div class="row d-flex align-items-center justify-content-end mt-5">
+    <div class="col-md-8 text-left">
+      <div class="main_width">
+        <div class="margin_top">
+          <h3>内容は以下の通りです。</h3>
+        </div>
+          <div class="small_margin_top">
+            <h3>[タイトル]</h3><h3 class="font-weight-bold"><%= @mail_title %></h3>
+          </div>
+          <div>
+            <h3>[本文]</h3><h3 class="font-weight-bold"><%= safe_join(@mail_content.split("\n"), tag.br) %></h3>
+          </div>
       </div>
-        <div class="small_margin_top">
-          [タイトル]<p class="font-weight-bold"><%= @mail_title %></p>
-        </div>
-        <div>
-          [本文]<p class="font-weight-bold"><%= safe_join(@mail_content.split("\n"), tag.br) %></p>
-        </div>
     </div>
+  </div>
 </div>
+
+<style>
+  .fa-envelope-circle-check {
+    color: #FFD700;
+  }
+</style>

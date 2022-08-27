@@ -155,3 +155,33 @@ $(document).on('turbolinks:load', function() {
     });
   });
 });
+
+$(document).on('turbolinks:load', function() {
+  $(function () {
+    $('.new-group-btn').hover(function() {
+      $(this).next('p').show();
+    }, function(){
+      $(this).next('p').hide();
+    });
+  });
+});
+
+$(document).on('turbolinks:load', function() {
+  $(function () {
+    $('.new-post-btn').hover(function() {
+      $(this).next('p').show();
+    }, function(){
+      $(this).next('p').hide();
+    });
+  });
+});
+
+$(document).on('turbolinks:load', function() {
+  $(function () {
+    $('.favorite-post-btn').hover(function() {
+      $(this).next('p').show();
+    }, function(){
+      $(this).next('p').hide();
+    });
+  });
+});
