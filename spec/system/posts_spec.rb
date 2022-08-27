@@ -7,6 +7,7 @@ describe '投稿一覧画面のテスト' do
   let!(:other_post) { create(:post, :post_with_genres, user: other_user) }
   # 先に1ついいね済にしておく(一覧画面でのいいねのテスト用)
   let!(:favorite) { create(:favorite, post: post, user: user) }
+  let!(:post_comment) { create(:post_comment, post: post, user: user) }
   let!(:genre) { Genre.first }
   let!(:group) { Group.first }
 
@@ -115,6 +116,43 @@ describe '投稿一覧画面のテスト' do
         expect(find_field('post_comment[comment]').text).to be_blank
       end
     end
+
+    context 'コメント機能確認' do
+      it 'コメントフォームが表示される' do
+        expect(page).to have_field 'post_comment[comment]'
+      end
+      it 'コメントフォームに値が入っていない' do
+        expect(find_field('post_comment[comment]').text).to be_blank
+      end
+      it '登録するボタンが表示される' do
+        expect(page).to have_button '送信する'
+      end
+
+      it 'コメントが表示される' do
+        expect(page).to have_content post_comment.comment
+      end
+      it 'コメント削除リンクが正しい' do
+        # expect(page).to have_link '送信する', href: post_post_comments_path(post.id)
+        expect(page).to have_link '', href: post_post_comment_path(post_comment.post.id, post_comment.id)#リンクが正しい
+      end
+    end
+
+    # context 'コメント機能のテスト', js: true do
+    #   before do
+    #     fill_in 'post_comment[comment]', with: Faker::Lorem.characters(number: 5)
+    #   end
+
+    #   it '新しいコメントが正しく保存される', js: true do
+    #     # expect { click_button '登録する' }.to change(Group.count, :count).by(1)
+    #     expect { click_on '送信する' }.to change{PostComment.count}.by(1)
+    #     # byebug
+    #   end
+
+    #   it 'リダイレクト先が、ユーザーの詳細画面になっている' do
+    #     click_button '送信する'
+    #     expect(current_path).to eq '/posts/' + post.id.to_s
+    #   end
+    # end
 
     # context 'いいねをクリックした場合' do
     #   it 'いいねできる' do
