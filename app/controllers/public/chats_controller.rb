@@ -28,7 +28,8 @@ class Public::ChatsController < ApplicationController
     if @chat.save
       # 非同期化を行うため、room = Room.find(params[:chat][:room_id])を一行にまとめた。
       # インスタンス変数とローカル変数の棲み分けをしっかりしよう
-      @chats = Room.find(params[:chat][:room_id]).chats
+      # @chats = Room.find(params[:chat][:room_id]).chats ⇦部分テンプレートを返すなら、これがいる。
+      render :create
     else
       render :validater
     end
