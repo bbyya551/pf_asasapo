@@ -1,12 +1,12 @@
 <%= form_with model: group, local: true do |f| %>
   <div class="form-group">
-    <%= f.label :コミュニティ名 %>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.label :コミュニティ名 %> <i class="fa-solid fa-pen-clip"></i>
+    <%= f.text_field :name, placeholder:"コミュニティ名をここに", autofocus: true, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :コミュニティ紹介 %>
-    <%= f.text_area :introduction, class: 'form-control' %>
+    <%= f.label :コミュニティ紹介 %> <i class="fa-solid fa-pen-clip"></i>
+    <%= f.text_area :introduction, placeholder:"コミュニティ紹介をここに", class: 'form-control' %>
   </div>
 
   <div class="form-group">

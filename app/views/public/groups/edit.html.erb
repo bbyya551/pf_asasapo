@@ -1,9 +1,11 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h3>コミュニティ編集</h3>
+  <div class="row no-gutters">
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+      <h3 class="text-center text-dark bg-light p-4 mb-0">コミュニティ編集 <i class="fa-solid fa-users-between-lines"></i></h3>
+      <div class="form-body bg-light p-4">
         <%= render 'layouts/errors', obj: @group %>
         <%= render 'public/groups/form', group: @group %>
+      </div>
     </div>
   </div>
 </div>

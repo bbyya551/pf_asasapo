@@ -165,3 +165,43 @@
 .fa-envelope-open-text {
   color: #FFD700;
 }
+
+.fa-circle-plus {
+  color: #FFD700;
+}
+
+.fa-users-between-lines {
+  color: #FFD700;
+}
+
+.fa-user-pen {
+  color: #FFD700;
+}
+
+.fa-sun {
+  color: #FFD700;
+}
+
+.simple-calendar {
+  .day {}
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
+}
