@@ -8,8 +8,8 @@ class Group < ApplicationRecord
 
   def get_image(width, height)
    unless image.attached?
-     file_path = Rails.root.join(asset_path('group_default.jpg'))
-     image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+     file_path = Rails.root.join('app/assets/images/group_default.jpg')
+     image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpg')
    end
   image.variant(resize_to_limit: [width, height]).processed
   end
