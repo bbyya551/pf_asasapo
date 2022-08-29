@@ -1,3 +1,3 @@
-<%# binding.pry %>
+/* global $*/
 $("#group_<%= @group.id %> .group-member").html("<%= j(render 'public/groups/member', group: @group) %>");
 $("#group_<%= @group.id %> .join-btn").html("<%= j(render 'public/groups/join_btn', group: @group) %>");

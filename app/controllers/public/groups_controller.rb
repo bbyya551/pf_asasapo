@@ -18,6 +18,8 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @group_user = @group.group_users.where(user_id: @group.owner_id)
+    # @owner = User.where(id: @group_user.user_id)
   end
 
   def create
