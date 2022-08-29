@@ -44,7 +44,7 @@ class Public::AnnouncementsController < ApplicationController
   private
 
   def correct_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     unless @user == current_user
       redirect_to user_path(current_user.id)
     end
