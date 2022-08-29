@@ -16,7 +16,7 @@
 朝活を宣言すると、フォロワーに自分の朝活宣言の通知が届くように実装し、「サボれない仕組み作り」を行いました。
 
 ## 設計書
-![pf_asasapo_ER drawio](https://user-images.githubusercontent.com/106591130/187127500-e800e704-1c10-404a-9d5e-28f80225f044.png)
+![pf_ER drawio](https://user-images.githubusercontent.com/106591130/187129507-c9e0c0b3-6c62-4856-9569-178a161f1682.png)
 
 ## 開発環境
 - OS：Linux(CentOS)
