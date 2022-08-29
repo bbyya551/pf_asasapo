@@ -193,9 +193,13 @@
 }
 
 .simple-calendar {
-  .day {}
+  color: #FFD700;
+  font-weight: bold;
+  .day {
+  }
 
-  .wday-0 {}
+  .wday-0 {
+  }
   .wday-1 {}
   .wday-2 {}
   .wday-3 {}
@@ -213,5 +217,5 @@
   .next-month { }
   .current-month {}
 
-  .has-events {}
+  .has-events { }
 }

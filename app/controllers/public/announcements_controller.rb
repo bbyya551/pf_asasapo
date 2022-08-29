@@ -1,4 +1,5 @@
 class Public::AnnouncementsController < ApplicationController
+  before_action :correct_user, only: [:edit, :update]
 
   def new
     @user = User.find(params[:user_id])
@@ -41,6 +42,13 @@ class Public::AnnouncementsController < ApplicationController
   end
 
   private
+
+  def correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user.id)
+    end
+  end
 
   def announcement_params
     params.require(:announcement).permit(:announcement, :achieve_status, :user_id, :start_time)
