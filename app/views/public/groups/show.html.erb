@@ -2,22 +2,22 @@
   <div class='row'>
     <div class='col-md-12'>
         <div class="card-list-container py-5">
-          <h2 class="text-center">コミュニティ詳細ページ <i class="fa-solid fa-image"></i></h2>
+          <h2 class="text-center">コミュニティ詳細ページ <i class="fa-solid fa-users-line"></i></h2>
             <div class="card w-50 mx-auto mt-4 shadow-lg" id="group_<%= @group.id %>">
               <%= image_tag @group.get_image(900, 900), class: "card-image-top" %>
             <div class="card-body">
               <div class="row">
                 <div class="col-3">
-                  <%# @owner = @group.users.where(id: @group.owner_id) %>
-                  <%#= link_to user_path(@user) do %>
-                    <%#= image_tag @user.get_profile_image(100, 100), class:"mt-3 rounded-circle"; %>
-                    <%#= link_to @post.user.name, user_path(@user.id) %>
-                  <%# end %>
+                  <%= link_to user_path(@owner) do %>
+                    <%= image_tag @owner.get_profile_image(100, 100), class:"mt-3 rounded-circle"; %>
+                    <p class="text-center text-dark"><作成者><br><strong><%= @owner.name %></strong>さん</p>
+                  <% end %>
+
                 </div>
                 <div class="col-9">
-                  <p class="card-title">
-                    <strong><i class="fa-solid fa-feather"></i><span>コミュニティ名: <%= @group.name %></span></strong>
-                  </p>
+                  <h6 class="card-title">
+                    <strong><i class="fa-regular fa-chess-queen"></i> <span><%= @group.name %></span></strong>
+                  </h6>
                   <p class="card-text"><%= @group.introduction %></p>
                   <% if @group.owner_id == current_user.id %>
                     <%= link_to "編集", edit_group_path(@group.id), class: "btn btn-outline-success" %>
@@ -27,7 +27,7 @@
                   <div class="join-btn">
                     <%= render 'join_btn', group: @group %>
                   </div>
-                  <ul class="list-group list-group-flush group-member">
+                  <ul class="list-group list-group-flush group-member mt-3">
                     <%= render 'member', group: @group %>
                   </ul>
                 </div>
@@ -39,6 +39,11 @@
   </div>
 </div>
 
+<style>
+  .fa-users-line {
+    color: #FFD700;
+  }
+</style>
 
 
 

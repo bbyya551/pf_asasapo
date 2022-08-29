@@ -18,8 +18,10 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @group_user = @group.group_users.where(user_id: @group.owner_id)
-    # @owner = User.where(id: @group_user.user_id)
+    #whereでとってきた値は、一つでも必ず配列になる。
+    # @group_user = @group.group_users.where(user_id: @group.owner_id)
+    #もしこの記述で書くのであれば、@owner = User.find(@group_user[0].user_id)とかもしくは@owner = User.find(@group_user.first.user_id)にしないといけない!!
+    @owner = User.find(@group.owner_id)
   end
 
   def create
