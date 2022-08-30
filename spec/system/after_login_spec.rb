@@ -62,7 +62,7 @@ describe 'ユーザーログイン後のテスト' do
         expect(page).to have_link post.title, href: post_path(post)
       end
       it '投稿一覧に自分の投稿のbodyが表示される' do
-        expect(page).to have_content post.body
+        expect(page).to have_content post.body.truncate(10)
       end
       it '他人の投稿は表示されない' do
         expect(page).not_to have_link '', href: user_path(other_user)
@@ -253,8 +253,8 @@ describe 'ユーザーログイン後のテスト' do
       it '画像投稿フォームが表示される' do
         expect(page).to have_field 'post[post_image]'
       end
-      it '登録するボタンが表示される' do
-        expect(page).to have_button '登録する'
+      it '投稿するボタンが表示される' do
+        expect(page).to have_button '投稿する'
       end
     end
 
@@ -268,12 +268,12 @@ describe 'ユーザーログイン後のテスト' do
 
       it '新しい投稿が正しく保存される' do
         # expect { click_button '登録する' }.to change(Group.count, :count).by(1)
-        expect { click_button '登録する' }.to change{Post.count}.by(1)
+        expect { click_button '投稿する' }.to change{Post.count}.by(1)
         # byebug
       end
 
       it 'リダイレクト先が、保存できたコミュニティの詳細画面になっている' do
-        click_button '登録する'
+        click_button '投稿する'
         expect(current_path).to eq '/posts/' + Post.last.id.to_s
       end
     end
@@ -319,8 +319,8 @@ describe 'ユーザーログイン後のテスト' do
       # it '宣言達成ステータスに未達成が選択されている' do
       #   expect(page).to have_checked_field '未達成', disabled: true
       # end
-      it '登録するボタンが表示される' do
-        expect(page).to have_button '登録する'
+      it '宣言するボタンが表示される' do
+        expect(page).to have_button '宣言する'
       end
     end
 
@@ -334,14 +334,14 @@ describe 'ユーザーログイン後のテスト' do
         # choose 'announcement[achieve_status]'
       end
 
-      it '新しい投稿が正しく保存される' do
+      it '新しい朝活宣言が正しく保存される' do
         # expect { click_button '登録する' }.to change(Group.count, :count).by(1)
-        expect { click_button '登録する' }.to change{Announcement.count}.by(1)
+        expect { click_button '宣言する' }.to change{Announcement.count}.by(1)
         # byebug
       end
 
       it 'リダイレクト先が、ユーザーの詳細画面になっている' do
-        click_button '登録する'
+        click_button '宣言する'
         expect(current_path).to eq '/users/' + user.id.to_s
       end
     end

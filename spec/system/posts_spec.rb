@@ -33,8 +33,8 @@ describe '投稿一覧画面のテスト' do
       end
 
       it '自分の投稿と他人の投稿の本文が表示される' do
-        expect(page).to have_content post.body
-        expect(page).to have_content other_post.body
+        expect(page).to have_content post.body.truncate(10)
+        expect(page).to have_content other_post.body.truncate(10)
       end
 
       it '自分の投稿と他人の投稿に、投稿した人の名前が表示される' do
