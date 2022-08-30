@@ -13,7 +13,7 @@
           <!--<br><span>コメント数:<%#= post.post_comments.count %></span>-->
           <!--<br><span class="favorite-btn"><%#= render "public/favorites/btn", post: post %></span>-->
         </p>
-        <p class="card-text">説明:<%= group.introduction %></p>
+        <p class="card-text">説明:<%= group.introduction.truncate(10) %></p>
         <!--<span><i class="fas fa-user"></i> By<%#= image_tag group.user.get_profile_image(30,30), class:"rounded-circle"; %><%#= post.user.name %></span>-->
       </div>
     </div>

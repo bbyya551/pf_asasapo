@@ -27,32 +27,32 @@ describe '投稿一覧画面のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/posts'
       end
-      it '自分の投稿と他人の投稿のタイトルのリンク先がそれぞれ正しい' do
+      it '投稿のタイトルのリンク先がそれぞれ正しい' do
         expect(page).to have_link post.title, href: post_path(post.id)
         expect(page).to have_link other_post.title, href: post_path(other_post.id)
       end
 
-      it '自分の投稿と他人の投稿の本文が表示される' do
+      it '投稿の本文が表示される' do
         expect(page).to have_content post.body.truncate(10)
         expect(page).to have_content other_post.body.truncate(10)
       end
 
-      it '自分の投稿と他人の投稿に、投稿した人の名前が表示される' do
+      it '投稿に、投稿した人の名前が表示される' do
         expect(page).to have_content post.user.name
         expect(page).to have_content other_post.user.name
       end
 
-      it '自分の投稿と他人の投稿に、投稿日が表示される' do
+      it '投稿に、投稿日が表示される' do
         expect(page).to have_content post.created_at.strftime('%Y/%m/%d')
         expect(page).to have_content other_post.created_at.strftime('%Y/%m/%d')
       end
 
-      it '自分の投稿と他人の投稿に、いいね数が表示される' do
+      it '投稿に、いいね数が表示される' do
         expect(page).to have_content post.favorites.count
         expect(page).to have_content other_post.favorites.count
       end
 
-      it '自分の投稿と他人の投稿に、コメント数が表示される' do
+      it '投稿に、コメント数が表示される' do
         expect(page).to have_content post.post_comments.count
         expect(page).to have_content other_post.post_comments.count
       end
