@@ -8,7 +8,8 @@ class Admin::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc)
+    # @posts = Post.order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def destroy
