@@ -24,7 +24,7 @@ class Public::UsersController < ApplicationController
     #   end
     # end
 
-    @posts = @user.posts.page(params[:posts_page])
+    @posts = @user.posts.order(created_at: :desc).page(params[:posts_page])
     @announcements = @user.announcements.order('created_at DESC')
     # 新着宣言を上から1件取得
     @announcements_latest1 = @announcements.first(1)
@@ -72,7 +72,7 @@ class Public::UsersController < ApplicationController
     #   favorite_post = Post.where(id: favorite)
     # end
     #whereは複数のidを指定可能
-    @favorite_posts = Post.where(id: favorites).page(params[:favorite_posts_page])
+    @favorite_posts = Post.where(id: favorites).order(created_at: :desc).page(params[:favorite_posts_page])
     @user_groups = @user.groups.page(params[:user_groups_page]).per(3)
     respond_to do |format|
       format.html

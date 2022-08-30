@@ -23,7 +23,7 @@
           <br><span class="comments-count">コメント数:<%= post.post_comments.count %></span>
           <br><span class="favorite-btn"><%= render "public/favorites/btn", post: post %></span>
         </h6>
-        <p class="card-text">説明:<%= post.body %></p>
+        <p class="card-text">説明:<%= post.body.truncate(10) %></p>
         <span><i class="fas fa-user"></i> By<%= image_tag post.user.get_profile_image(30,30), class:"rounded-circle"; %><%= post.user.name %></span>
       </div>
     </div>

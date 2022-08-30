@@ -19,7 +19,7 @@
             <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
           <% end %>
         </td>
-        <td>説明:<%= post.body %></td>
+        <td>説明:<%= post.body.truncate(10) %></td>
         <td>
          <h6 id="post_<%= post.id %>"><%= post.created_at.strftime('%Y/%m/%d') %>
           <br><span class="comments-count">コメント数:<%= post.post_comments.count %></span>
