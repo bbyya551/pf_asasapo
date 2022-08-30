@@ -12,7 +12,7 @@
    <% unless post.user.is_deleted %>
     <!--<div class="card w-200 mx-auto mt-4 h-500 shadow-lg">-->
     <div class="card mt-1 mr-2 ml-1 px-0 shadow-lg col-4">
-      <%= image_tag post.get_post_image(200, 200), class: "card-image-top h-50" %>
+      <%= image_tag post.get_post_image(100, 100), class: "card-image-top h-50" %>
       <div class="card-body">
         <h4 class="card-title">
           <%= link_to post_path(post.id), class: "text-dark" do %>
