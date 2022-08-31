@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'コミュニティ一覧画面のテスト' do
   let(:user) { create(:user) }
+  let!(:other_user) { create(:user) }
   let!(:group) { create(:group, :group_with_users, owner_id: user.id) }
   let!(:other_group) { create(:group, :group_with_users) }
 
@@ -38,9 +39,71 @@ describe 'コミュニティ一覧画面のテスト' do
         expect(page).to have_link 'Show', href: group_path(group)
       end
 
-      it 'コミュニティ編集画面へのリンクが表示される' do
+      it '自分がオーナーのコミュニティの場合、コミュニティ編集画面へのリンクが表示される' do
         #最初に、 let!(:group) { create(:group, :group_with_users, owner_id: user.id) }で、owner_id: user.idとして、owner_idをログインしているユーザーに指定してやる必要がある!
         expect(page).to have_link '編集', href: edit_group_path(group)
+      end
+    end
+  end
+
+  describe 'コミュニティ詳細画面のテスト(自分がコミュニティのオーナーの時)' do
+    before do
+      visit group_path(group.id)
+      @owner = User.find(group.owner_id)
+    end
+
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/groups/' + group.id.to_s
+      end
+
+      it 'コミュニティ詳細ページと表示される' do
+        expect(page).to have_content 'コミュニティ詳細ページ'
+      end
+
+      it 'コミュニティの名前が表示される' do
+        expect(page).to have_content group.name
+      end
+
+      it 'コミュニティの説明が表示される' do
+        expect(page).to have_content group.introduction
+      end
+
+      it '編集が表示され、リンク先が正しい' do
+        expect(page).to have_link '編集', href: edit_group_path(group)
+      end
+
+      it '朝活を開催が表示され、リンク先が正しい' do
+        expect(page).to have_link '朝活を開催', href: group_new_mail_path(group.id)
+      end
+
+      it 'コミュニティオーナー名のリンク先が正しい' do
+        expect(page).to have_link @owner.name, href: user_path(@owner)
+      end
+
+      it 'コミュニティメンバーが一覧で表示され、リンク先が正しい' do
+        group.users.each do |user|
+          expect(page).to have_link user.name, href: user_path(user.id)
+        end
+      end
+    end
+  end
+
+  describe 'コミュニティ詳細画面のテスト(自分がコミュニティのオーナーではない時)' do
+    before do
+      logout_link = find_all('a')[6].native.inner_text
+      click_link logout_link
+      expect(current_path).to eq('/')
+      visit new_user_session_path
+      fill_in 'user[email]', with: other_user.email
+      fill_in 'user[password]', with: other_user.password
+      click_button 'Log in'
+      visit group_path(group.id)
+    end
+
+    context '表示の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/groups/' + group.id.to_s
       end
     end
   end
