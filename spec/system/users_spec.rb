@@ -11,4 +11,10 @@ describe 'ユーザー一覧画面のテスト' do
     click_button 'Log in'
   end
 
+  describe 'ユーザー一覧画面のテスト' do
+    before do
+      visit users_path
+    end
+  end
+
 end
