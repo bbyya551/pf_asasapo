@@ -15,6 +15,11 @@ describe 'ユーザー一覧画面のテスト' do
     before do
       visit users_path
     end
-  end
 
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/users'
+      end
+    end
+  end
 end
