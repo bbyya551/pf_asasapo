@@ -20,6 +20,9 @@ describe 'ユーザー一覧画面のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/users'
       end
+      it '自分と他人の画像が表示される: 画像がヘッダーの一つ + サイドバーの1つ＋一覧(2人)の2つの計3つ存在する' do
+        expect(all('img').size).to eq(4)
+      end
     end
   end
 end
