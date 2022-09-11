@@ -1,13 +1,14 @@
 
-
+<div class="profile-border text-center">
 <table class='table table-borderless'>
-  <tr><%= image_tag user.get_profile_image(100, 100) %></tr>
+  <tr><h5 class="text-center title-color"><%= user.name %>さんの<br>プロフィール</h5></tr>
+  <tr><%= image_tag user.get_profile_image(100, 100), class: "rounded-circle" %></tr>
   <tr>
 	  <th>ユーザー名</th>
 	  <th><%= user.name %></th>
   </tr>
   <tr>
-	  <th>自己紹介</th>
+	  <th>意気込み</th>
 	  <th><%= user.introduction %></th>
   </tr>
   <tr>
@@ -39,9 +40,9 @@
 <!--  <%# end %>-->
 <!--<%# end %>-->
 
-<div class='row d-flex align-items-center justify-content-center'>
+<!--<div class='d-flex align-items-center justify-content-center'>-->
  <div id="menu">
-   <span class="mr-4">
+   <span class="ml-3 mr-4">
     <% if user.name != "guestuser" %>
      <span class="user-edit-btn">
       <%= link_to edit_user_path(user.id), class: "btn btn-lg btn-outline-warning" do %>
@@ -70,7 +71,7 @@
     <p class="arrow_box">新規投稿</p>
   </span>
 
-  <span class="mr-4">
+  <span class="mr-3">
     <span class="favorite-post-btn">
       <%= link_to favorites_user_path(user), class: 'btn btn-lg btn-outline-warning' do %>
         <!--<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>-->
@@ -80,7 +81,7 @@
     <p class="arrow_box"><%= user.name %>さんが<br>いいねした投稿</p>
   </span>
 </div>
-</div>
+<!--</div>-->
 
 <div class='row mt-1 d-flex align-items-center justify-content-center'>
   <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
@@ -89,4 +90,5 @@
   <% if current_user != user %>
     <span class="ml-2"><%= render "public/relationships/btn", user: user %></span>
   <% end %>
+</div>
 </div>

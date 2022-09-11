@@ -11,9 +11,9 @@
   <tbody>
     <% user_groups.each do |group| %>
       <tr>
-        <td><%= image_tag group.get_image(50, 50), class:"rounded-circle"; %></td>
-        <td><%= link_to group.name, group_path(group.id) %></td>
-        <td><%= group.group_users.count %>人</td>
+        <td class="text-center"><%= image_tag group.get_image(50, 50), class:"rounded-circle"; %></td>
+        <td class="text-center"><%= link_to group.name, group_path(group.id) %></td>
+        <td class="text-center"><%= group.group_users.count %>人</td>
       </tr>
     <% end %>
   </tbody>

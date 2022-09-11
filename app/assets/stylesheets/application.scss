@@ -98,7 +98,7 @@
 }
 
 #tab-menu .active {
-  background: #FFFF88;
+  background: #FFFF66;
   color: #000;
 }
 
@@ -218,4 +218,14 @@
   .current-month {}
 
   .has-events { }
+}
+
+.profile-border {
+  border: solid;
+  border-color: #FFFF66;
+  border-width: thick;
+}
+
+.title-color {
+  background-color: #FFFF66;
 }
