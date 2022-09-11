@@ -19,7 +19,7 @@
 ![pf_ER drawio](https://user-images.githubusercontent.com/106591130/187129507-c9e0c0b3-6c62-4856-9569-178a161f1682.png)
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux2
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
