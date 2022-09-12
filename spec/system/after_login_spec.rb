@@ -147,7 +147,7 @@ describe 'ユーザーログイン後のテスト' do
         @user_old_introduction = user.introduction
         @user_old_hobby = user.hobby
         fill_in 'user[name]', with: Faker::Lorem.characters(number: 9)
-        fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 19)
+        fill_in 'user[introduction]', with: Faker::Lorem.characters(number: 11)
         fill_in 'user[hobby]', with: Faker::Lorem.characters(number: 9)
         expect(user.profile_image).to be_attached
         click_button '更新する'
