@@ -23,6 +23,11 @@ describe 'ユーザー一覧画面のテスト' do
       it '自分と他人の画像が表示される: 画像がヘッダーの一つ + サイドバーの1つ＋一覧(2人)の2つの計3つ存在する' do
         expect(all('img').size).to eq(4)
       end
+
+      it '自分と他人の名前がそれぞれ表示される' do
+        expect(page).to have_content user.name
+        expect(page).to have_content other_user.name
+      end
     end
   end
 end
