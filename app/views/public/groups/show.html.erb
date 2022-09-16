@@ -8,9 +8,14 @@
             <div class="card-body">
               <div class="row">
                 <div class="col-3">
-                  <%= link_to user_path(@owner) do %>
-                    <%= image_tag @owner.get_profile_image(100, 100), class:"mt-3 rounded-circle"; %>
-                    <p class="text-center text-dark"><作成者><br><strong><%= @owner.name %></strong>さん</p>
+                  <% if !@owner.is_deleted %>
+                    <%= link_to user_path(@owner) do %>
+                      <%= image_tag @owner.get_profile_image(100, 100), class:"mt-3 rounded-circle"; %>
+                      <p class="text-center text-dark"><作成者><br><strong><%= @owner.name %></strong>さん</p>
+                    <% end %>
+                  <% else %>
+                      <%= image_tag 'no_image.jpg', :size => '100x100', class:"mt-3 rounded-circle"; %>
+                      <p class="text-center text-dark"><作成者><br><strong>退会済みユーザ</strong>さん</p>
                   <% end %>
 
                 </div>

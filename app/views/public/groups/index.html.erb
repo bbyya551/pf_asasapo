@@ -12,7 +12,9 @@
       <h2 class="text-center">
         コミュニティ一覧 <i class="fa-solid fa-people-group"></i>
       </h2>
-      <%= render 'index', groups: @groups %>
+      <div id="index-ajax">
+        <%= render 'index', groups: @groups %>
+      </div>
     </div>
   </div>
 </div>
