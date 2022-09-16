@@ -10,7 +10,7 @@ class Genre < ApplicationRecord
       genres = Genre.where('name LIKE ?', content + '%')
     elsif method == 'backward'
       genres = Genre.where('name LIKE ?', '%' + content)
-    else
+    elsif method == 'partial'
       genres = Genre.where('name LIKE ?', '%' + content + '%')
     end
 
