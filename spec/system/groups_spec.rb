@@ -16,6 +16,7 @@ describe 'コミュニティ一覧画面のテスト' do
   describe 'コミュニティ一覧画面のテスト' do
     before do
       visit groups_path
+      # @owner = User.find(group.owner_id)
     end
 
     context '表示内容の確認' do
@@ -24,7 +25,8 @@ describe 'コミュニティ一覧画面のテスト' do
       end
 
       it 'コミュニティ名のリンク先がそれぞれ正しい' do
-        # byebug
+        # @owner = User.find(group.owner_id)
+        byebug
         # let(:group) { create(:group, :group_with_users) }にしていたせいで、itの時にgroupが作られていなかった。
         expect(page).to have_link group.name, href: group_path(group)
         expect(page).to have_link other_group.name, href: group_path(other_group)
