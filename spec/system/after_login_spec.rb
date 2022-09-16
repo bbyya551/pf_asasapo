@@ -14,6 +14,7 @@ describe 'ユーザーログイン後のテスト' do
   # let!(:group) { create(:group, name: 'hoge', introduction: 'hoge') }
   let!(:announcement) { create(:announcement, user_id: user.id) }
   #byebugを使ったところ、おそらくbefore呼び出し時点でuserとother_userが作成されている。
+
   before do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email

@@ -1,12 +1,8 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-4'>
+    <div class='col-md-4 mt-4 mb-3'>
       <!--<h2><%#= @user.name %>さんの<br>会員情報</h2>-->
       <%= render 'public/users/info', user: @user %>
-      <h5 class="mt-3 text-center"><%= @user.name %>さんの<br>参加中コミュニティ</h5>
-      <div id="paginate-posts">
-        <%= render 'public/users/user_groups', user_groups: @user_groups %>
-      </div>
     </div>
     <div class='col-md-8'>
       <h2 class="text-center">投稿一覧 <i class="fa-solid fa-images"></i></h2>

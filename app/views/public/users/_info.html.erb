@@ -91,4 +91,44 @@
     <span class="ml-2"><%= render "public/relationships/btn", user: user %></span>
   <% end %>
 </div>
+
+  <input type="checkbox" id="F">
+  <label class="F" for="F"><h5 class="mt-3 text-center color"><%= @user.name %>さんの<br>参加中コミュニティ <i class="fa-solid fa-chevron-down"></i></h5></label>
+  <!--非同期用のidをpaginate-userに統一!-->
+  <div id="paginate-user" class="G">
+    <%= render 'public/users/user_groups', user_groups: @user_groups %>
+  </div>
 </div>
+
+
+<style>
+  #F{
+      display: none;
+  }
+  .F{
+      cursor: pointer;
+  }
+  .G{
+      display: none;
+      height: 350px;
+  }
+  #F:checked+label+.G{
+      display: block;
+  }
+
+  .color {
+    background-color: #FFFFFF;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+  }
+
+  .color:hover {
+    background-color: #FFFF66;
+  }
+
+  label {
+    display: block;
+  }
+</style>
