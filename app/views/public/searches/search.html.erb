@@ -6,5 +6,5 @@
  <%= render 'public/posts/index_nopage', posts: @records %>
 <% elsif @model == 'group' %>
  <h3>"<%= @content %>"のコミュニティ検索結果</h3>
- <%= render 'public/groups/index', groups: @records %>
+ <%= render 'public/groups/search_index', groups: @records %>
 <% end %>
