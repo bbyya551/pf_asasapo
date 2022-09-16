@@ -1,1 +1,2 @@
 $('#paginate-groups').html("<%= escape_javascript(render 'public/users/user_groups', user_groups: @user_groups) %>");
+$('#index-ajax').html("<%= escape_javascript(render 'public/groups/index', groups: @groups) %>");
