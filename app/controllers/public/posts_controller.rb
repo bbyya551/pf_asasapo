@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
     # binding.pry
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    #:genre_nameジャンルモデルのnameという意味?
+    #:genre_nameは、view側で指定できるもの。createした時のターミナルのParameters:を確認。
     genre_list = params[:post][:genre_name].split(/[[:blank:]]+/).select(&:present?)
     # binding.pry
     if @post.save
