@@ -3,6 +3,7 @@ FactoryBot.define do
     # user
     name { Faker::Lorem.characters(number: 5) }
     introduction { Faker::Lorem.characters(number:20) }
+    owner_id { 1 }
 
     trait :group_with_users do
       #多対多のテスト

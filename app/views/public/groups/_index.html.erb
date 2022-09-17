@@ -34,7 +34,7 @@
   <% count = 0 %>
   <!--each_with_indexで、0.1.2...とcardを繰り返す-->
   <% groups.each_with_index do |group, index| %>
-  <% @owner = User.find(group.owner_id) %>
+  <% @owner = User.find(group.owner_id)  %>
 
     <!--<div class="card w-200 mx-auto mt-4 h-500 shadow-lg">-->
     <div class="card mt-1 mr-2 ml-1 px-0 shadow-lg col-4">
