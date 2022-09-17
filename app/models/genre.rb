@@ -1,6 +1,8 @@
 class Genre < ApplicationRecord
+  before_save :downcase_genre_name
   has_many :post_genres, dependent: :destroy, foreign_key: 'genre_id'
   has_many :posts, through: :post_genres
+  validates :name, uniqueness: true, length: { maximum: 30 }
 
   def self.search_posts_for(content, method)
 
@@ -25,4 +27,9 @@ class Genre < ApplicationRecord
     # =>genre.posts + genre.posts + genre.posts ...(全体の戻り値)
     # =end
   end
+
+  private
+    def downcase_genre_name
+      self.name.downcase!
+    end
 end

@@ -1,6 +1,8 @@
 class Group < ApplicationRecord
   has_many :group_users
   has_many :users, through: :group_users
+  has_many :group_tags, dependent: :destroy
+  has_many :tags, through: :group_tags
 
   validates :name, presence: true
   validates :introduction, presence: true
@@ -17,6 +19,20 @@ class Group < ApplicationRecord
 
   def includesUser?(user)
     group_users.exists?(user_id: user.id)
+  end
+
+  def save_tags(tag_list)
+    tag_list.each do |tag|
+      unless find_tag = Tag.find_by(name: tag.downcase)
+        begin
+          self.tags.create!(name: tag)
+        rescue
+          nil
+        end
+      else
+        GroupTag.create!(group_id: self.id, tag_id: find_tag.id)
+      end
+    end
   end
 
   def self.search_for(content, method)

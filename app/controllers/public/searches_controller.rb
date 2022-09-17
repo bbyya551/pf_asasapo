@@ -10,9 +10,11 @@ class Public::SearchesController < ApplicationController
     elsif @model == 'post'
       @records = Post.search_for(@content, @method)
     elsif @model == 'group'
-      @records = Group.search_for(@content, @method).page(params[:groups_page]).per(5)
+      @records = Group.search_for(@content, @method)
     elsif @model == 'genre'
       @records = Genre.search_posts_for(@content, @method)
+    elsif @model == 'tag'
+      @records = Tag.search_groups_for(@content, @method)
     end
   end
 end

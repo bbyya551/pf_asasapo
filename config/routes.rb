@@ -48,6 +48,8 @@ Rails.application.routes.draw do
       get "send/mail" => "groups#send_mail"
     end
 
+    get "tags" => "groups#tags"
+
     resources :notifications, only: [:index]
 
     get '/search', to: 'searches#search'

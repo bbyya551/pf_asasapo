@@ -31,7 +31,7 @@
             <div class="card-footer">
               <span><strong>投稿ジャンル: </strong></span>
               <% @post.genres.each do |genre| %>
-                <span><%= genre.name %> </span>
+                <span><%= link_to genre.name, search_path(content: genre.name, model: "genre", method: "perfect") %> </span>
                 <!--<li style="list-style: none;"><%#= genre.name %></li>-->
               <% end %>
             </div>
