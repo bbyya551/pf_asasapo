@@ -28,7 +28,9 @@ class Public::GroupsController < ApplicationController
     # binding.pry
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
+    tag_list = params[:group][:tag_name].split(/[[:blank:]]+/).select(&:present?)
     if @group.save
+      @group.save_tags(tag_list)
       redirect_to group_path(@group), notice: "You have created group successfully."
     else
       render 'new'
@@ -57,6 +59,16 @@ class Public::GroupsController < ApplicationController
     @mail_title = params[:mail_title]
     @mail_content = params[:mail_content]
     ContactMailer.send_mail(@mail_title, @mail_content, group_users).deliver
+  end
+
+  def tags
+    @tags = Tag.all
+    @user = current_user
+    @user_groups = @user.groups.page(params[:user_groups_page]).per(3)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

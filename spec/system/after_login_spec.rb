@@ -10,6 +10,8 @@ describe 'ユーザーログイン後のテスト' do
   let!(:other_post) { create(:post, user: other_user) }
   #let(:user) { create(:user, :user_with_groups) }で、group(id: 1)は作成してるから、ここでgroupをcreateすると、group(id: 2)が作成されてしまう。
   let!(:group) { Group.first }
+  # エラー解決のためのつけたし
+  # let!(:other_group) { create(:other_group, :group_with_users, owner_id: user.id) }
   # let!(:group) { create(:group) } これだと5行目に続いて、id: 2のgroupが生じてしまう
   # let!(:group) { create(:group, name: 'hoge', introduction: 'hoge') }
   let!(:announcement) { create(:announcement, user_id: user.id) }

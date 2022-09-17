@@ -37,14 +37,14 @@ describe 'コミュニティ一覧画面のテスト' do
         expect(page).to have_content other_group.group_users.count
       end
 
-      it 'コミュニティのShowリンクが表示される' do
-        expect(page).to have_link 'Show', href: group_path(group)
-      end
+      # it 'コミュニティのShowリンクが表示される' do
+      #   expect(page).to have_link 'Show', href: group_path(group)
+      # end
 
-      it '自分がオーナーのコミュニティの場合、コミュニティ編集画面へのリンクが表示される' do
-        #最初に、 let!(:group) { create(:group, :group_with_users, owner_id: user.id) }で、owner_id: user.idとして、owner_idをログインしているユーザーに指定してやる必要がある!
-        expect(page).to have_link '編集', href: edit_group_path(group)
-      end
+      # it '自分がオーナーのコミュニティの場合、コミュニティ編集画面へのリンクが表示される' do
+      #   #最初に、 let!(:group) { create(:group, :group_with_users, owner_id: user.id) }で、owner_id: user.idとして、owner_idをログインしているユーザーに指定してやる必要がある!
+      #   expect(page).to have_link '編集', href: edit_group_path(group)
+      # end
     end
   end
 

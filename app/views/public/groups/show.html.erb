@@ -38,7 +38,15 @@
                 </div>
               </div>
             </div>
-          </div>
+
+           <div class="card-footer">
+            <span><strong>タグ: </strong></span>
+            <% @group.tags.each do |tag| %>
+              <span><%= link_to tag.name, search_path(content: tag.name, model: "tag", method: "perfect") %></span>
+            <% end %>
+           </div>
+
+        </div>
         </div>
      </div>
   </div>

@@ -4,7 +4,7 @@
 <% elsif @model == 'post' || @model == 'genre' %>
  <h3>"<%= @content %>"の投稿検索結果</h3>
  <%= render 'public/posts/index_nopage', posts: @records %>
-<% elsif @model == 'group' %>
+<% elsif @model == 'group'|| @model == 'tag' %>
  <h3>"<%= @content %>"のコミュニティ検索結果</h3>
  <%= render 'public/groups/search_index', groups: @records %>
 <% end %>
