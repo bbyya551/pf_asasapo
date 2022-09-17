@@ -6,6 +6,7 @@ class Group < ApplicationRecord
 
   validates :name, presence: true
   validates :introduction, presence: true
+  validates :owner_id, presence: true
   has_one_attached :image
 
   def get_image(width, height)
