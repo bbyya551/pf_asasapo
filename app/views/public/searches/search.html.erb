@@ -1,10 +1,28 @@
 <% if @model == 'user' %>
- <h3>"<%= @content %>"のユーザー検索結果</h3>
- <%= render 'public/users/index', users: @records %>
+ <div class="container">
+   <div class="row d-flex align-items-center justify-content-center">
+     <div class="col-md-9 text-center">
+        <h3>"<%= @content %>"のユーザー検索結果</h3>
+        <%= render 'public/users/index', users: @records %>
+     </div>
+   </div>
+ </div>
 <% elsif @model == 'post' || @model == 'genre' %>
- <h3>"<%= @content %>"の投稿検索結果</h3>
- <%= render 'public/posts/index_nopage', posts: @records %>
+ <div class="container">
+   <div class="row d-flex align-items-center justify-content-center">
+     <div class="col-md-9 text-center">
+        <h3>"<%= @content %>"の投稿検索結果</h3>
+        <%= render 'public/posts/index_nopage', posts: @records %>
+     </div>
+   </div>
+ </div>
 <% elsif @model == 'group'|| @model == 'tag' %>
- <h3>"<%= @content %>"のコミュニティ検索結果</h3>
- <%= render 'public/groups/search_index', groups: @records %>
+ <div class="container">
+   <div class="row d-flex align-items-center justify-content-center">
+     <div class="col-md-9 text-center">
+        <h3>"<%= @content %>"のコミュニティ検索結果</h3>
+        <%= render 'public/groups/search_index', groups: @records %>
+     </div>
+   </div>
+ </div>
 <% end %>

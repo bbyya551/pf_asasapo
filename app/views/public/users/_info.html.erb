@@ -1,29 +1,29 @@
 
 <div class="profile-border text-center">
-<table class='table table-borderless'>
-  <tr><h5 class="text-center title-color"><%= user.name %>さんの<br>プロフィール</h5></tr>
-  <tr><%= image_tag user.get_profile_image(100, 100), class: "rounded-circle" %></tr>
-  <tr>
-	  <th>ユーザー名</th>
-	  <th><%= user.name %></th>
-  </tr>
-  <tr>
-	  <th>意気込み</th>
-	  <th><%= user.introduction %></th>
-  </tr>
-  <tr>
-    <th>趣味</th>
-    <th><%= user.hobby %></th>
-  </tr>
-  <tr>
-    <th>フォロー中</th>
-    <th><%= link_to user.followings.count, user_followings_path(user) %>人</th>
-  </tr>
-  <tr>
-    <th>フォロワー</th>
-    <th><%= link_to user.followers.count, user_followers_path(user) %>人</th>
-  </tr>
-</table>
+  <table class='table table-borderless'>
+    <tr><h5 class="text-center title-color"><%= user.name %>さんの<br>プロフィール</h5></tr>
+    <tr><%= image_tag user.get_profile_image(100, 100), class: "rounded-circle" %></tr>
+    <tr>
+  	  <th>ユーザー名</th>
+  	  <th><%= user.name %></th>
+    </tr>
+    <tr>
+  	  <th>意気込み</th>
+  	  <th><%= user.introduction %></th>
+    </tr>
+    <tr>
+      <th>趣味</th>
+      <th><%= user.hobby %></th>
+    </tr>
+    <tr>
+      <th>フォロー中</th>
+      <th><%= link_to user.followings.count, user_followings_path(user) %>人</th>
+    </tr>
+    <tr>
+      <th>フォロワー</th>
+      <th><%= link_to user.followers.count, user_followers_path(user) %>人</th>
+    </tr>
+  </table>
 
 <!--<%# unless user.id == current_user.id %>-->
 <!--  <%# if current_user.following?(user) && user.following?(current_user) %>-->
@@ -93,7 +93,14 @@
 </div>
 
   <input type="checkbox" id="F">
-  <label class="F" for="F"><h5 class="mt-3 text-center color"><%= @user.name %>さんの<br>参加中コミュニティ <i class="fa-solid fa-chevron-down"></i></h5></label>
+  <label class="F" for="F">
+    <h5 class="mt-3 text-center color">
+      <%= @user.name %>さんの<br>参加中コミュニティ <i class="fa-solid fa-chevron-down"></i>
+      <p id="click" class="tooltip10 text-danger">クリックで表示/非表示します</p>
+    </h5>
+
+  </label>
+
   <!--非同期用のidをpaginate-userに統一!-->
   <div id="paginate-user" class="G">
     <%= render 'public/users/user_groups', user_groups: @user_groups %>
@@ -102,18 +109,18 @@
 
 
 <style>
-  #F{
-      display: none;
+  #F {
+    display: none;
   }
-  .F{
-      cursor: pointer;
+  .F {
+    cursor: pointer;
   }
-  .G{
-      display: none;
-      height: 350px;
+  .G {
+    display: none;
+    height: 350px;
   }
-  #F:checked+label+.G{
-      display: block;
+  #F:checked+label+.G {
+    display: block;
   }
 
   .color {
@@ -132,3 +139,24 @@
     display: block;
   }
 </style>
+
+<script>
+  $(document).on('turbolinks:load', function() {
+  $(function () {
+      $('.tooltip10').hide();
+      // console.log("1111");
+      $('h5.color').hover(
+      function () {
+      // console.log("222");
+      // console.log( $(this));
+          //$(this).children('.tooltip2').fadeIn('fast');
+          $("#click").fadeIn('fast');
+      },
+      function () {
+      // console.log("333");
+          //$(this).children('.tooltip2').fadeOut('fast');
+          $("#click").fadeOut('fast');
+      });
+  });
+});
+</script>
