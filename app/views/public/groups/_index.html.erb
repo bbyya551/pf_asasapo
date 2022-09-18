@@ -41,7 +41,7 @@
       <%= image_tag group.get_image(300, 300), class: "card-image-top h-50" %>
       <div class="card-body">
         <h4 class="card-title">
-          <%= link_to group_path(group.id), class: "text-dark" do %>
+          <%= link_to group_path(group.id), class: "text-dark",data: {"turbolinks"=>false} do %>
             <strong><i class="fa-solid fa-people-group"></i><span> <%= group.name %></span></strong>
           <% end %>
         </h4>
@@ -52,15 +52,22 @@
         <p class="card-text">
           説明:<%= group.introduction.truncate(10) %>
 
-          <div class="content average-score">
-            <div class="star-rating mb-2">
-              <div class="star-rating-front" style="width: %">★★★★★</div>
-              <div class="star-rating-back">★★★★★</div>
-            </div>
-            <div class="average-score-display ml-3 pt-2">
+          <span class="content average-score">
+            <span class="star-rating mb-2">
+              <span class="star-rating-front" style="width: <%= group.review_score_percentage %>%">★★★★★</span>
+              <span class="star-rating-back">★★★★★</span>
+            </span>
 
-            </div>
-          </div>
+            <!--<div class="average-score-display ml-3 pt-2">-->
+            <!--  <%#= group.avg_score %>点（<%#= group.reviews.count %>件のレビュー）-->
+            <!--</div>-->
+
+          </span>
+          <span>
+            <%= group.avg_score %>点（<%= group.reviews.count %>件のレビュー)<br>
+            <%= link_to 'レビューを見る', group_reviews_path(group) %><br>
+            <%= link_to 'レビューを書く', group_path(group) %>
+          </span>
 
           <br>メンバー: <%= group.group_users.count %>人
         </p>
@@ -106,6 +113,31 @@
   .card {
     border-radius: 27px;
   }
+
+
+  /*.star-rating {*/
+  /*  position: relative;*/
+  /*  width: 5em;*/
+  /*  height: 1em;*/
+  /*  font-size: 25px;*/
+  /*}*/
+  /*.star-rating-front {*/
+  /*  position: absolute;*/
+  /*  top: 0;*/
+  /*  left: 0;*/
+  /*  overflow: hidden;*/
+  /*  color: #ffcc33;*/
+  /*}*/
+  /*.star-rating-back {*/
+  /*  color: #ccc;*/
+  /*}*/
+
+  /*.average-score {*/
+  /*  display: flex;*/
+  /*}*/
+  /*.average-score-display {*/
+  /*  font-size: 16px;*/
+  /*}*/
 </style>
 
 

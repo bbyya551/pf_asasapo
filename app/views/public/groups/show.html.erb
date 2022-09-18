@@ -24,16 +24,27 @@
                     <strong><i class="fa-regular fa-chess-queen"></i> <span><%= @group.name %></span></strong>
                   </h6>
                   <p class="card-text"><%= @group.introduction %></p>
+
+                  <div class="content average-score">
+                    <div class="star-rating mb-2">
+                      <div class="star-rating-front" style="width: <%= @group.review_score_percentage %>%">★★★★★</div>
+                      <div class="star-rating-back">★★★★★</div>
+                    </div>
+                    <div class="average-score-display ml-3 pt-2">
+                      <%= @group.avg_score %>点（<%= @group.reviews.count %>件のレビュー）
+                    </div>
+                  </div>
+
                   <% if @group.owner_id == current_user.id %>
                     <%= link_to "編集", edit_group_path(@group.id), class: "btn btn-outline-success" %>
                     <!--ここにメール作成ボタンも追加-->
                     <%= link_to '朝活を開催', group_new_mail_path(@group), class: "btn btn-outline-warning" %>
                   <% end %>
                   <div class="join-btn">
-                    <%= render 'join_btn', group: @group %>
+                    <%= render 'public/groups/join_btn', group: @group %>
                   </div>
                   <ul class="list-group list-group-flush group-member mt-3">
-                    <%= render 'member', group: @group %>
+                    <%= render 'public/groups/member', group: @group %>
                   </ul>
                 </div>
               </div>
@@ -52,10 +63,42 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-8">
+      <%= render 'public/reviews/form', review: @review, group: @group %>
+    </div>
+  </div>
+</div>
+
+
 <style>
   .fa-users-line {
     color: #FFD700;
   }
+  /*.star-rating {*/
+  /*  position: relative;*/
+  /*  width: 5em;*/
+  /*  height: 1em;*/
+  /*  font-size: 25px;*/
+  /*}*/
+  /*.star-rating-front {*/
+  /*  position: absolute;*/
+  /*  top: 0;*/
+  /*  left: 0;*/
+  /*  overflow: hidden;*/
+  /*  color: #ffcc33;*/
+  /*}*/
+  /*.star-rating-back {*/
+  /*  color: #ccc;*/
+  /*}*/
+
+  /*.average-score {*/
+  /*  display: flex;*/
+  /*}*/
+  /*.average-score-display {*/
+  /*  font-size: 16px;*/
+  /*}*/
 </style>
 
 
