@@ -3,6 +3,7 @@ class Group < ApplicationRecord
   has_many :users, through: :group_users
   has_many :group_tags, dependent: :destroy
   has_many :tags, through: :group_tags
+  has_many :reviews, dependent: :destroy
 
   validates :name, presence: true
   validates :introduction, presence: true

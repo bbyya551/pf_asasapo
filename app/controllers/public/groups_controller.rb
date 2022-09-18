@@ -22,6 +22,7 @@ class Public::GroupsController < ApplicationController
     # @group_user = @group.group_users.where(user_id: @group.owner_id)
     #もしこの記述で書くのであれば、@owner = User.find(@group_user[0].user_id)とかもしくは@owner = User.find(@group_user.first.user_id)にしないといけない!!
     @owner = User.find(@group.owner_id)
+    @review = Review.new
   end
 
   def create

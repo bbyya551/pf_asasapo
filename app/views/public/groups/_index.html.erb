@@ -51,6 +51,17 @@
         <!--</h6>-->
         <p class="card-text">
           説明:<%= group.introduction.truncate(10) %>
+
+          <div class="content average-score">
+            <div class="star-rating mb-2">
+              <div class="star-rating-front" style="width: %">★★★★★</div>
+              <div class="star-rating-back">★★★★★</div>
+            </div>
+            <div class="average-score-display ml-3 pt-2">
+
+            </div>
+          </div>
+
           <br>メンバー: <%= group.group_users.count %>人
         </p>
         <span>
@@ -96,3 +107,28 @@
     border-radius: 27px;
   }
 </style>
+
+
+<!--<div class="card mb-6">-->
+<!--  <header class="card-header">-->
+<!--    <p class="card-header-title">-->
+      <%#= ramen_shop.name %>
+<!--    </p>-->
+<!--  </header>-->
+<!--  <div class="card-content">-->
+<!--    <div class="content">-->
+<!--      <div class="content average-score">-->
+<!--        <div class="star-rating mb-2">-->
+<!--          <div class="star-rating-front" style="width: %">★★★★★</div>-->
+<!--          <div class="star-rating-back">★★★★★</div>-->
+<!--        </div>-->
+<!--        <div class="average-score-display ml-3 pt-2">-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <footer class="card-footer">-->
+
+<!--  </footer>-->
+<!--</div>-->
