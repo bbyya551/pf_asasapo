@@ -9,7 +9,7 @@
               <div class="row">
                 <div class="col-3">
                   <% if !@owner.is_deleted %>
-                    <%= link_to user_path(@owner) do %>
+                    <%= link_to user_path(@owner), data: {"turbolinks"=>false} do %>
                       <%= image_tag @owner.get_profile_image(100, 100), class:"mt-3 rounded-circle"; %>
                       <p class="text-center text-dark"><作成者><br><strong><%= @owner.name %></strong>さん</p>
                     <% end %>

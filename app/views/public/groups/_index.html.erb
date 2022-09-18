@@ -41,6 +41,7 @@
       <%= image_tag group.get_image(300, 300), class: "card-image-top h-50" %>
       <div class="card-body">
         <h4 class="card-title">
+          <!--turbolinksのエラー無くす記述!-->
           <%= link_to group_path(group.id), class: "text-dark",data: {"turbolinks"=>false} do %>
             <strong><i class="fa-solid fa-people-group"></i><span> <%= group.name %></span></strong>
           <% end %>
