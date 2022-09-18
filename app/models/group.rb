@@ -3,6 +3,7 @@ class Group < ApplicationRecord
   has_many :users, through: :group_users
   has_many :group_tags, dependent: :destroy
   has_many :tags, through: :group_tags
+  has_many :reviews, dependent: :destroy
 
   validates :name, presence: true
   validates :introduction, presence: true
@@ -47,6 +48,22 @@ class Group < ApplicationRecord
       Group.where('name LIKE ?', '%' + content)
     else
       Group.where('name LIKE ?', '%' + content + '%')
+    end
+  end
+
+  def avg_score
+    unless self.reviews.empty?
+      reviews.average(:score).round(1).to_f
+    else
+      0.0
+    end
+  end
+
+  def review_score_percentage
+    unless self.reviews.empty?
+      reviews.average(:score).round(1).to_f*100/5
+    else
+      0.0
     end
   end
 end

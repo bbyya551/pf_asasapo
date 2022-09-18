@@ -1,0 +1,99 @@
+<h5 class="mb-3">コミュニティを評価する</h5>
+<% if review.errors.any? %>
+  <div class="notification">
+    <p><%= review.errors.count %>件のエラーがあります。</p>
+    <ul>
+      <% review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<div class="rating-box mt-3">
+  <%= form_with model: review, url: group_reviews_path(group) do |f| %>
+    <div class="main-rating">
+      <div class="ratings mb-3">
+        <!--<span class="fa fa-star-o" id="star"></span>-->
+        <!--<span class="fa fa-star-o" id="star"></span>-->
+        <!--<span class="fa fa-star-o" id="star"></span>-->
+        <!--<span class="fa fa-star-o" id="star"></span>-->
+        <!--<span class="fa fa-star-o" id="star"></span>-->
+        <span class="fa-regular fa-star" id="star"></span>
+        <span class="fa-regular fa-star" id="star"></span>
+        <span class="fa-regular fa-star" id="star"></span>
+        <span class="fa-regular fa-star" id="star"></span>
+        <span class="fa-regular fa-star" id="star"></span>
+      </div>
+      <div class="ml-3 rating-value-display"><span id="rating-value-display">0</span>/5</div>
+    </div>
+    <%= f.hidden_field :group_id, value: group.id %>
+    <%= f.hidden_field :score, id: "rating-value" %>
+    <%= f.text_field :content, class: "textarea", placeholder:"評価をここに", autofocus: true, class: "form-control" %>
+    <%= f.submit "送信", class: "btn btn-sm btn-outline-warning" %>
+    <%= link_to "他のレビューを見る", group_reviews_path(group), class: "btn btn-sm btn-outline-info ml-3 mt-3 mb-3" %>
+  <% end %>
+</div>
+
+<style>
+  .rating-box .main-rating .ratings .fa-regular, .fa-solid {
+    font-size: 30px;
+    color:#ffcc00;
+    cursor: pointer;
+  }
+
+
+  .main-rating {
+    display: flex;
+  }
+
+  .rating-value-display {
+    font-size: 20px;
+  }
+
+
+</style>
+
+<script>
+  $(document).on('turbolinks:load', function() {
+  const stars = document.querySelector(".ratings").children;
+  const ratingValue = document.getElementById("rating-value");
+  const ratingValueDisplay = document.getElementById("rating-value-display");
+
+  let index;
+
+  for(let i=0; i<stars.length; i++){
+    stars[i].addEventListener("mouseover",function(){
+
+      for(let j=0; j<stars.length; j++){
+        stars[j].classList.remove("fa-solid");
+        stars[j].classList.add("fa-regular");
+      }
+
+      for(let j=0; j<=i; j++){
+        stars[j].classList.remove("fa-regular");
+        stars[j].classList.add("fa-solid");
+      }
+    })
+
+    stars[i].addEventListener("click",function(){
+  		ratingValue.value = i+1;
+  		ratingValueDisplay.textContent = ratingValue.value;
+  		// indexにクリックされた星の番号を代入
+  		index = i;
+  	})
+
+    stars[i].addEventListener("mouseout",function(){
+
+      for(let j=0; j<stars.length; j++){
+        stars[j].classList.remove("fa-solid");
+        stars[j].classList.add("fa-regular");
+      }
+
+      for(let j=0; j<=index; j++){
+        stars[j].classList.remove("fa-regular");
+        stars[j].classList.add("fa-solid");
+      }
+    })
+  }
+});
+</script>

@@ -1,7 +1,7 @@
 /* global $*/
 /* global location*/
 $(document).on('turbolinks:load', function () {
-  console.log("読み込まれました");
+  // console.log("読み込まれました");
   $(window).on('scroll', function() {
     scrollHeight = $(document).height();
     // scrollTopはscroll量を調べる
@@ -142,4 +142,6 @@ $(document).on('turbolinks:load', function() {
     });
   });
 });
+
+
 
