@@ -40,6 +40,7 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  has_many :reviews, dependent: :destroy
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: { maximum: 13 }
 
@@ -66,6 +67,10 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+
+  # def join?(user)
+  #   group_users.include?(user)
+  # end
 
   def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])

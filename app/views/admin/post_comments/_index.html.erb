@@ -1,4 +1,4 @@
-<table>
+<table class="d-flex align-items-center justify-content-center">
   <tbody>
     <% if post.post_comments.exists? %>
       <% post.post_comments.each do |post_comment| %>
@@ -16,7 +16,7 @@
       </tr>
       <% end %>
     <% else %>
-      <h3>投稿"<%= post.title %>"に対するコメントはありません</h3>
+      <h3 class="text-center">投稿"<%= post.title %>"に対するコメントはありません</h3>
     <% end %>
   </tbody>
 </table>

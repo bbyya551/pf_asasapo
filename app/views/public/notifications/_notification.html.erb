@@ -5,11 +5,11 @@
     <div class="col-md-6 mx-auto">
       <div class="form-inline">
         <span>
-          <strong><%= visitor.name %></strong>
+          <strong><%= link_to visitor.name, user_path(visitor.id),data: {"turbolinks"=>false} %></strong>
           <%= 'さんが' %>
           <% case notification.action %>
           <% when 'announcement' then %>
-            <%= link_to user_path(visitor.id, "tab" => "tab2") do %>
+            <%= link_to user_path(visitor.id, "tab" => "tab2"),data: {"turbolinks"=>false} do %>
               <%= image_tag notification.announcement.user.get_profile_image(50, 50), class: "icon_mini" %>
               <<%= notification.announcement.announcement %>>
             <% end %>
@@ -17,14 +17,14 @@
           <% when 'follow' then %>
             <%= "あなたをフォローしました" %>
           <% when 'Like' then %>
-            <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %>
+            <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;",data: {"turbolinks"=>false} %>
             <%= 'にいいねしました' %>
           <% when 'comment' then %>
             <% if notification.post.user_id == visited.id %>
-              <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;" %>
+              <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;",data: {"turbolinks"=>false} %>
             <% else %>
             <span>
-              <%= link_to post_path(notification.post.id) do %>
+              <%= link_to post_path(notification.post.id),data: {"turbolinks"=>false} do %>
                 <%= image_tag notification.post.user.get_profile_image(50, 50), class: "icon_mini" %>
                 <strong>
                   <%= notification.post.user.name %>さんの投稿
