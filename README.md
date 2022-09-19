@@ -17,11 +17,11 @@
 
 ## 設計書
 ### ER図
-![asasapo_ER](https://user-images.githubusercontent.com/106591130/190937047-5d2d77ff-c212-49e9-9f6c-a95bf8d77eda.png)
+![asasapo_ERdrawio](https://user-images.githubusercontent.com/106591130/191034887-c4ac98dc-6a18-4420-bb8e-0b6e72d338ab.png)
 ### アプリケーション詳細設計
-[asasapo_アプリケーション詳細設計書 - routes_asasapo 追加版.pdf](https://github.com/bbyya551/pf_asasapo/files/9595693/asasapo_.-.routes_asasapo.pdf)
+[asasapo_アプリケーション詳細設計書.pdf](https://github.com/bbyya551/pf_asasapo/files/9599547/asasapo_.pdf)
 ### テーブル定義所
-[asasapo_テーブル定義書 .pdf](https://github.com/bbyya551/pf_asasapo/files/9595701/asasapo_.pdf)
+[asasapo_テーブル定義書.pdf](https://github.com/bbyya551/pf_asasapo/files/9599544/asasapo_.pdf)
 
 ## 開発環境
 - OS：Amazon Linux2
