@@ -3,6 +3,7 @@
     <div class='col-md-12'>
         <div class="card-list-container py-5">
           <h2 class="text-center">コミュニティ詳細ページ <i class="fa-solid fa-users-line"></i></h2>
+          <p class="text-center">下にスクロールするとレビューできます</p>
             <div class="card w-50 mx-auto mt-4 shadow-lg" id="group_<%= @group.id %>">
               <%= image_tag @group.get_image(300, 300), class: "card-image-top" %>
             <div class="card-body">
@@ -53,7 +54,7 @@
            <div class="card-footer">
             <span><strong>タグ: </strong></span>
             <% @group.tags.each do |tag| %>
-              <span><%= link_to tag.name, search_path(content: tag.name, model: "tag", method: "perfect") %></span>
+              <span><%= link_to tag.name, search_path(content: tag.name, model: "tag", method: "perfect"), class: "btn btn-sm btn-outline-warning" %></span>
             <% end %>
            </div>
 
@@ -65,9 +66,14 @@
 
 <div class="container">
   <div class="row d-flex align-items-center justify-content-center">
-    <div class="col-md-8">
-      <%= render 'public/reviews/form', review: @review, group: @group %>
-    </div>
+    <%# join_group = GroupUser.where(user_id: current_user.id, group_id: @group.id) %>
+    <%# if join_group.exists? %>
+      <div class="col-md-8">
+        <%= render 'public/reviews/form', review: @review, group: @group %>
+      </div>
+    <%# else %>
+      <!--<p>コミュニティーに参加するとレビューできます</p>-->
+    <%# end %>
   </div>
 </div>
 
@@ -75,6 +81,10 @@
 <style>
   .fa-users-line {
     color: #FFD700;
+  }
+
+  .card-image-top {
+    height: 400px;
   }
   /*.star-rating {*/
   /*  position: relative;*/

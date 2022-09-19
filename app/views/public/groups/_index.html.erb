@@ -66,8 +66,8 @@
           </span>
           <span>
             <%= group.avg_score %>点（<%= group.reviews.count %>件のレビュー)<br>
-            <%= link_to 'レビューを見る', group_reviews_path(group) %><br>
-            <%= link_to 'レビューを書く', group_path(group) %>
+            <%= link_to 'レビューを見る', group_reviews_path(group.id) %><br>
+            <%= link_to 'レビューを書く', group_path(group.id),data: {"turbolinks"=>false} %>
           </span>
 
           <br>メンバー: <%= group.group_users.count %>人
