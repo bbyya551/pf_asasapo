@@ -13,7 +13,7 @@
               <div class="star-rating-back">★★★★★</div>
             </div>
             <div class="average-score-display ml-3 pt-2">
-              <%= @group.avg_score %>点（<%= @group.reviews.count %>件のレビュー）
+              <%= @group.avg_score %>点（<%= @group.reviews.count %>件のレビュー
             </div>
           </div>
         </div>
@@ -42,8 +42,20 @@
               <td class="text-center">
                 <%= review.score %>
               </td>
+
               <td class="text-center">
+                <!--<div class="card-text d-flex align-items-center justify-content-center average-score">-->
+                <!--<div class="star-rating mb-2">-->
+                <!--  <div class="star-rating-front" style="width: <%#= review.score*100 %> %">★★★★★</div>-->
+                <!--  <div class="star-rating-back">★★★★★</div>-->
+                <!--</div>-->
+
+                <!--<div class="average-score-display ml-3 pt-2">-->
+                <!--    <%#= @group.avg_score %>点（<%#= @group.reviews.count %>件のレビュー-->
+                <!--  </div>-->
+                <!--</div>-->
               </td>
+
               <td class="text-center">
                 <%= review.content %>
               </td>

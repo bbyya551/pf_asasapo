@@ -68,6 +68,10 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  # def join?(user)
+  #   group_users.include?(user)
+  # end
+
   def create_notification_follow!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
     if temp.blank?
