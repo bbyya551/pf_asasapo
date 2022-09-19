@@ -21,9 +21,9 @@
                 <%= render 'public/posts/index',posts: @posts %>
               </div>
             <% else %>
-              <%# if @user.id = current_user.id %>
+              <% if @user.id == current_user.id %>
                 <div class="text-center" id="menu">
-                  <span class="font-weight-bold">投稿してみましょう!</span>
+                  <h4 class="font-weight-bold">投稿してみましょう!</h4>
                   <span class="mr-4">
                     <span class="new-post-btn">
                       <%= link_to new_post_path, class: 'btn btn-sm btn-outline-warning' do %>
@@ -33,9 +33,11 @@
                     <p class="arrow_box">新規投稿</p>
                   </span>
                 </div>
-              <%# else %>
-                <!--<span class="font-weight-bold">投稿はまだありません</span>-->
-              <%# end %>
+              <% else %>
+                <div class="text-center">
+                  <h4 class="font-weight-bold">投稿はまだありません</h4>
+                </div>
+              <% end %>
             <% end %>
           </div>
           <div id="tab2" class="tab">

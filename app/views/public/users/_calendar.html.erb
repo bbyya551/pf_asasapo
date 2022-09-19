@@ -12,7 +12,13 @@
   <% if announcements.exists? %>
     <%= render 'public/announcements/announcement', announcements: @announcements_latest1 %>
   <% else %>
-    <strong><i class="fa-solid fa-square-arrow-up-right"></i> 朝活を宣言してみましょう!</strong>
+    <% if user.id == current_user.id %>
+      <strong><i class="fa-solid fa-square-arrow-up-right"></i> 朝活を宣言してみましょう!</strong>
+    <% else %>
+      <div class="text-center">
+        <span class="font-weight-bold">朝活宣言はまだありません</span>
+      </div>
+    <% end %>
   <% end %>
 </h4>
 <%= month_calendar events: announcements do |date, announcements| %>
