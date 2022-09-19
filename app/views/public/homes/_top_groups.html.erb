@@ -10,18 +10,27 @@
             <strong><i class="fa-solid fa-people-group"></i></i><span> <%= group.name %></span></strong>
           <% end %>
         </h4>
-         <p class="card-text">メンバー数: <%= group.group_users.count %>
-          <!--<br><span>コメント数:<%#= post.post_comments.count %></span>-->
-          <!--<br><span class="favorite-btn"><%#= render "public/favorites/btn", post: post %></span>-->
+        <p class="card-text">
+          メンバー数: <%= group.group_users.count %>人<br>
+          説明:<%= group.introduction.truncate(10) %>
+           <span class="content average-score">
+            <span class="star-rating mb-2">
+              <span class="star-rating-front" style="width: <%= group.review_score_percentage %>%">★★★★★</span>
+              <span class="star-rating-back">★★★★★</span>
+            </span>
+          </span>
+          <span>
+            <%= group.avg_score %>点（<%= group.reviews.count %>件のレビュー)<br>
+          </span>
+
+          <span>
+            <% if !@owner.is_deleted %>
+              <i class="fas fa-user"></i> 作成者: <%= image_tag @owner.get_profile_image(30,30), class:"rounded-circle"; %><%= @owner.name %>
+            <% else %>
+              <p>作成者: <%= image_tag 'no_image.jpg', :size => '30x30' %>退会済みユーザ</p>
+            <% end %>
+          </span>
         </p>
-        <p class="card-text">説明:<%= group.introduction.truncate(10) %></p>
-        <span>
-          <% if !@owner.is_deleted %>
-            <i class="fas fa-user"></i> 作成者: <%= image_tag @owner.get_profile_image(30,30), class:"rounded-circle"; %><%= @owner.name %>
-          <% else %>
-            <p>作成者: <%= image_tag 'no_image.jpg', :size => '30x30' %>退会済みユーザ</p>
-          <% end %>
-        </span>
         <!--<span><i class="fas fa-user"></i> By<%#= image_tag group.user.get_profile_image(30,30), class:"rounded-circle"; %><%#= post.user.name %></span>-->
       </div>
     </div>

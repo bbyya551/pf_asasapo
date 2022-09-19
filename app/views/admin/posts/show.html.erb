@@ -1,39 +1,43 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-8 offset-md-1'>
-  		<h2>投稿詳細</h2>
-      <table class='table table-borderless'>
-  		  <tr>
-          <td>
-            <%= link_to admin_user_path(@user.id) do %>
-              <%= image_tag @post.user.get_profile_image(50, 50) %>
-              <%= @post.user.name %>
-            <% end %>
-          </td>
-        </tr>
-      </table>
+    <div class='col-md-12'>
+        <div class="card-list-container py-5">
+          <h2 class="text-center">投稿詳細ページ <i class="fa-solid fa-image"></i></h2>
+            <div class="card w-50 mx-auto mt-4 shadow-lg">
+            <%= image_tag @post.get_post_image(300, 300), class: "card-image-top" %>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-3">
+                  <%= link_to admin_user_path(@user.id) do %>
+                    <%= image_tag @post.user.get_profile_image(100, 100), class:"mt-3 rounded-circle"; %>
+                    <%#= link_to @post.user.name %>
+                  <% end %>
+                </div>
+                <div class="col-9">
+                  <p class="card-title">
+                    <strong><i class="fa-solid fa-feather"></i><span>  <%= @post.title %></span></strong>
+                  </p>
+                  <h5 id="post_<%= @post.id %>"><%= @post.created_at.strftime('%Y/%m/%d') %>  <span class="comments-count">コメント数:<%= @post.post_comments.count %></span></h5>
+                  <p class="card-text"><%= @post.body %></p>
+                  <%= link_to "削除する", admin_post_path(@post.id), method: :delete, class: "btn btn-outline-danger" %>
+                  <span>
+                    <i class="fas fa-user"></i> By <%= link_to @post.user.name, admin_user_path(@user.id) %>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span><strong>投稿ジャンル: </strong></span>
+              <% @post.genres.each do |genre| %>
+                <span><%= genre.name %> </span>
+              <% end %>
+            </div>
+          </div>
+        </div>
 
-      <div class="card" style="max-width: 75rem;">
-        <%= image_tag @post.get_post_image(200, 200), class: "card-image-top" %>
-        <div class="card-body">
-          <h4 class="card-title">
-            <%= @post.title %>
-          </h4>
-          <h5 id="post_<%= @post.id %>"><%= @post.created_at.strftime('%Y/%m/%d') %>  <span class="comments-count">コメント数:<%= @post.post_comments.count %></span>  <span class="favorite-btn"><%#= render "public/favorites/btn", post: @post %></span></h5>
-          <p class="card-text"><%= @post.body %></p>
-          <%= link_to "削除する", admin_post_path(@post.id), method: :delete, class: "btn btn-outline-danger" %>
+        <div class="post_comments">
+          <%= render "admin/post_comments/index", post: @post %>
         </div>
-        <div class="card-footer">
-          <h4>投稿ジャンル</h4>
-          <% @post.genres.each do |genre| %>
-            <li style="list-style: none;"><%= genre.name %></li>
-          <% end %>
-        </div>
-      </div>
-      <div class="post_comments">
-        <%= render "admin/post_comments/index", post: @post %>
-      </div>
-      <%#= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
-    </div>
+     </div>
   </div>
 </div>

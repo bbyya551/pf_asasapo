@@ -53,7 +53,7 @@
            <div class="card-footer">
             <span><strong>タグ: </strong></span>
             <% @group.tags.each do |tag| %>
-              <span><%= link_to tag.name, search_path(content: tag.name, model: "tag", method: "perfect") %></span>
+              <span><%= link_to tag.name, search_path(content: tag.name, model: "tag", method: "perfect"), class: "btn btn-sm btn-outline-warning" %></span>
             <% end %>
            </div>
 
