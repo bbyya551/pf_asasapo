@@ -1,6 +1,6 @@
 <div id="error_explanation">
 <% if obj.errors.any? %>
-  <h3><%= obj.errors.count %> error prohibited this obj from being saved:</h3>
+  <h3><%= obj.errors.count %> 件のエラーがあります。</h3>
   <ul>
     <% obj.errors.full_messages.each do |message| %>
       <li><%= message %></li>
