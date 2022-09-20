@@ -12,7 +12,7 @@
 
   <tbody>
     <% posts.each do |post| %>
-      <tr>
+      <tr class="hover-color">
         <td>
           <%= image_tag post.get_post_image(50, 50), class:"rounded-circle"; %>
         </td>
@@ -36,4 +36,18 @@
   </tbody>
 </table>
 
+<style>
+  .hover-color {
+    background-color: #FFFFFF;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+  }
+
+  .hover-color:hover {
+    background-color: #dcdcdc;
+    /*cursor: pointer;*/
+  }
+</style>
 <%#= paginate posts %>
