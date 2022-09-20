@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <% groups.each do |group| %>
-      <tr>
+      <tr class="hover-color">
         <td><%= image_tag group.get_image(50, 50), class:"rounded-circle"; %></td>
         <td class="text-center"><%= link_to group.name, group_path(group.id) %></td>
         <td class="text-center"><%= group.group_users.count %>人</td>
@@ -27,5 +27,20 @@
     <% end %>
   </tbody>
 </table>
+
+<style>
+  .hover-color {
+    background-color: #FFFFFF;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+  }
+
+  .hover-color:hover {
+    background-color: #dcdcdc;
+    /*cursor: pointer;*/
+  }
+</style>
 
 <!--<%#= paginate groups, :param_name => 'groups_page' %>-->

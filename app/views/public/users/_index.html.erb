@@ -12,7 +12,7 @@
 
   <tbody>
     <% users.each do |user| %>
-      <tr>
+      <tr class="hover-color">
         <td class="text-center">
           <%= image_tag user.get_profile_image(50, 50), class:"rounded-circle"; %>
         </td>
@@ -50,5 +50,18 @@
     color: #000;
     background-color: #FFFF66;
     border-color: #FFFF00;
+  }
+
+  .hover-color {
+    background-color: #FFFFFF;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+  }
+
+  .hover-color:hover {
+    background-color: #dcdcdc;
+    /*cursor: pointer;*/
   }
 </style>
