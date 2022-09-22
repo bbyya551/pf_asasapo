@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
   <div class="row d-flex align-items-center justify-content-center">
     <div class="col-md-8">
-      <h2>フォロワー</h2>
+      <h2 class="text-center"><%= @user.name %>さんをフォローしているユーザー</h2>
       <% if @users.exists? %>
         <%= render 'public/users/index', users: @users %>
       <% else %>

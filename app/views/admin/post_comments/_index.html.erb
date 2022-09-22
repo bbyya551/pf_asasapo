@@ -3,13 +3,13 @@
     <% if post.post_comments.exists? %>
       <% post.post_comments.each do |post_comment| %>
       <tr>
-        <td>
+        <td class="space1">
           <%= link_to user_path(post_comment.user.id) do %>
-            <%= image_tag post_comment.user.get_profile_image(50, 50) %>
+            <%= image_tag post_comment.user.get_profile_image(50, 50) %><br>
             <%= post_comment.user.name %>
           <% end %>
         </td>
-        <td><%= post_comment.comment %></td>
+        <td class="space2"><%= post_comment.comment %><br><span class="text-muted"><%= l post_comment.created_at, format: :default %></span></td>
         <td>
           <%= link_to "削除する", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, remote: true, class: "btn btn-outline-danger" %>
         </td>
@@ -20,3 +20,14 @@
     <% end %>
   </tbody>
 </table>
+
+
+<style>
+  .space1 {
+    padding-right: 20px;
+  }
+
+  .space2 {
+    padding-right: 100px;
+  }
+</style>

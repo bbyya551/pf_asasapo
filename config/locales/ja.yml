@@ -8,3 +8,33 @@ ja:
  views:
   pagination:
    next: "next"
+
+ activerecord:
+   models:
+     user: ユーザー
+     post: 投稿
+     group: コミュニティ
+     review: レビュー
+   attributes:
+     user:
+       name: 名前
+       email: メールアドレス
+       introduction: 意気込み
+       hobby: 趣味
+     post:
+       title: タイトル
+       body: 本文
+     group:
+       name: コミュニティ名
+       introduction: 紹介文
+     review:
+       content: レビュー本文
+       score: 点数
+
+
+ time:
+  formats:
+   default: "%Y/%m/%d %H:%M"
+   # default: "%Y/%m/%d %H:%M:%S"
+   medium: "%Y/%m/%d"
+   short: "%m/%d %H:%M"

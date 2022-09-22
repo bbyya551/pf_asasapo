@@ -1,4 +1,5 @@
 <%= form_with model: [post, post_comment], url: post_post_comments_path(post.id), local: false do |f| %>
-  <%= f.text_area :comment, autofocus: true, rows: '5', placeholder: "コメントをここに", class: "w-100" %>
-  <%= f.submit "送信する", class: "btn btn-outline-warning" %>
+  <%#= f.text_area :comment, autofocus: true, placeholder: "コメントをここに", class: "w-100" %>
+  <%= f.text_area :comment, placeholder: "コメントをここに", autofocus: true, class: "form-control" %>
+  <%= f.submit "送信する", class: "btn btn-outline-warning mt-2 mb-2" %>
 <% end %>
