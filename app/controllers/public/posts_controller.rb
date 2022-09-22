@@ -10,10 +10,10 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     #:genre_nameは、view側で指定できるもの。createした時のターミナルのParameters:を確認。
-    genre_list = params[:post][:genre_name].split(/[[:blank:]]+/).select(&:present?)
+    @genre_list = params[:post][:genre_name].split(/[[:blank:]]+/).select(&:present?)
     # binding.pry
     if @post.save
-      @post.save_genres(genre_list)
+      @post.save_genres(@genre_list)
       redirect_to post_path(@post.id), notice: "You have created post successfully"
     else
       render 'new'
