@@ -29,9 +29,9 @@ class Public::GroupsController < ApplicationController
     # binding.pry
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
-    tag_list = params[:group][:tag_name].split(/[[:blank:]]+/).select(&:present?)
+    @tag_list = params[:group][:tag_name].split(/[[:blank:]]+/).select(&:present?)
     if @group.save
-      @group.save_tags(tag_list)
+      @group.save_tags(@tag_list)
       redirect_to group_path(@group), notice: "You have created group successfully."
     else
       render 'new'
