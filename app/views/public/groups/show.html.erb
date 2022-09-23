@@ -5,7 +5,7 @@
           <h2 class="text-center">コミュニティ詳細ページ <i class="fa-solid fa-users-line"></i></h2>
           <p class="text-center">下にスクロールするとレビューできます</p>
             <div class="card w-50 mx-auto mt-4 shadow-lg" id="group_<%= @group.id %>">
-              <%= image_tag @group.get_image(300, 300), class: "card-image-top" %>
+              <%= image_tag @group.get_image(300, 300), class: "card-img-top show-img" %>
             <div class="card-body">
               <div class="row">
                 <div class="col-3">
@@ -81,10 +81,6 @@
 <style>
   .fa-users-line {
     color: #FFD700;
-  }
-
-  .card-image-top {
-    height: 400px;
   }
   /*.star-rating {*/
   /*  position: relative;*/

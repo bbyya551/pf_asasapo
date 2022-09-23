@@ -38,7 +38,7 @@
 
     <!--<div class="card w-200 mx-auto mt-4 h-500 shadow-lg">-->
     <div class="card mt-1 mr-2 ml-1 mb-1 px-0 shadow-lg col-4">
-      <%= image_tag group.get_image(300, 300), class: "card-image-top h-50" %>
+      <%= image_tag group.get_image(300, 300), class: "card-img-top index-img" %>
       <div class="card-body">
         <h4 class="card-title">
           <!--turbolinksのエラー無くす記述!-->
@@ -64,13 +64,17 @@
             <!--</div>-->
 
           </span>
+
           <span>
-            <%= group.avg_score %>点（<%= group.reviews.count %>件のレビュー)<br>
-            <%= link_to 'レビューを見る', group_reviews_path(group.id) %><br>
-            <%= link_to 'レビューを書く', group_path(group.id),data: {"turbolinks"=>false} %>
+            <%= group.avg_score %>点（<%= group.reviews.count %>件のレビュー)
           </span>
 
-          <br>メンバー: <%= group.group_users.count %>人
+          <span class="d-flex justify-content-center">
+            <%= link_to 'レビュー見る', group_reviews_path(group.id), class: "btn btn-sm btn-outline-warning font-small mr-1", data: {"turbolinks"=>false} %>
+            <%= link_to 'レビュー書く', group_path(group.id), class: "btn btn-sm btn-outline-warning font-small ml-1", data: {"turbolinks"=>false} %>
+          </span>
+
+          <span>メンバー: <%= group.group_users.count %>人</span>
         </p>
         <span>
           <% if !@owner.is_deleted %>
@@ -113,6 +117,10 @@
   }
   .card {
     border-radius: 27px;
+  }
+
+  .font-small {
+    font-size: 0.8rem;
   }
 
 

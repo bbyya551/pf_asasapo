@@ -4,7 +4,7 @@
         <div class="card-list-container py-5">
           <h2 class="text-center">投稿詳細ページ <i class="fa-solid fa-image"></i></h2>
             <div class="card w-50 mx-auto mt-4 shadow-lg">
-            <%= image_tag @post.get_post_image(300, 300), class: "card-image-top" %>
+            <%= image_tag @post.get_post_image(300, 300), class: "card-img-top show-img" %>
             <div class="card-body">
               <div class="row">
                 <div class="col-3">
@@ -54,9 +54,5 @@
 <style>
   .fa-image {
     color: #FFD700;
-  }
-
-  .card-image-top {
-    height: 400px;
   }
 </style>
