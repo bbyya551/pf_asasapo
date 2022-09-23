@@ -3,7 +3,7 @@
   <% posts.each_with_index do |post, index| %>
    <% unless post.user.is_deleted %>
     <div class="card px-0 shadow-lg col-4">
-      <%= image_tag post.get_post_image(200, 200), class: "card-image-top h-50" %>
+      <%= image_tag post.get_post_image(200, 200), class: "card-img-top top-index-img" %>
       <div class="card-body">
         <h4 class="card-title">
           <%= link_to new_user_registration_path, class: "text-dark" do %>
@@ -29,7 +29,7 @@
 <%#= paginate posts %>
 
 <style>
-  .card-deck .card {
-    height: 400px;
-  }
+  /*.card-deck .card {*/
+  /*  height: 400px;*/
+  /*}*/
 </style>

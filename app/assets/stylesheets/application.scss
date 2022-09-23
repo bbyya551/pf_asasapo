@@ -259,10 +259,15 @@
 
 .index-img {
 	height: 250px;
-	object-fit: cover;
+	object-fit: fill;
 }
 
  .show-img {
   height: 400px;
   object-fit: contain;
+}
+
+ .top-index-img {
+	height: 200px;
+	object-fit: fill;
 }

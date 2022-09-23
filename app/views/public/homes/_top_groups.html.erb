@@ -3,7 +3,7 @@
   <% groups.each_with_index do |group, index| %>
   <% @owner = User.find(group.owner_id) %>
     <div class="card px-0 shadow-lg col-4">
-      <%= image_tag group.get_image(200, 200), class: "card-image-top h-50" %>
+      <%= image_tag group.get_image(200, 200), class: "card-img-top top-index-img" %>
       <div class="card-body">
         <h4 class="card-title">
           <%= link_to new_user_registration_path, class: "text-dark" do %>
