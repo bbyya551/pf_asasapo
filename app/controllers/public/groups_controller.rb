@@ -40,11 +40,16 @@ class Public::GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
+    @tags = @group.tags.map { |tag| tag.name }
   end
 
   def update
+    @group = Group.find(params[:id])
+    # @tags = @group.tags.map { |tag| tag.name }
+    # @tag_list = params[:group][:tag_name].split(/[[:blank:]]+/).select(&:present?)
     if @group.update(group_params)
-      redirect_to groups_path, notice: "You have updated group successfully."
+      # @group.update_tags(@tag_list)
+      redirect_to group_path(@group.id), notice: "You have updated group successfully."
     else
       render "edit"
     end

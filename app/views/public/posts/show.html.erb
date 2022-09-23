@@ -21,6 +21,7 @@
                   <p class="card-text"><%= @post.body %></p>
                   <% if @post.user == current_user %>
                     <%= link_to "削除する", post_path(@post.id), method: :delete, class: "btn btn-outline-danger" %>
+                    <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-outline-success" %>
                   <% end %>
                   <span>
                     <i class="fas fa-user"></i> By <%= link_to @post.user.name, user_path(@user.id) %>

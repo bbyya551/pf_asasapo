@@ -39,6 +39,22 @@ class Group < ApplicationRecord
     end
   end
 
+  # def update_tags(tag_list)
+  #   tag_list.each do |tag|
+  #     unless find_tag = Tag.find_by(name: tag.downcase)
+  #       begin
+  #         #tagsを作成するときに、has_many :tags, through: :group_tagsの記述のおかげで中間テーブルに値が入ってくれる
+  #         self.tags.update(name: tag)
+  #       rescue
+  #         nil
+  #       end
+  #     else
+  #       #has_many :tags, through: :group_tagsの記述を介してないから、中間テーブルのみ追加。
+  #       GroupTag.update(group_id: self.id, tag_id: find_tag.id)
+  #     end
+  #   end
+  # end
+
   def self.search_for(content, method)
     if method == 'perhect'
       Group.where(name: content)
