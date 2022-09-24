@@ -6,10 +6,10 @@
       <%#= render 'layouts/errors', obj: @user %>
       <div class="form-group">
         <%= f.radio_button :is_deleted, "false" %>
-        <%= f.label :is_deleted, "有効会員" %>
+        <%= f.label :is_deleted, "有効会員", value: false %>
 
         <%= f.radio_button :is_deleted, "true" %>
-        <%= f.label :is_deleted, "利用停止" %>
+        <%= f.label :is_deleted, "利用停止", value: true %>
       </div>
 
       <div class="form-group">
