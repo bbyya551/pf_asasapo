@@ -5,8 +5,8 @@ $('.message').append(
       <%= image_tag @chat.user.get_profile_image(50, 50), class: "rounded-circle" %>
     </div>
     <p style="text-align: right;">
-      <strong><%= @chat.message %></strong><br>
-      <%= @chat.created_at.strftime("%Y-%m-%d %H:%M") %>
+      <strong><span class="chat-message p-1"><%= @chat.message %></span></strong><br>
+      <span class="date"><%= @chat.created_at.strftime("%Y-%m-%d %H:%M") %></span>
     </p>`
  );
 

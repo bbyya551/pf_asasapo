@@ -9,11 +9,14 @@
     <%= f.text_area :introduction, placeholder:"コミュニティ紹介をここに", class: 'form-control' %>
   </div>
 
-   <div class="form-group">
-    <!--:tag_nameはgroupに紐づいたタグモデルのnameという意味?-->
-    <%= f.label :tag_name, "タグは変更できません" %> <i class="fa-solid fa-pen-clip"></i>
-    <%#= f.text_field :tag_name, placeholder:"タグをここに", class: 'form-control' %>
-   </div>
+  <div class="form-group">
+    <%= f.label :tag_name, "タグ(半角スペースで複数タグ付けできます)" %> <i class="fa-solid fa-pen-clip"></i>
+    <%#= fields_for (@tags&.join(' ')) do |tags| %>
+
+    <%#= tags.text_field :tag_name, placeholder:"タグをここに", class: 'form-control', value: @tags&.join(' ')  %>
+    <%# end %>
+    <%= f.text_field :tag_name, placeholder:"タグをここに", class: 'form-control', value: @tags&.join(' ') %>
+  </div>
 
   <div class="form-group">
     <%= f.label :コミュニティ画像 %>

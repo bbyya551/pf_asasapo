@@ -1,2 +1,34 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<div class='container'>
+  <div class='row no-gutters'>
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+    <h2 class="text-center text-dark bg-light p-4 mb-0">新規投稿 <i class="fa-solid fa-circle-plus"></i></h2>
+    <div class="form-body bg-light p-4">
+    <%= form_with model: @post, url: post_path(@post.id), method: :patch, local: true do |f| %>
+      <%= render 'layouts/errors', obj: @post %>
+      <div class="form-group">
+        <%= f.label :post_image, "投稿写真" %>
+        <%#= f.file_field :post_image, class: "form-control-file user_image", accept: 'image/jpg' %>
+        <%= f.file_field :post_image, class: "form-control-file user_image", accept: 'image/png,image/gif,image/jpeg' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :title, "投稿タイトル" %> <i class="fa-solid fa-pen-clip"></i>
+        <%= f.text_field :title, placeholder:"タイトルをここに", autofocus: true, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <!--ここで指定した:genre_nameはcreateアクションに送られる-->
+        <%= f.label :genre_name, "ジャンル(半角スペースで複数ジャンル付けできます)" %> <i class="fa-solid fa-pen-clip"></i>
+        <%= f.text_field :genre_name, placeholder:"ジャンルをここに", class: 'form-control', value: @genres&.join(' ') %>
+      </div>
+      <div class="form-group">
+        <%= f.label :body, "投稿本文" %> <i class="fa-solid fa-pen-clip"></i>
+        <%= f.text_area :body, placeholder: "投稿本文をここに", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit '更新する', class: 'btn btn-outline-warning' %>
+      </div>
+    <% end %>
+    </div>
+    </div>
+  </div>
+</div>

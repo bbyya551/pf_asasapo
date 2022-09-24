@@ -11,8 +11,8 @@
   <% posts.each_with_index do |post, index| %>
    <% unless post.user.is_deleted %>
     <!--<div class="card w-200 mx-auto mt-4 h-500 shadow-lg">-->
-    <div class="card mt-1 mr-2 ml-1 mb-1 px-0 shadow-lg col-4">
-      <%= image_tag post.get_post_image(300, 300), class: "card-image-top h-50" %>
+    <div class="card mt-1 mr-2 ml-1 px-0 shadow-lg col-4">
+      <%= image_tag post.get_post_image(300, 300), class: "card-img-top index-img" %>
       <div class="card-body">
         <h4 class="card-title">
           <%= link_to post_path(post.id), class: "text-dark" do %>
@@ -57,6 +57,10 @@
     color: #000;
     background-color: #FFFF66;
     border-color: #FFFF00;
+  }
+
+  .card {
+    border-radius: 10px;
   }
 </style>
 

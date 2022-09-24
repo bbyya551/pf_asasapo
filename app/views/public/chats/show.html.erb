@@ -1,24 +1,21 @@
-<!--このh1タグはどういう意味か-->
 <div class="container px-5 px-sm-0">
-  <!--<div class="row">-->
-    <!--<div class="col-md-6">-->
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
       <h1 id="room"><%= @user.name %>さんとのチャット</h1>
-
         <!--<div class="scroll-list jscroll">-->
           <div class="message" style="width: 400px;">
             <%= render 'public/chats/index', chats: @chats %>
           </div>
         <!--</div>-->
-
         <div class="errors">
           <%= render "layouts/errors", obj: @chat %>
         </div>
 
         <%= form_with model: @chat, data: {remote: true} do |f| %>
-          <%= f.text_field :message %>
+          <%= f.text_field :message, autofocus: true, class: "form-control w-75" %>
           <%= f.hidden_field :room_id %>
-          <%= f.submit "送信", class: 'form-submit' %>
+          <%= f.submit "送信", class: 'btn btn-sm btn-warning mb-1 mt-1' %>
         <% end %>
-    <!--</div>-->
-  <!--</div>-->
+    </div>
+  </div>
 </div>
