@@ -10,13 +10,16 @@ class Public::ChatsController < ApplicationController
     unless user_rooms.nil?
       #上で探し出したuser_roomsは一つのはず?
       @room = user_rooms.room
+      # binding.pry
     else
       # user_roomsが見つからなければ、@roomを一つ作成
       @room = Room.new
       @room.save
+      # binding.pry
       #user_roomも、user_idがcurrent_user.idと、チャット相手(@user.id)の文をそれぞれ作成
       UserRoom.create(user_id: current_user.id, room_id: @room.id)
       UserRoom.create(user_id: @user.id, room_id: @room.id)
+      # binding.pry
     end
     # @chats = @room.chats.page(params[:page]).per(5)
     @chats = @room.chats

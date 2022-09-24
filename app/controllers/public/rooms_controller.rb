@@ -1,5 +1,10 @@
 class Public::RoomsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
+
+  def index
+    @user = current_user
+    @rooms = @user.rooms.joins(:chats).includes(:chats).order("chats.created_at DESC")
+  end
 
   # def create
   #   @room = Room.create
