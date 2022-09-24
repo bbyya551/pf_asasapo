@@ -26,12 +26,27 @@
 // a:hover { color: #000000; }
 // a:active { color: #000000; }
 
+// .n-circle {
+//   position: absolute;
+//   padding-left: 1rem;
+//   padding-top: 0rem;
+//   color: #efa04c;
+// }
+
 .n-circle {
   position: absolute;
-  padding-left: 1rem;
-  padding-top: 0rem;
-  color: #efa04c;
+  padding-left: 0.0rem;
+  padding-right: 0.1rem;
+  padding-top: 0.4rem;
+  color: #FF0000;
 }
+
+// .fa-circle {
+//   position: absolute;
+//   padding-left: 1rem;
+//   padding-top: 0rem;
+//   color: #efa04c;
+// }
 
 .fa-stack {
   color: #000000;
