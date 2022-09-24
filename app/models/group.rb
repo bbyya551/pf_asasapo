@@ -4,6 +4,9 @@ class Group < ApplicationRecord
   has_many :group_tags, dependent: :destroy
   has_many :tags, through: :group_tags
   has_many :reviews, dependent: :destroy
+  # accepts_nested_attributes_for :tags
+  # accepts_nested_attributes_for :group_tags
+
 
   validates :name, presence: true
   validates :introduction, presence: true
@@ -39,21 +42,18 @@ class Group < ApplicationRecord
     end
   end
 
-  # def update_tags(tag_list)
-  #   tag_list.each do |tag|
-  #     unless find_tag = Tag.find_by(name: tag.downcase)
-  #       begin
-  #         #tagsを作成するときに、has_many :tags, through: :group_tagsの記述のおかげで中間テーブルに値が入ってくれる
-  #         self.tags.update(name: tag)
-  #       rescue
-  #         nil
-  #       end
-  #     else
-  #       #has_many :tags, through: :group_tagsの記述を介してないから、中間テーブルのみ追加。
-  #       GroupTag.update(group_id: self.id, tag_id: find_tag.id)
-  #     end
-  #   end
-  # end
+  def update_tags(tag_list)
+    # 一度既存のGroupTag(このグループに紐づいたもののみ)は削除する(インスタンスメソッド。self.が省略されている。)
+    group_tags.map(&:destroy)
+    #tagが空であればこのメソッドを抜ける。(空に更新される)
+    return unless tag_list
+    tag_list.each do |tag|
+      # タグが存在しなかったらTagの作成(存在していればfind_or_create_byでは何もしない。)とGroupTagの作成,タグがすでに存在していたらGroupTagの作成
+      tag_update = Tag.find_or_create_by(name: tag)#この行では、Tagモデルに一つtagのnameを作成するだけなので、中間テーブルは作成していない。
+      # 中間tableの作成
+      GroupTag.create!(tag: tag_update, group: self)
+    end
+  end
 
   def self.search_for(content, method)
     if method == 'perhect'

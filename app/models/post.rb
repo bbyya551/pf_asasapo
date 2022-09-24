@@ -64,6 +64,15 @@ class Post < ApplicationRecord
     end
   end
 
+  def update_genres(genre_list)
+    post_genres.map(&:destroy)
+    return unless genre_list
+    genre_list.each do |genre|
+      genre = Genre.find_or_create_by(name: genre)
+      PostGenre.create!(genre: genre, post: self)
+    end
+  end
+
   def create_notification_like!(current_user)
     #この行(temp)そのままrails console打とう
     #インスタンスメソッド user_idはPost自身のuser_idのこと。idはPost自身のidのこと。

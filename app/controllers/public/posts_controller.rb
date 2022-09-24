@@ -38,11 +38,14 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @genres = @post.genres.map { |genre| genre.name }
   end
 
   def update
     @post = Post.find(params[:id])
+    @genre_list = params[:post][:genre_name].split(/[[:blank:]]+/).select(&:present?)
     if @post.update(post_params)
+      @post.update_genres(@genre_list)
       redirect_to post_path(@post.id), notice: "投稿の編集に成功しました"
     else
       render "edit"
