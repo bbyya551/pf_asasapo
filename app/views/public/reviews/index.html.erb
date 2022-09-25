@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-
+      <% if @reviews.present? %>
       <table class="table">
         <thead>
           <tr>
@@ -63,6 +63,9 @@
           <% end %>
         </tbody>
       </table>
+      <% else %>
+        <h5 class="text-center mt-5 mb-5">レビューはまだありません</h5>
+      <% end %>
     </div>
   </div>
 </div>
