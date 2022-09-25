@@ -13,7 +13,7 @@ class Public::AnnouncementsController < ApplicationController
     @announcement.user_id = @user.id
     if @announcement.save
       #"tab" => "tab2"は、urlに、任意のパラメーターを付与する記述。urlは、/users/1?tab=tab2になり、?tab=tab2が付与される。
-      redirect_to user_path(@user, "tab" => "tab2"), notice: "You have created announcement successfully."
+      redirect_to user_path(@user, "tab" => "tab2"), notice: "朝活宣言に成功しました"
       @user.create_notification_announcement!(current_user, @announcement.id)
     else
       render 'new'
@@ -30,7 +30,7 @@ class Public::AnnouncementsController < ApplicationController
     @user = User.find(params[:user_id])
     @announcement = Announcement.find(params[:id])
     if @announcement.update(announcement_params)
-      redirect_to user_path(@user, "tab" => "tab2"), notice: "You have updated announcement successfully."
+      redirect_to user_path(@user, "tab" => "tab2"), notice: "朝活宣言の編集に成功しました"
     else
       render "edit"
     end

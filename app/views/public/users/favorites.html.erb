@@ -7,9 +7,15 @@
 
     <div class='col-md-8'>
       <h2 class="text-center"><%= @user.name %>さんのブックマーク <i class="fa-solid fa-heart-circle-check" aria-hidden="true"></i></h2>
-      <div id="favorite-posts">
-        <%= render 'public/users/favorite_posts', posts: @favorite_posts %>
-      </div>
+      <% if @favorite_posts.exists? %>
+        <div id="favorite-posts">
+          <%= render 'public/users/favorite_posts', posts: @favorite_posts %>
+        </div>
+      <% else %>
+        <div class="text-center mt-5">
+          <h4 class="font-weight-bold">ブックマークはまだありません</h4>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

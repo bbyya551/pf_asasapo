@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
     # binding.pry
     if @post.save
       @post.save_genres(@genre_list)
-      redirect_to post_path(@post.id), notice: "You have created post successfully"
+      redirect_to post_path(@post.id), notice: "投稿に成功しました"
     else
       render 'new'
     end
