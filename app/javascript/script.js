@@ -45,7 +45,7 @@ $(document).on('turbolinks:load', function () {
   // https://qiita.com/kazu56/items/557740f398e82fc881df
   // if ( str.match(/hoge/)) ⇦ここの例で言うと、str = location.hrefを代入してもいい。
   // location.hrefでurlを取得してきて、その中にchatsが含まれるかと言う意味。
-  if ( location.href.match(/chats/)) {
+  if (location.href.match(/chats/)) {
 
     let elm = document.documentElement;
     // scrollHeight ページの高さ clientHeight ブラウザの高さ
@@ -55,31 +55,54 @@ $(document).on('turbolinks:load', function () {
   }
 });
 
-$(document).on('turbolinks:load', function () {
-  if ( location.href.match(/posts/)) {
+// $(document).on('turbolinks:load', function () {
+//   $(function(){
+//   	//現在のページURLのハッシュ部分を取得
+//   	const hash = location.hash;
 
-    let scrollToOptions = {
-        top : 0, //スクロール位置にページ最上部を指定
-        behavior : 'smooth' //スムーズに移動させる条件を指定
-    };
-    //スクロールを実施する
-    window.scrollTo(scrollToOptions);
-    // window.scroll(0, 0);
-  }
-});
+//   	//ハッシュ部分がある場合の条件分岐
+//   	if(hash){
+//   		//ページ遷移後のスクロール位置指定
+//   		$("html, body").stop().scrollTop(0);
+//   		//処理を遅らせる
+//   		setTimeout(function(){
+//   			//リンク先を取得
+//   			const target = $(hash),
+//   			//リンク先までの距離を取得
+//   			position = target.offset().top;
+//   			//指定の場所までスムーススクロール
+//   			$("html, body").animate({scrollTop:position}, 500, "swing");
+//   		});
+//   	}
+//   });
+// });
 
-$(document).on('turbolinks:load', function () {
-  if ( location.href.match(/groups/)) {
+// $(document).on('turbolinks:load', function () {
+//   if (location.href.match(/posts/)) {
+// //     console.log("読み込まれましたposts");
+// //     let scrollToOptions = {
+// //         top : 0, //スクロール位置にページ最上部を指定
+// //         behavior : 'smooth' //スムーズに移動させる条件を指定
+// //     };
+// //     //スクロールを実施する
+// //     window.scrollTo(scrollToOptions);
+//       //window.scroll(0, 0);
+//       // $(window).scrollTop(0);
+//   }
+// });
 
-    let scrollToOptions = {
-        top : 0, //スクロール位置にページ最上部を指定
-        behavior : 'smooth' //スムーズに移動させる条件を指定
-    };
-    //スクロールを実施する
-    window.scrollTo(scrollToOptions);
-    // window.scroll(0, 0);
-  }
-});
+// $(document).on('turbolinks:load', function () {
+//   if (location.href.indexOf(/groups/)) {
+
+//     let scrollToOptions = {
+//         top : 0, //スクロール位置にページ最上部を指定
+//         behavior : 'smooth' //スムーズに移動させる条件を指定
+//     };
+//     //スクロールを実施する
+//     window.scrollTo(scrollToOptions);
+//     // window.scroll(0, 0);
+//   }
+// });
 
 $(document).on('turbolinks:load', function () {
   $('#tab-contents .tab[id != "tab1"]').hide();

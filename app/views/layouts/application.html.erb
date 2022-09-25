@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex flex-column vh-100">
+  <body class="d-flex flex-column vh-100" id="pageTop">
     <%= render "layouts/header" %>
     <!--<%# unless notice.nil? %>-->
     <!--  <p id="notice"><%#= notice %></p>-->
@@ -45,6 +45,12 @@
       $(".flash-title").fadeOut(2200);
     });
   // });
+
+//ページ読み込み後にページの最上部へ移動させる
+    onload = function() {
+      location.href = "#pageTop";
+    }
+
 </script>
 
 <style>
