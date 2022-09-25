@@ -33,7 +33,7 @@ class Public::SessionsController < Devise::SessionsController
     @user = User.find_by(email: params[:user][:email])
     return if !@user
     if @user.valid_password?(params[:user][:password]) && @user.is_deleted == true
-      redirect_to new_user_registration_path, notice: "You can not use this service"
+      redirect_to new_user_registration_path, notice: "このアカウントは現在、サービスを利用できません"
     end
   end
 

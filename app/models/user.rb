@@ -28,6 +28,7 @@ class User < ApplicationRecord
 
   has_many :user_rooms
   has_many :chats
+  has_many :rooms, through: :user_rooms
   # has_many :rooms, through: user_rooms
 
   #フォローする側からのhas_manyなので、それがわかるようにforeign_keyでfollower_id(フォローする人)を指定してやる

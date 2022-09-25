@@ -56,6 +56,25 @@ $(document).on('turbolinks:load', function () {
 });
 
 $(document).on('turbolinks:load', function () {
+  if ( location.href.match(/posts/)) {
+
+    // let scrollToOptions = {
+    //     top : 0, //スクロール位置にページ最上部を指定
+    //     behavior : 'smooth' //スムーズに移動させる条件を指定
+    // };
+    // //スクロールを実施する
+    // window.scrollTo(scrollToOptions);
+    window.scroll(0, 0);
+  }
+});
+
+$(document).on('turbolinks:load', function () {
+  if ( location.href.match(/groups/)) {
+    window.scroll(0, 0);
+  }
+});
+
+$(document).on('turbolinks:load', function () {
   $('#tab-contents .tab[id != "tab1"]').hide();
 
   $('#tab-menu a').on('click', function(event) {

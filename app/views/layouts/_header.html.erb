@@ -1,5 +1,5 @@
 <%#= stylesheet_link_tag "application", :media => "all" %>
-<header class="shadow-sm bg-white sticky-top">
+<header class="shadow-sm bg-white sticky-top head">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand" href="/"><%= image_tag 'logo3.png', :size => '150x80' %></a>
@@ -7,54 +7,79 @@
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-       <% unless notice.nil? %>
-        <p id="notice"><%= notice %></p>
-       <% end %>
+
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to notifications_path do %>
+          <%= link_to notifications_path, class: 'nav-link text-dark' do %>
             <% if unchecked_notifications.any? %>
               <span class="fa-stack">
-                <i class="far fa-bell fa-lg fa-stack-2x" style="font-size: 1.5rem;"></i>
+                <!--<i class="fa-regular fa-bell"></i>-->
+                <!--<i class="fa-solid fa-circle"></i>-->
+                <!--<i class="far fa-bell fa-lg fa-stack-2x" style="font-size: 1.5rem;"></i>-->
+                <i class="far fa-bell fa-lg" style="font-size: 1.5rem;"></i>
                 <i class="fas fa-circle n-circle fa-stack-1x"></i>
               </span>
+              <!--通知-->
             <% else %>
               <span class="fa-stack">
+                <!--<i class="fa-regular fa-bell"></i>-->
+                <!--<i class="far fa-bell fa-lg" style="font-size: 1.5em;"></i>-->
                 <i class="far fa-bell fa-lg" style="font-size: 1.5em;"></i>
               </span>
+              <!--通知-->
             <% end %>
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "マイページ", user_path(current_user.id), method: :get, class: 'nav-link text-dark' %>
+          <%= link_to user_path(current_user.id), method: :get, class: 'nav-link text-dark', data: {"turbolinks"=>false} do %>
+            <i class="fa-solid fa-circle-user" style="font-size: 16px; color: black;"></i> マイページ
+          <% end %>
         </li>
 
         <li class="nav-item">
-          <%= link_to '投稿一覧', posts_path, class: 'nav-link text-dark', data: {"turbolinks"=>false} %>
+          <%= link_to rooms_path, method: :get, class: 'nav-link text-dark', data: {"turbolinks"=>false} do %>
+            <i class="fa-solid fa-comment-dots" style="font-size: 16px; color: black;"></i> チャット一覧
+          <% end %>
         </li>
 
         <li class="nav-item">
-          <%= link_to 'コミュニティ一覧', groups_path, class: 'nav-link text-dark',data: {"turbolinks"=>false} %>
+          <%= link_to posts_path, class: 'nav-link text-dark', data: {"turbolinks"=>false} do %>
+            <i class="fa-solid fa-square-pen" style="font-size: 16px; color: black;"></i> 投稿一覧
+          <% end %>
         </li>
 
         <li class="nav-item">
-          <%= link_to '会員一覧', users_path, class: 'nav-link text-dark', data: {"turbolinks"=>false} %>
+          <%= link_to groups_path, class: 'nav-link text-dark',data: {"turbolinks"=>false} do %>
+            <i class="fa-solid fa-people-group" style="font-size: 16px; color: black;"></i> コミュニティ一覧
+          <% end %>
         </li>
 
         <li class="nav-item">
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+          <%= link_to users_path, class: 'nav-link text-dark', data: {"turbolinks"=>false} do %>
+            <i class="fa-solid fa-users-viewfinder" style="font-size: 16px; color: black;"></i> 会員一覧
+          <% end %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
+            <i class="fa-solid fa-right-from-bracket" style="font-size: 16px; color: black;"></i> ログアウト
+          <% end %>
         </li>
 
         <% elsif admin_signed_in? %>
 
         <li class="nav-item">
-          <%= link_to "投稿一覧", admin_posts_path, class: 'nav-link text-dark' %>
+          <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
+            <i class="fa-solid fa-square-pen" style="font-size: 16px; color: black;"></i> 投稿一覧
+          <% end %>
         </li>
 
         <li class="nav-item">
-          <%= link_to '会員一覧', admin_users_path, class: 'nav-link text-dark' %>
+          <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
+            <i class="fa-solid fa-users-viewfinder" style="font-size: 16px; color: black;"></i> 会員一覧
+          <% end %>
         </li>
 
         <!--<li class="nav-item">-->
@@ -62,25 +87,35 @@
         <!--</li>-->
 
         <li class="nav-item">
-          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
+          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+            <i class="fa-solid fa-right-from-bracket" style="font-size: 16px; color: black;"></i> ログアウト
+          <% end %>
         </li>
 
         <% else %>
 
         <li class="nav-item">
-          <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
+          <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
+            <i class="fa-solid fa-user-plus" style="font-size: 16px; color: black;"></i> 新規登録
+          <% end %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
+          <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
+            <i class="fa-solid fa-right-to-bracket" style="font-size: 16px; color: black;"></i> ログイン
+          <% end %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
+          <%= link_to users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' do %>
+            <i class="fa-solid fa-clipboard-user" style="font-size: 16px; color: black;"></i> ゲストログイン(閲覧用)
+          <% end %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "管理者はこちら", new_admin_session_path, class: 'nav-link text-dark' %>
+          <%= link_to new_admin_session_path, class: 'nav-link text-dark' do %>
+            <i class="fa-solid fa-user-tie" style="font-size: 16px; color: black;"></i> 管理者はこちら
+          <% end %>
         </li>
 
         <% end %>

@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-9 text-center">
+      <h3><%= @user.name %>さんのチャット一覧</h3><hr>
+      <% if @rooms.present? %>
+        <table class='table table-borderless'>
+          <thead>
+            <tr>
+              <th></th>
+              <th class="text-center"></th>
+              <th class="text-center"></th>
+              <th class="text-center"></th>
+              <!--<th></th>-->
+              <th colspan="5"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @rooms.each do |room| %>
+              <% chat = room.chats.order(updated_at: :desc).limit(1) %>
+              <% chat = chat[0] %>
+              <% user_room = room.user_rooms.where.not(user_id: current_user) %>
+              <% user = user_room[0].user %>
+
+              <tr class="hover-color">
+                <td class="text-right"></td>
+                <td class="font-weight-bold">
+                  <%= link_to user_path(user) do %>
+                    <span><%= image_tag user.get_profile_image(50, 50), class:"rounded-circle"; %></span>
+                    <%= opponent_user(room) %>
+                  <% end %>
+                </td>
+                <td class="text-center">
+                  <%= most_new_chat_preview(room) %>
+                  <% if chat.present? %>
+                    <span class="small text-muted justify-content-end">
+                      <%= time_ago_in_words(chat.created_at).upcase %>
+                    </span>
+                  <% end %>
+                </td>
+                <td class="text-center">
+                  <%# user_room = room.user_rooms.where.not(user_id: current_user) %>
+                  <%# user = user_room[0].user %>
+                  <%= link_to chat_path(user), class: 'btn btn-sm btn-warning text-white' do %>
+                    <i class="fa-brands fa-rocketchat"></i><span>チャットを見る</span>
+                  <% end %>
+                </td>
+                <td></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h5>チャットはまだありません</h5>
+        <p>ユーザー同士で相互フォローになるとチャットで会話ができるようになります。</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hover-color {
+    background-color: #FFFFFF;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+  }
+
+  .hover-color:hover {
+    background-color: #dcdcdc;
+    /*cursor: pointer;*/
+  }
+</style>

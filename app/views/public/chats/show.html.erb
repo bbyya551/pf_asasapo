@@ -15,6 +15,7 @@
           <%= f.text_field :message, autofocus: true, class: "form-control w-75" %>
           <%= f.hidden_field :room_id %>
           <%= f.submit "送信", class: 'btn btn-sm btn-warning mb-1 mt-1' %>
+          <%= link_to "チャット一覧画面へ", rooms_path, class: "btn btn-sm btn-outline-info ml-3 mt-3 mb-3" %>
         <% end %>
     </div>
   </div>

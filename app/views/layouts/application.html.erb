@@ -16,6 +16,8 @@
     <!--<%# unless notice.nil? %>-->
     <!--  <p id="notice"><%#= notice %></p>-->
     <!--<%# end %>-->
+
+
     <% @path = request.fullpath %>
     <% if user_signed_in? && @path != "/" %>
       <div class="container">
@@ -25,7 +27,51 @@
         </div>
       </div>
     <% end %>
+
+    <% unless notice.nil? %>
+     <div class="flash-title">
+        <h5 id="notice"><%= notice %></h5>
+     </div>
+    <% end %>
     <%= yield %>
     <%= render "layouts/footer" %>
   </body>
 </html>
+
+
+<script>
+  // $(document).on('turbolinks:load', function () {
+    $(function(){
+      $(".flash-title").fadeOut(2200);
+    });
+  // });
+</script>
+
+<style>
+ /*header {*/
+ /*  z-index: 1;*/
+ /*}*/
+/*z-indexはposition: absolute;と一緒に使おう*/
+ .flash-title {
+   z-index: 7;
+   position: absolute;
+   top: 100px;
+   width: 100%;
+   /*margin: 0 auto;*/
+   /*text-align: center;*/
+   /*margin-left: 100px;*/
+   height: 66px;
+   background-color: #00CCFF;
+   display: table;
+ }
+
+ .flash-title h5 {
+   display: inline-block;
+   text-align: center;
+   /*width: 80%;*/
+   margin: 0 auto;
+   /*max-width: 500px;*/
+   display: table-cell;
+   vertical-align: middle;
+ }
+</style>

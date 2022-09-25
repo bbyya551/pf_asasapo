@@ -32,7 +32,7 @@ class Public::GroupsController < ApplicationController
     @tag_list = params[:group][:tag_name].split(/[[:blank:]]+/).select(&:present?)
     if @group.save
       @group.save_tags(@tag_list)
-      redirect_to group_path(@group), notice: "You have created group successfully."
+      redirect_to group_path(@group), notice: "コミュニティの作成に成功しました"
     else
       render 'new'
     end
@@ -51,7 +51,7 @@ class Public::GroupsController < ApplicationController
     @tag_list = params[:group][:tag_name].split(/[[:blank:]]+/).select(&:present?)
     if @group.update(group_params)
       @group.update_tags(@tag_list)
-      redirect_to group_path(@group.id), notice: "You have updated group successfully."
+      redirect_to group_path(@group.id), notice: "コミュニティの編集に成功しました"
     else
       render "edit"
     end
