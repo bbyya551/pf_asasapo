@@ -2,7 +2,7 @@
   <div class="row d-flex align-items-center justify-content-center">
     <div class="col-md-9 text-center">
       <h3><%= @user.name %>さんのチャット一覧</h3><hr>
-      <%# if @rooms.present? %>
+      <% if @rooms.present? %>
         <table class='table table-borderless'>
           <thead>
             <tr>
@@ -32,9 +32,11 @@
                 </td>
                 <td class="text-center">
                   <%= most_new_chat_preview(room) %>
-                  <span class="small text-muted justify-content-end">
-                    <%= time_ago_in_words(chat.created_at).upcase %>
-                  </span>
+                  <% if chat.present? %>
+                    <span class="small text-muted justify-content-end">
+                      <%= time_ago_in_words(chat.created_at).upcase %>
+                    </span>
+                  <% end %>
                 </td>
                 <td class="text-center">
                   <%# user_room = room.user_rooms.where.not(user_id: current_user) %>
@@ -48,10 +50,10 @@
             <% end %>
           </tbody>
         </table>
-      <%# else %>
-        <!--<h5>チャットはまだありません</h5>-->
-        <!--<p>ユーザー同士で相互フォローになるとチャットで会話ができるようになります。</p>-->
-      <%# end %>
+      <% else %>
+        <h5>チャットはまだありません</h5>
+        <p>ユーザー同士で相互フォローになるとチャットで会話ができるようになります。</p>
+      <% end %>
     </div>
   </div>
 </div>
