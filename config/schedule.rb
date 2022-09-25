@@ -18,9 +18,9 @@ set :environment, :production
 #   rake "some:great:rake:task"
 # end
 #
-#JSTは+9:00なので18:00
-# every 1.days, at: '9:00 am' do
-every 2.minutes do
+#JSTは+9:00なので8:00 am
+every 1.days, at: '11:00 pm' do
+# every 2.minutes do
   runner "MorningActiveMailer.check_notice_mail.deliver_now"
 end
 # every 4.days do
