@@ -58,6 +58,9 @@
 
               <td class="text-center">
                 <%= review.content %>
+                <span class="small text-muted justify-content-end">
+                  <%= l review.created_at, format: :default %>
+                </span>
               </td>
             </tr>
           <% end %>

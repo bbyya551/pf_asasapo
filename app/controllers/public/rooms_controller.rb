@@ -8,10 +8,10 @@ class Public::RoomsController < ApplicationController
     #@rooms = @user.rooms.left_joins(:chats).includes(:chats).group("chats.room_id").order("chats.created_at DESC")
     #@rooms = @user.rooms.left_joins(:chats).includes(:chats).group("chats.user_id, chats.room_id").order("chats.created_at DESC")
 
-    #@rooms = @user.rooms.joins(:chats).includes(:chats).order("chats.created_at DESC")
+    @rooms = @user.rooms.joins(:chats).includes(:chats).order("chats.created_at DESC")
     #idでグルーピングしてやる
-    @rooms = @user.rooms.left_joins(:chats).group(:id).includes(:chats).order("chats.created_at DESC")
-    #@rooms = @user.rooms.left_joins(:chats).includes(:chats).order("chats.created_at DESC")
+    #@rooms = @user.rooms.left_joins(:chats).group(:id).includes(:chats).order("chats.created_at DESC")
+    #@rooms = @user.rooms.left_joins(:chats).group("id").includes(:chats).order("chats.created_at DESC")
     # @rooms = @user.rooms
   end
 
