@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PfAsasapo</title>
+    <title>朝サポ~朝活で日本を元気に~</title>
     <script src="https://kit.fontawesome.com/166cf5cd50.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex flex-column vh-100" id="pageTop">
+  <body class="d-flex flex-column vh-100">
     <%= render "layouts/header" %>
     <!--<%# unless notice.nil? %>-->
     <!--  <p id="notice"><%#= notice %></p>-->
@@ -35,49 +35,49 @@
     <% end %>
     <%= yield %>
     <%= render "layouts/footer" %>
+
+    <script>
+      // $(document).on('turbolinks:load', function () {
+        $(function(){
+          $(".flash-title").fadeOut(2200);
+        });
+      // });
+
+    //ページ読み込み後にページの最上部へ移動させる
+        // onload = function() {
+        //   location.href = "#pageTop";
+        // }
+
+    </script>
+
+    <style>
+     /*header {*/
+     /*  z-index: 1;*/
+     /*}*/
+    /*z-indexはposition: absolute;と一緒に使用する。*/
+     .flash-title {
+       z-index: 7;
+       position: absolute;
+       top: 80px;
+       width: 100%;
+       /*margin: 0 auto;*/
+       /*text-align: center;*/
+       /*margin-left: 100px;*/
+       height: 66px;
+       background-color: #00CCFF;
+       display: table;
+     }
+
+     .flash-title h5 {
+       display: inline-block;
+       text-align: center;
+       /*width: 80%;*/
+       margin: 0 auto;
+       /*max-width: 500px;*/
+       display: table-cell;
+       vertical-align: middle;
+     }
+    </style>
+
   </body>
 </html>
-
-
-<script>
-  // $(document).on('turbolinks:load', function () {
-    $(function(){
-      $(".flash-title").fadeOut(2200);
-    });
-  // });
-
-//ページ読み込み後にページの最上部へ移動させる
-    onload = function() {
-      location.href = "#pageTop";
-    }
-
-</script>
-
-<style>
- /*header {*/
- /*  z-index: 1;*/
- /*}*/
-/*z-indexはposition: absolute;と一緒に使用する。*/
- .flash-title {
-   z-index: 7;
-   position: absolute;
-   top: 100px;
-   width: 100%;
-   /*margin: 0 auto;*/
-   /*text-align: center;*/
-   /*margin-left: 100px;*/
-   height: 66px;
-   background-color: #00CCFF;
-   display: table;
- }
-
- .flash-title h5 {
-   display: inline-block;
-   text-align: center;
-   /*width: 80%;*/
-   margin: 0 auto;
-   /*max-width: 500px;*/
-   display: table-cell;
-   vertical-align: middle;
- }
-</style>

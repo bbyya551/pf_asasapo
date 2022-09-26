@@ -41,7 +41,7 @@ class Public::GroupsController < ApplicationController
   def edit
     # binding.pry
     @group = Group.find(params[:id])
-    @tags = @group.tags.map { |tag| tag.name }
+    @tag_list = @group.tags.map { |tag| tag.name }
   end
 
   def update
@@ -77,6 +77,12 @@ class Public::GroupsController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    redirect_to groups_path, notice: "コミュニティを削除しました"
   end
 
   private

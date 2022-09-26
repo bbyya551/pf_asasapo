@@ -93,8 +93,9 @@ describe 'コミュニティ一覧画面のテスト' do
 
   describe 'コミュニティ詳細画面のテスト(自分がコミュニティのオーナーではない時)' do
     before do
-      logout_link = find_all('a')[6].native.inner_text
-      click_link logout_link
+      # logout_link = find_all('a')[6].native.inner_text
+      # click_link logout_link
+      click_link('ログアウト')
       expect(current_path).to eq('/')
       visit new_user_session_path
       fill_in 'user[email]', with: other_user.email
@@ -141,8 +142,9 @@ describe 'コミュニティ一覧画面のテスト' do
 
   describe 'コミュニティ詳細画面のテスト(自分がコミュニティのオーナーではなくて、すでにメンバーである時)' do
     before do
-      logout_link = find_all('a')[6].native.inner_text
-      click_link logout_link
+      # logout_link = find_all('a')[6].native.inner_text
+      # click_link logout_link
+      click_link('ログアウト')
       expect(current_path).to eq('/')
       # user = group.users[0]
       # byebug

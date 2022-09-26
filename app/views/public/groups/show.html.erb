@@ -38,6 +38,7 @@
 
                   <% if @group.owner_id == current_user.id %>
                     <%= link_to "編集", edit_group_path(@group.id), class: "btn btn-outline-success" %>
+                    <%= link_to "削除", group_path(@group.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
                     <!--ここにメール作成ボタンも追加-->
                     <%= link_to '朝活を開催', group_new_mail_path(@group), class: "btn btn-outline-warning" %>
                   <% end %>
