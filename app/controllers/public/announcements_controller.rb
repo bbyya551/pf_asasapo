@@ -39,7 +39,7 @@ class Public::AnnouncementsController < ApplicationController
   def destroy
     @user = User.find(params[:user_id])
     Announcement.find(params[:id]).destroy
-    redirect_to user_path(@user, "tab" => "tab3")
+    redirect_to user_path(@user, "tab" => "tab3"), notice: "朝活宣言を削除しました"
   end
 
   private
