@@ -81,6 +81,12 @@
         </li>
 
         <li class="nav-item">
+          <%= link_to admin_groups_path, class: 'nav-link text-dark',data: {"turbolinks"=>false} do %>
+            <i class="fa-solid fa-people-group" style="font-size: 16px; color: black;"></i> コミュニティ一覧
+          <% end %>
+        </li>
+
+        <li class="nav-item">
           <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
             <i class="fa-solid fa-users-viewfinder" style="font-size: 16px; color: black;"></i> 会員一覧
           <% end %>

@@ -1,0 +1,78 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="card">
+        <div class="card-header font-weight-bold text-center">
+         <%= link_to @group.name, admin_group_path(@group), class: "font-weight-bold" %>
+        </div>
+        <div class="card-body">
+          <div class="card-text d-flex align-items-center justify-content-center average-score">
+            <div class="star-rating mb-2">
+              <div class="star-rating-front" style="width: <%= @group.review_score_percentage %>%">★★★★★</div>
+              <div class="star-rating-back">★★★★★</div>
+            </div>
+            <div class="average-score-display ml-3 pt-2">
+              <%= @group.avg_score %>点(<%= @group.reviews.count %>件のレビュー)
+            </div>
+          </div>
+        </div>
+      </div>
+      <% if @reviews.present? %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="text-center">ユーザー</th>
+            <th class="text-center"></th>
+            <th class="text-center">点数</th>
+            <th class="text-center"></th>
+            <th class="text-center">内容</th>
+            <th class="text-center"></th>
+            <th colspan="6"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @reviews.each do |review| %>
+            <tr>
+              <td class="text-center">
+                <%= review.user.name %>
+              </td>
+              <td class="text-center">
+              </td>
+              <td class="text-center">
+                <%= review.score %>
+              </td>
+
+              <td class="text-center">
+                <!--<div class="card-text d-flex align-items-center justify-content-center average-score">-->
+                <!--<div class="star-rating mb-2">-->
+                <!--  <div class="star-rating-front" style="width: <%#= review.score*100 %> %">★★★★★</div>-->
+                <!--  <div class="star-rating-back">★★★★★</div>-->
+                <!--</div>-->
+
+                <!--<div class="average-score-display ml-3 pt-2">-->
+                <!--    <%#= @group.avg_score %>点（<%#= @group.reviews.count %>件のレビュー-->
+                <!--  </div>-->
+                <!--</div>-->
+              </td>
+
+              <td class="text-center">
+                <%= review.content %>
+                <span class="small text-muted justify-content-end">
+                  <%= l review.created_at, format: :default %>
+                </span>
+              </td>
+              <td class="text-center">
+                 <%= link_to "削除する", admin_group_review_path(review.group, review), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% else %>
+        <h5 class="text-center mt-5 mb-5">レビューはまだありません</h5>
+      <% end %>
+    </div>
+  </div>
+</div>

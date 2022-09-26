@@ -1,0 +1,52 @@
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th></th>
+      <th>コミュニティ名</th>
+      <th>コミュニティ紹介</th>
+      <th>作成日時</th>
+      <th></th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% groups.each do |group| %>
+      <tr class="hover-color">
+        <td>
+          <%= image_tag group.get_image(50, 50), class:"rounded-circle"; %>
+        </td>
+        <td>
+          <%= link_to group.name, admin_group_path(group.id) %>
+        </td>
+        <td>
+          <%= group.introduction.truncate(10) %>
+        </td>
+        <td>
+          <%= group.created_at.strftime('%Y/%m/%d') %>
+        </td>
+        <td>
+          レビュー数: <%= link_to group.reviews.count, admin_group_reviews_path(group.id) %>
+        </td>
+        <td>
+          <%= link_to "削除する", admin_group_path(group.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<style>
+  .hover-color {
+    background-color: #FFFFFF;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+  }
+
+  .hover-color:hover {
+    background-color: #dcdcdc;
+    /*cursor: pointer;*/
+  }
+</style>

@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :index, :destroy] do
       resources :post_comments, only: [:destroy, :index]
     end
-    resources :groups, only: [:index, :destroy, :show]
+    resources :groups, only: [:index, :destroy, :show] do
+      resources :reviews, only: [:index, :destroy]
+    end
   end
 
   devise_for :users,skip: [:passwords], controllers: {
@@ -42,7 +44,7 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    resources :groups, except: [:destroy] do
+    resources :groups do
       resource :group_users, only: [:create, :destroy]
       get "new/mail" => "groups#new_mail"
       get "send/mail" => "groups#send_mail"
