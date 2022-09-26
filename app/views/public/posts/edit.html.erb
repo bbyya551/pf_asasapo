@@ -17,7 +17,7 @@
       <div class="form-group">
         <!--ここで指定した:genre_nameはcreateアクションに送られる-->
         <%= f.label :genre_name, "ジャンル(半角スペースで複数ジャンル付けできます)" %> <i class="fa-solid fa-pen-clip"></i>
-        <%= f.text_field :genre_name, placeholder:"ジャンルをここに", class: 'form-control', value: @genres&.join(' ') %>
+        <%= f.text_field :genre_name, placeholder:"ジャンルをここに", class: 'form-control', value: @genre_list&.join(' ') %>
       </div>
       <div class="form-group">
         <%= f.label :body, "投稿本文" %> <i class="fa-solid fa-pen-clip"></i>

@@ -28,7 +28,7 @@
     </div>
     <%= f.hidden_field :group_id, value: group.id %>
     <%= f.hidden_field :score, id: "rating-value" %>
-    <%= f.text_field :content, class: "textarea", placeholder:"評価をここに(最大50文字)", autofocus: true, class: "form-control" %>
+    <%= f.text_field :content, class: "textarea", placeholder:"評価をここに(最大50文字)", class: "form-control" %>
     <%= f.submit "送信", class: "btn btn-sm btn-outline-warning" %>
     <%= link_to "他のレビューを見る", group_reviews_path(group), class: "btn btn-sm btn-outline-info ml-3 mt-3 mb-3" %>
   <% end %>

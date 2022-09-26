@@ -38,7 +38,7 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @genres = @post.genres.map { |genre| genre.name }
+    @genre_list = @post.genres.map { |genre| genre.name }
   end
 
   def update
@@ -55,7 +55,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to posts_path, notice: "投稿を削除しました"
   end
 
   private

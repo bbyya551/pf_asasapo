@@ -40,8 +40,10 @@ describe '[STEP1] ユーザログイン前のテスト' do
         expect(sign_up_link).to match(/新規登録/)
       end
       it '新規登録リンクの内容が正しい' do
-        sign_up_link = find_all('a')[1].native.inner_text
-        expect(page).to have_link sign_up_link, href: new_user_registration_path
+        # binding.irb
+        # sign_up_link = find_all('a')[1].native.inner_text
+        # expect(page).to have_link sign_up_link, href: new_user_registration_path
+        expect(page).to have_link '新規登録', href: new_user_registration_path
       end
 
       it 'ログインリンクが表示される' do
@@ -49,8 +51,9 @@ describe '[STEP1] ユーザログイン前のテスト' do
         expect(log_in_link).to match(/ログイン/)
       end
       it 'ログインリンクの内容が正しい' do
-        log_in_link = find_all('a')[2].native.inner_text
-        expect(page).to have_link log_in_link, href: new_user_session_path
+        # log_in_link = find_all('a')[2].native.inner_text
+        # expect(page).to have_link log_in_link, href: new_user_session_path
+        expect(page).to have_link 'ログイン', href: new_user_session_path
       end
 
       it '管理者はこちらリンクが表示される' do
@@ -58,8 +61,9 @@ describe '[STEP1] ユーザログイン前のテスト' do
         expect(admin_log_in_link).to match(/管理者はこちら/)
       end
       it '管理者はこちらリンクの内容が正しい' do
-        admin_log_in_link = find_all('a')[4].native.inner_text
-        expect(page).to have_link admin_log_in_link, href: new_admin_session_path
+        # admin_log_in_link = find_all('a')[4].native.inner_text
+        # expect(page).to have_link admin_log_in_link, href: new_admin_session_path
+        expect(page).to have_link '管理者はこちら', href: new_admin_session_path
       end
     end
   end
@@ -180,19 +184,19 @@ describe '[STEP1] ユーザログイン前のテスト' do
         expect(user_link).to match(/マイページ/)
       end
       it '投稿一覧リンクが表示される' do
-        posts_link = find_all('a')[3].native.inner_text
+        posts_link = find_all('a')[4].native.inner_text
         expect(posts_link).to match(/投稿一覧/)
       end
       it 'コミュニティ一覧リンクが表示される' do
-        groups_link = find_all('a')[4].native.inner_text
+        groups_link = find_all('a')[5].native.inner_text
         expect(groups_link).to match(/コミュニティ一覧/)
       end
       it '会員一覧リンクが表示される' do
-        users_link = find_all('a')[5].native.inner_text
+        users_link = find_all('a')[6].native.inner_text
         expect(users_link).to match(/会員一覧/)
       end
       it 'ログアウトリンクが表示される' do
-        logout_link = find_all('a')[6].native.inner_text
+        logout_link = find_all('a')[7].native.inner_text
         expect(logout_link).to match(/ログアウト/)
       end
     end
@@ -206,9 +210,10 @@ describe '[STEP1] ユーザログイン前のテスト' do
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button 'Log in'
-      logout_link = find_all('a')[6].native.inner_text
+      # logout_link = find_all('a')[6].native.inner_text
       # logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-      click_link logout_link
+      # click_link logout_link
+      click_link('ログアウト')
     end
 
     context 'ログアウト機能のテスト' do

@@ -20,7 +20,7 @@
                   <h5 id="post_<%= @post.id %>"><%= @post.created_at.strftime('%Y/%m/%d') %>  <span class="comments-count">コメント数:<%= @post.post_comments.count %></span>  <span class="favorite-btn"><%= render "public/favorites/btn", post: @post %></span></h5>
                   <p class="card-text"><%= @post.body %></p>
                   <% if @post.user == current_user %>
-                    <%= link_to "削除する", post_path(@post.id), method: :delete, class: "btn btn-outline-danger" %>
+                    <%= link_to "削除する", post_path(@post.id), method: :delete, class: "btn btn-outline-danger", "data-confirm" => "本当に削除しますか？" %>
                     <%= link_to "編集する", edit_post_path(@post.id), class: "btn btn-outline-success" %>
                   <% end %>
                   <span>

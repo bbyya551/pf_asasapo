@@ -27,26 +27,30 @@ describe 'ユーザーログイン後のテスト' do
   describe 'ヘッダーのテスト: ログインしている場合' do
     context 'リンクの内容を確認' do
       it 'マイページを押すと、自分のユーザ詳細画面に遷移する' do
-        mypage_link = find_all('a')[2].native.inner_text
-        click_link mypage_link
+        # mypage_link = find_all('a')[2].native.inner_text
+        # click_link mypage_link
+        click_link('マイページ')
         expect(current_path).to eq('/users/' + user.id.to_s)
       end
 
       it '投稿一覧を押すと、投稿一覧画面に遷移する' do
-        posts_link = find_all('a')[3].native.inner_text
-        click_link posts_link
+        # posts_link = find_all('a')[4].native.inner_text
+        # click_link posts_link
+        click_link('投稿一覧')
         expect(current_path).to eq('/posts')
       end
 
       it 'コミュニティ一覧を押すと、コミュニティ一覧画面に遷移する' do
-        groups_link = find_all('a')[4].native.inner_text
-        click_link groups_link
+        # groups_link = find_all('a')[5].native.inner_text
+        # click_link groups_link
+        click_link('コミュニティ一覧')
         expect(current_path).to eq('/groups')
       end
 
       it '会員一覧を押すと、会員一覧画面に遷移する' do
-        users_link = find_all('a')[5].native.inner_text
-        click_link users_link
+        # users_link = find_all('a')[6].native.inner_text
+        # click_link users_link
+        click_link('会員一覧')
         expect(current_path).to eq('/users')
       end
     end
@@ -370,8 +374,8 @@ describe 'ユーザーログイン後のテスト' do
       it '更新するボタンが表示される' do
         expect(page).to have_button '更新する'
       end
-      it 'deleteが表示される' do
-        expect(page).to have_link 'delete', href: user_announcement_path(user.id, announcement.id)
+      it '削除するが表示される' do
+        expect(page).to have_link '削除する', href: user_announcement_path(user.id, announcement.id)
       end
     end
 
@@ -398,11 +402,11 @@ describe 'ユーザーログイン後のテスト' do
       # byebug
     end
 
-    context 'deleteリンクのテスト' do
+    context '削除するリンクのテスト' do
       before do
         visit edit_user_announcement_path(user.id, announcement.id)
         # byebug ここではAnnouncement.all、一件ある。
-        click_link 'delete'
+        click_link '削除する'
         # byebug
       end
 

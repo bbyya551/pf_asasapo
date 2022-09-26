@@ -19,7 +19,7 @@
                   </p>
                   <h5 id="post_<%= @post.id %>"><%= @post.created_at.strftime('%Y/%m/%d') %>  <span class="comments-count">コメント数:<%= @post.post_comments.count %></span></h5>
                   <p class="card-text"><%= @post.body %></p>
-                  <%= link_to "削除する", admin_post_path(@post.id), method: :delete, class: "btn btn-outline-danger" %>
+                  <%= link_to "削除する", admin_post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
                   <span>
                     <i class="fas fa-user"></i> By <%= link_to @post.user.name, admin_user_path(@user.id) %>
                   </span>
@@ -42,8 +42,8 @@
   </div>
 </div>
 
-<style>
-  .card-image-top {
-    height: 400px;
-  }
-</style>
+<!--<style>-->
+<!--  .card-image-top {-->
+<!--    height: 400px;-->
+<!--  }-->
+<!--</style>-->
