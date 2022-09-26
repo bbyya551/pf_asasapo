@@ -41,7 +41,7 @@ class Public::GroupsController < ApplicationController
   def edit
     # binding.pry
     @group = Group.find(params[:id])
-    @tags = @group.tags.map { |tag| tag.name }
+    @tag_list = @group.tags.map { |tag| tag.name }
   end
 
   def update

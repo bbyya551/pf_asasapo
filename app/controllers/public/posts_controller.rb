@@ -38,7 +38,7 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @genres = @post.genres.map { |genre| genre.name }
+    @genre_list = @post.genres.map { |genre| genre.name }
   end
 
   def update
