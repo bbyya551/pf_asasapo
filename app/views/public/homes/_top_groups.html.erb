@@ -2,14 +2,14 @@
   <% count = 0 %>
   <% groups.each_with_index do |group, index| %>
   <% @owner = User.find(group.owner_id) %>
-    <div class="card px-0 shadow-lg col-4">
+    <div class="card mt-1 mr-3 ml-2 mb-1 px-0 shadow-lg hover-color col-4">
       <%= image_tag group.get_image(200, 200), class: "card-img-top top-index-img" %>
       <div class="card-body">
-        <h4 class="card-title">
+        <h5 class="card-title">
           <%= link_to new_user_registration_path, class: "text-dark" do %>
             <strong><i class="fa-solid fa-people-group"></i></i><span> <%= group.name.truncate(9) %></span></strong>
           <% end %>
-        </h4>
+        </h5>
         <p class="card-text">
           メンバー数: <%= group.group_users.count %>人<br>
           説明:<%= group.introduction.truncate(10) %>
@@ -25,7 +25,7 @@
 
           <span>
             <% if !@owner.is_deleted %>
-              <i class="fas fa-user"></i> 作成者: <%= image_tag @owner.get_profile_image(30,30), class:"rounded-circle"; %><%= @owner.name %>
+              <i class="fas fa-user"></i> 作成者: <%= image_tag @owner.get_profile_image(30,30), class:"rounded-circle"; %><%= @owner.name.truncate(12) %>
             <% else %>
               <p>作成者: <%= image_tag 'no_image.jpg', :size => '30x30' %>退会済みユーザ</p>
             <% end %>
@@ -36,10 +36,27 @@
     </div>
     <% count = index + 1 %>
   <% end %>
+  <% col = count != 3 ? (3-(count%3)) : 0 %>
+  <% for num in 1..col %>
+    <div class="col-4"></div>
+  <% end %>
 </div>
 
 <style>
   .card {
     border-radius: 27px;
+  }
+
+  .hover-color {
+    background-color: #FFFFFF;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+  }
+
+  .hover-color:hover {
+    background-color: #EEEEEE;
+    /*cursor: pointer;*/
   }
 </style>

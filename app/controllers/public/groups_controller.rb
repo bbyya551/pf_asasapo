@@ -31,6 +31,9 @@ class Public::GroupsController < ApplicationController
     @group.owner_id = current_user.id
     @tag_list = params[:group][:tag_name].split(/[[:blank:]]+/).select(&:present?)
     if @group.save
+      #コミュニティを作る際、自分(current_user)をメンバーに入れるために以下2行を記述
+      group_user = current_user.group_users.new(group_id: @group.id)
+      group_user.save
       @group.save_tags(@tag_list)
       redirect_to group_path(@group), notice: "コミュニティの作成に成功しました"
     else
