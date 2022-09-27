@@ -1,9 +1,3 @@
-<div class="container">
-  <div class="row justify-content-end mb-1">
-    <%#= render 'public/searches/form' %>
-    <%= render 'public/searches/genre_form' %>
-  </div>
-</div>
 <div class="card-deck">
   <!--countの初期値0-->
   <% count = 0 %>
@@ -24,7 +18,7 @@
           <br><span class="favorite-btn"><%= render "public/favorites/btn", post: post %></span>
         </h6>
         <p class="card-text">説明:<%= post.body.truncate(10) %></p>
-        <span><i class="fas fa-user"></i> By<%= image_tag post.user.get_profile_image(30,30), class:"rounded-circle"; %><%= post.user.name %></span>
+        <span><i class="fas fa-user"></i> By<%= image_tag post.user.get_profile_image(30,30), class:"rounded-circle"; %><%= post.user.name.truncate(10) %></span>
       </div>
     </div>
     <!--count = 投稿 + 1(投稿数1の場合は、index = 0)-->

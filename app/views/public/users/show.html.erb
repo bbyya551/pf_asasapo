@@ -5,8 +5,13 @@
       <%= render 'info', user: @user %>
     </div>
     <div class='col-md-8'>
-
-      <div class="wrap mt-3 mb-5">
+      <!--<div class="container">-->
+      <!--  <div class="row justify-content-end mb-1">-->
+          <%#= render 'public/searches/form' %>
+      <!--    <%#= render 'public/searches/genre_form' %>-->
+      <!--  </div>-->
+      <!--</div>-->
+      <div class="wrap mt-3 mb-2">
         <ul id="tab-menu">
           <li><a href="#tab1" class="active"><%= @user.name.truncate(13) %>さんの投稿</a></li>
           <li><a href="#tab2" class="">朝活達成状況</a></li>
