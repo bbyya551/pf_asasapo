@@ -11,7 +11,7 @@
   <% posts.each_with_index do |post, index| %>
    <% unless post.user.is_deleted %>
     <!--<div class="card w-200 mx-auto mt-4 h-500 shadow-lg">-->
-    <div class="card mt-1 mr-2 ml-1 px-0 shadow-lg col-4">
+    <div class="card mt-1 mr-2 ml-1 px-0 hover-color shadow-lg col-4">
       <%= image_tag post.get_post_image(300, 300), class: "card-img-top index-img" %>
       <div class="card-body">
         <h5 class="card-title">
@@ -61,6 +61,19 @@
 
   .card {
     border-radius: 10px;
+  }
+
+  .hover-color {
+    background-color: #FFFFFF;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+  }
+
+  .hover-color:hover {
+    background-color: #EEEEEE;
+    /*cursor: pointer;*/
   }
 </style>
 
