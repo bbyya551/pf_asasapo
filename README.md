@@ -17,11 +17,11 @@
 
 ## 設計書
 ### ER図
-![朝サポ_ERdrawio](https://user-images.githubusercontent.com/106591130/192281334-412df0cd-0d24-440d-a444-0e532049bf39.png)
+![朝サポ_ER図](https://user-images.githubusercontent.com/106591130/192537813-6e114a02-aa0d-44dc-92d7-46a782862c13.png)
 ### アプリケーション詳細設計
-[朝サポ_アプリケーション 詳細設計.pdf](https://github.com/bbyya551/pf_asasapo/files/9646352/_.pdf)
+[朝サポ_アプリケーション詳細設計書.pdf](https://github.com/bbyya551/pf_asasapo/files/9656247/_.pdf)
 ### テーブル定義所
-[朝サポ_テーブル定義書.pdf](https://github.com/bbyya551/pf_asasapo/files/9646349/_.pdf)
+[朝サポ_テーブル定義書.pdf](https://github.com/bbyya551/pf_asasapo/files/9656233/_.pdf)
 
 ## 開発環境
 - OS：Amazon Linux2

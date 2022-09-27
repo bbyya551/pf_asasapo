@@ -5,12 +5,17 @@
     <div class="col-md-6 mx-auto">
       <div class="form-inline">
         <span>
-          <strong><%= link_to visitor.name, user_path(visitor.id),data: {"turbolinks"=>false} %></strong>
+          <strong>
+            <%= link_to user_path(visitor.id), data: {"turbolinks"=>false} do %>
+              <span><%= image_tag visitor.get_profile_image(30, 30), class: "icon_mini" %></span>
+              <%= visitor.name %>
+            <% end %>
+          </strong>
           <%= 'さんが' %>
           <% case notification.action %>
           <% when 'announcement' then %>
             <%= link_to user_path(visitor.id, "tab" => "tab2"),data: {"turbolinks"=>false} do %>
-              <%= image_tag notification.announcement.user.get_profile_image(50, 50), class: "icon_mini" %>
+              <%= image_tag notification.announcement.user.get_profile_image(30, 30), class: "icon_mini" %>
               <<%= notification.announcement.announcement %>>
             <% end %>
             朝活を宣言しました!
@@ -25,7 +30,7 @@
             <% else %>
             <span>
               <%= link_to post_path(notification.post.id),data: {"turbolinks"=>false} do %>
-                <%= image_tag notification.post.user.get_profile_image(50, 50), class: "icon_mini" %>
+                <%= image_tag notification.post.user.get_profile_image(30, 30), class: "icon_mini" %>
                 <strong>
                   <%= notification.post.user.name %>さんの投稿
                 </strong>

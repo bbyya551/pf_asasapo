@@ -1,0 +1,55 @@
+<table class="table table-borderless">
+  <thead>
+    <tr>
+      <th class="text-center">通報No</th>
+      <th class="text-center">通報された人</th>
+      <th class="text-center">通報した人</th>
+      <th class="text-center">ステータス</th>
+      <th class="text-center"></th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% reports.each do |report| %>
+      <tr class="hover-color">
+        <td class="text-center">
+          <%= report.id %>
+        </td>
+        <td class="text-center">
+          <%= report.reported.name %>
+        </td>
+        <td class="text-center">
+          <%= report.reporter.name %>
+        </td>
+        <td class="text-center">
+          <% if report.status == "waiting" %>
+            <span class="text-danger"><%= report.status_i18n %></span>
+          <% elsif report.status == "keep" %>
+            <span class="text-warning"><%= report.status_i18n %></span>
+          <% else %>
+            <span class="text-success"><%= report.status_i18n %></span>
+          <% end %>
+        </td>
+        <td class="text-center">
+          <%= link_to "Show", admin_report_path(report.id), class: "btn btn-outline-warning" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<style>
+  .hover-color {
+    background-color: #FFFFFF;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all  0.3s ease;
+  }
+
+  .hover-color:hover {
+    background-color: #dcdcdc;
+    /*cursor: pointer;*/
+  }
+</style>

@@ -4,6 +4,11 @@ ja:
    achieve_status:
     nonachieve: "未達成"
     achieve: "達成"
+  report:
+   status:
+    waiting: "対応待ち"
+    keep: "保留"
+    finish: "対応完了"
 
  views:
   pagination:
@@ -16,6 +21,7 @@ ja:
      group: コミュニティ
      review: レビュー
      chat: チャット
+     report: 通報
    attributes:
      user:
        name: 名前
@@ -33,6 +39,8 @@ ja:
        score: 点数
      chat:
        message: メッセージ
+     report:
+       reason: 通報理由
 
 
  time:
