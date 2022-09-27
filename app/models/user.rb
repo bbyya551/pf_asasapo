@@ -42,6 +42,10 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   has_many :reviews, dependent: :destroy
+
+  has_many :reports, class_name: "Report", foreign_key: "reporter_id", dependent: :destroy
+  has_many :reverse_of_reports, class_name: "Report", foreign_key: "reported_id", dependent: :destroy
+
   validates :name, length: { minimum: 2, maximum: 13 }, uniqueness: true
   validates :introduction, length: { maximum: 13 }
 

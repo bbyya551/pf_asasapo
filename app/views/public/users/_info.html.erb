@@ -1,7 +1,12 @@
 <div class="profile-border text-center">
   <table class='table table-borderless'>
     <tr><h5 class="text-center title-color"><%= user.name %>さんの<br>プロフィール</h5></tr>
-    <tr><%= image_tag user.get_profile_image(100, 100), class: "rounded-circle" %></tr>
+    <tr>
+      <%= image_tag user.get_profile_image(100, 100), class: "rounded-circle" %>
+      <% if current_user != user %>
+        <span><%= link_to "通報", new_user_report_path(user), class: "btn btn-outline-danger" %></span>
+      <% end %>
+    </tr>
     <tr>
   	  <th>ユーザー名</th>
   	  <th><%= user.name %></th>
@@ -84,7 +89,7 @@
 
 <div class='row mt-1 d-flex align-items-center justify-content-center'>
   <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
-    <%= link_to 'chatを始める', chat_path(user.id), class: "ml-3, btn btn-outline-warning" %>
+    <%= link_to 'chatを始める', chat_path(user.id), class: "ml-3 btn btn-outline-warning" %>
   <% end %>
   <% if current_user != user %>
     <span class="ml-2"><%= render "public/relationships/btn", user: user %></span>

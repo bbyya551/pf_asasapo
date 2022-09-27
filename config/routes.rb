@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'reports/index'
+    get 'reports/show'
+    get 'reports/update'
+  end
+  namespace :public do
+    get 'reports/new'
+    get 'reports/create'
+  end
   namespace :public do
     get 'announcements/edit'
   end
@@ -9,6 +18,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
+    resources :reports, only: [:index, :show, :update]
     resources :users, only: [:show, :edit, :update, :index]
     resources :posts, only: [:show, :index, :destroy] do
       resources :post_comments, only: [:destroy, :index]
@@ -38,6 +48,7 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
+      resources :reports, only: [:new, :create]
     end
 
     resources :posts do

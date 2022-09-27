@@ -1,0 +1,34 @@
+<table class='table table-borderless'>
+  <tr>
+	  <th>通報No</th></th>
+	  <th><%= report.id %></th>
+  </tr>
+  <tr>
+	  <th>通報された人</th>
+	  <th><%= report.reported.name %></th>
+  </tr>
+  <tr>
+	  <th>理由</th>
+	  <th><%= report.reason %></th>
+  </tr>
+  <tr>
+    <th>通報した人</th>
+    <th><%= report.reporter.name %></th>
+  </tr>
+  <tr>
+	  <th>対応ステータス</th>
+	  <th>
+	    <% if report.status == "waiting" %>
+        <span class="text-danger"><%= report.status_i18n %></span>
+      <% elsif report.status == "keep" %>
+        <span class="text-warning"><%= report.status_i18n %></span>
+      <% else %>
+        <span class="text-success"><%= report.status_i18n %></span>
+      <% end %>
+      <%= form_with model: report, url: admin_report_path(report), method: :patch, local: true do |f| %>
+        <%= f.select :status, Report.statuses.keys.map { |k| [t("enums.report.status.#{k}"), k] } %>
+        <%= f.submit '更新', class: "btn btn-outline-success" %>
+      <% end %>
+	  </th>
+  </tr>
+</table>
