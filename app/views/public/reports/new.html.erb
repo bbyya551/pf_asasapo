@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row no-gutters'>
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
-    <h2 class="text-center text-dark bg-light p-4 mb-0">通報 <i class="fa-solid fa-circle-plus"></i></h2>
+    <h2 class="text-center text-dark bg-light p-4 mb-0">通報 <i class="fa-solid fa-triangle-exclamation"></i></h2>
     <div class="form-body bg-light p-4">
     <%= form_with model: [@user, @report] do |f| %>
       <%= render 'layouts/errors', obj: @report %>
@@ -22,3 +22,10 @@
     </div>
   </div>
 </div>
+
+<style>
+  .fa-triangle-exclamation {
+    color: #FFD700;
+  }
+
+</style>
