@@ -42,7 +42,7 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
   has_many :reviews, dependent: :destroy
-  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+  validates :name, length: { minimum: 2, maximum: 13 }, uniqueness: true
   validates :introduction, length: { maximum: 13 }
 
   def self.search_for(content, method)

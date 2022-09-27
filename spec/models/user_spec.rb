@@ -20,12 +20,12 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         user.name = Faker::Lorem.characters(number: 2)
         is_expected.to eq true
       end
-      it '20文字以下であること: 20文字は〇' do
-        user.name = Faker::Lorem.characters(number: 20)
+      it '13文字以下であること: 13文字は〇' do
+        user.name = Faker::Lorem.characters(number: 13)
         is_expected.to eq true
       end
-      it '20文字以下であること: 21文字は×' do
-        user.name = Faker::Lorem.characters(number: 21)
+      it '13文字以下であること: 14文字は×' do
+        user.name = Faker::Lorem.characters(number: 14)
         is_expected.to eq false
       end
       it '一意性があること' do

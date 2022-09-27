@@ -40,12 +40,12 @@
     <div class="card mt-1 mr-2 ml-1 mb-1 px-0 shadow-lg col-4">
       <%= image_tag group.get_image(300, 300), class: "card-img-top index-img" %>
       <div class="card-body">
-        <h4 class="card-title">
+        <h5 class="card-title">
           <!--turbolinksのエラー無くす記述!-->
           <%= link_to group_path(group.id), class: "text-dark",data: {"turbolinks"=>false} do %>
-            <strong><i class="fa-solid fa-people-group"></i><span> <%= group.name %></span></strong>
+            <strong><i class="fa-solid fa-people-group"></i><span> <%= group.name.truncate(9) %></span></strong>
           <% end %>
-        </h4>
+        </h5>
         <!--<h6 id="post_<%#= post.id %>"><%#= post.created_at.strftime('%Y/%m/%d') %>-->
         <!--  <br><span class="comments-count">コメント数:<#%= post.post_comments.count %></span>-->
         <!--  <br><span class="favorite-btn"><%#= render "public/favorites/btn", post: post %></span>-->
