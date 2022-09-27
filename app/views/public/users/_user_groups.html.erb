@@ -16,7 +16,7 @@
         <td class="text-center"><%= image_tag group.get_image(50, 50), class:"rounded-circle"; %></td>
         <td class="text-center"><%= link_to group.name.truncate(9), group_path(group.id) %></td>
         <td class="text-center">
-          <% if @owner == current_user %>
+          <% if @owner == @user %>
             <%= group.group_users.count %>人<i class="fa-solid fa-medal"></i>
           <% else %>
             <%= group.group_users.count %>人
