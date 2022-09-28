@@ -15,14 +15,22 @@
       <tr class="hover-color">
         <td><%= image_tag post.get_post_image(100, 100), class: "rounded-circle"; %></td>
         <td>
-          <%= link_to post_path(post.id), class: "text-dark" do %>
-            <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
+          <%= link_to post_path(post.id), class: "text-dark",data: {"turbolinks"=>false} do %>
+            <strong>
+              <i class="far fa-flag"></i>
+              <span>
+                <%= post.title.truncate(10) %>
+                  <% if post.status == "private" %>
+                    <i class="fa-solid fa-lock"></i>
+                  <% end %>
+              </span>
+            </strong>
           <% end %>
         </td>
         <td>説明:<%= post.body.truncate(10) %></td>
         <td>
          <h6 id="post_<%= post.id %>"><%= post.created_at.strftime('%Y/%m/%d') %>
-          <br><span class="comments-count">コメント数:<%= post.post_comments.count %></span>
+          <br><span class="comments-count"><i class="fa-regular fa-comment"></i>:<%= post.post_comments.count %></span>
           <br><span class="favorite-btn"><%= render "public/favorites/btn", post: post %></span>
          </h6>
         </td>

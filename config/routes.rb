@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       resources :reports, only: [:new, :create]
+      get "private_posts" => "users#private_posts"
     end
 
     resources :posts do
@@ -64,7 +65,7 @@ Rails.application.routes.draw do
 
     get "tags" => "groups#tags"
 
-    resources :notifications, only: [:index]
+    resources :notifications, only: [:index, :update]
 
     get '/search', to: 'searches#search'
 

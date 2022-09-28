@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user_private, only: [:private_posts]
   before_action :set_user, only: [:favorites]
   before_action :ensure_guest_user, only: [:edit]
   # before_action :set_announcements, only: [:show]
@@ -24,7 +25,8 @@ class Public::UsersController < ApplicationController
     #   end
     # end
 
-    @posts = @user.posts.order(created_at: :desc).page(params[:posts_page])
+    @posts = @user.posts.status_public.order(created_at: :desc).page(params[:posts_page])
+    # @public_posts = @user.posts.status_public.order(created_at: :desc).page(params[:posts_page])
     @announcements = @user.announcements.order('created_at DESC')
     # 新着宣言を上から1件取得
     @announcements_latest1 = @announcements.first(1)
@@ -40,6 +42,12 @@ class Public::UsersController < ApplicationController
     # @user = current_user
     # @announcements = @user.announcements.page(params[:page]).per(3)
     # byebug
+  end
+
+  def private_posts
+    @user = User.find(params[:user_id])
+    @private_posts = @user.posts.status_private.order(created_at: :desc).page(params[:private_posts_page])
+    @user_groups = @user.groups.page(params[:user_groups_page]).per(3)
   end
 
   def edit
@@ -72,7 +80,9 @@ class Public::UsersController < ApplicationController
     #   favorite_post = Post.where(id: favorite)
     # end
     #whereは複数のidを指定可能
-    @favorite_posts = Post.where(id: favorites).order(created_at: :desc).page(params[:favorite_posts_page])
+    @favorite_posts = Post.where(id: favorites, status: "public").order(created_at: :desc).page(params[:favorite_posts_page])
+    # @public_favorite_posts = Post.where(id: favorites, status: "public").order(created_at: :desc).page(params[:favorite_posts_page])
+    # binding.pry
     @user_groups = @user.groups.page(params[:user_groups_page]).per(3)
     respond_to do |format|
       format.html
@@ -97,6 +107,13 @@ class Public::UsersController < ApplicationController
 
   def correct_user
     @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user.id)
+    end
+  end
+
+  def correct_user_private
+    @user = User.find(params[:user_id])
     unless @user == current_user
       redirect_to user_path(current_user.id)
     end

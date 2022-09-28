@@ -1,3 +1,3 @@
 /* global $*/
 $('#paginate-user').html("<%= escape_javascript(render 'public/users/user_groups', user_groups: @user_groups) %>");
-$('#index-ajax').html("<%= escape_javascript(render 'public/posts/index', posts: @posts) %>");
+$('#private-posts').html("<%= escape_javascript(render 'public/users/private_posts', posts: @private_posts) %>");
