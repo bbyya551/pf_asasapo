@@ -1,7 +1,7 @@
 class Admin::ReviewsController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
-    @reviews = @group.reviews
+    @reviews = @group.reviews.order(created_at: :desc)
   end
 
   def destroy
