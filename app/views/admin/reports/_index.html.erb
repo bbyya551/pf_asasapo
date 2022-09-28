@@ -5,8 +5,9 @@
       <th class="text-center">通報された人</th>
       <th class="text-center">通報した人</th>
       <th class="text-center">ステータス</th>
+      <th class="text-center">通報日</th>
       <th class="text-center"></th>
-      <th colspan="5"></th>
+      <th colspan="6"></th>
     </tr>
   </thead>
 
@@ -30,6 +31,9 @@
           <% else %>
             <span class="text-success"><%= report.status_i18n %></span>
           <% end %>
+        </td>
+        <td class="text-center">
+          <%= l report.created_at, format: :default %>
         </td>
         <td class="text-center">
           <%= link_to "Show", admin_report_path(report.id), class: "btn btn-outline-warning" %>

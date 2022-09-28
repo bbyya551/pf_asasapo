@@ -16,6 +16,10 @@
     <th><%= report.reporter.name %></th>
   </tr>
   <tr>
+    <th>通報日</th>
+    <th><%= l report.created_at, format: :default %></th>
+  </tr>
+  <tr>
 	  <th>対応ステータス</th>
 	  <th>
 	    <% if report.status == "waiting" %>
