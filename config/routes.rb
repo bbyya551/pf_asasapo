@@ -65,7 +65,7 @@ Rails.application.routes.draw do
 
     get "tags" => "groups#tags"
 
-    resources :notifications, only: [:index]
+    resources :notifications, only: [:index, :update]
 
     get '/search', to: 'searches#search'
 

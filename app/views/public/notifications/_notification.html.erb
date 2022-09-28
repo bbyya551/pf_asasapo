@@ -2,52 +2,61 @@
 <% visited = notification.visited %>
 <div class="container">
   <div class="row">
-    <div class="col-md-6 mx-auto">
-      <div class="form-inline">
-        <span>
-          <strong>
-            <%= link_to user_path(visitor.id), data: {"turbolinks"=>false} do %>
-              <span><%= image_tag visitor.get_profile_image(30, 30), class: "icon_mini" %></span>
-              <%= visitor.name %>
-            <% end %>
-          </strong>
-          <%= 'さんが' %>
-          <% case notification.action %>
-          <% when 'announcement' then %>
-            <%= link_to user_path(visitor.id, "tab" => "tab2"),data: {"turbolinks"=>false} do %>
-              <%= image_tag notification.announcement.user.get_profile_image(30, 30), class: "icon_mini" %>
-              <<%= notification.announcement.announcement %>>
-            <% end %>
-            朝活を宣言しました!
-          <% when 'follow' then %>
-            <%= "あなたをフォローしました" %>
-          <% when 'Like' then %>
-            <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;",data: {"turbolinks"=>false} %>
-            <%= 'にいいねしました' %>
-          <% when 'comment' then %>
-            <% if notification.post.user_id == visited.id %>
-              <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;",data: {"turbolinks"=>false} %>
-            <% else %>
-            <span>
-              <%= link_to post_path(notification.post.id),data: {"turbolinks"=>false} do %>
-                <%= image_tag notification.post.user.get_profile_image(30, 30), class: "icon_mini" %>
-                <strong>
-                  <%= notification.post.user.name %>さんの投稿
-                </strong>
+    <div class="col-md-7 mx-auto">
+      <% if notification.checked == false %>
+        <div class="form-inline">
+          <span>
+            <strong>
+              <%= link_to user_path(visitor.id), data: {"turbolinks"=>false} do %>
+                <span><%= image_tag visitor.get_profile_image(30, 30), class: "icon_mini" %></span>
+                <%= visitor.name %>
               <% end %>
+            </strong>
+            <%= 'さんが' %>
+            <% case notification.action %>
+            <% when 'announcement' then %>
+              <%= link_to user_path(visitor.id, "tab" => "tab2"),data: {"turbolinks"=>false} do %>
+                <%= image_tag notification.announcement.user.get_profile_image(30, 30), class: "icon_mini" %>
+                <<%= notification.announcement.announcement %>>
+              <% end %>
+              朝活を宣言しました!
+              <%= link_to '既読にする', notification_path(notification.id), method: :patch, class: 'btn btn-sm btn-info text-white' %>
+            <% when 'dm' then %>
+              あなたにチャットメッセージを送りました!!
+              <%= link_to '既読にする', notification_path(notification.id), method: :patch, class: 'btn btn-sm btn-info text-white' %>
+            <% when 'follow' then %>
+              <%= "あなたをフォローしました" %>
+              <%= link_to '既読にする', notification_path(notification.id), method: :patch, class: 'btn btn-sm btn-info text-white' %>
+            <% when 'Like' then %>
+              <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;",data: {"turbolinks"=>false} %>
+              <%= 'にいいねしました' %>
+              <%= link_to '既読にする', notification_path(notification.id), method: :patch, class: 'btn btn-sm btn-info text-white' %>
+            <% when 'comment' then %>
+              <% if notification.post.user_id == visited.id %>
+                <%= link_to "あなたの投稿", notification.post, style: "font-weight: bold;",data: {"turbolinks"=>false} %>
+              <% else %>
+              <span>
+                <%= link_to post_path(notification.post.id),data: {"turbolinks"=>false} do %>
+                  <%= image_tag notification.post.user.get_profile_image(30, 30), class: "icon_mini" %>
+                  <strong>
+                    <%= notification.post.user.name %>さんの投稿
+                  </strong>
+                <% end %>
+              <% end %>
+                にコメントしました
+                <P class="text-muted.mb-0">
+                  <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
+                </P>
+              </span>
+              <%= link_to '既読にする', notification_path(notification.id), method: :patch, class: 'btn btn-sm btn-info text-white' %>
             <% end %>
-              にコメントしました
-              <P class="text-muted.mb-0">
-                <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
-              </P>
-            </span>
-          <% end %>
-        </span>
-        <div class="small text-muted text-right">
-          <%= time_ago_in_words(notification.created_at).upcase %>
+          </span>
+          <div class="small text-muted text-right">
+            <%= time_ago_in_words(notification.created_at).upcase %>
+          </div>
         </div>
-      </div>
-      <hr>
+        <hr>
+      <% end %>
     </div>
   </div>
 </div>

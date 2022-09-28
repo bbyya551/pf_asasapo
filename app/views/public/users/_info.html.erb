@@ -71,7 +71,7 @@
             <i class="fa-solid fa-heart-circle-check" aria-hidden="true" style="color: red;"></i>
           <% end %>
         </span>
-        <p class="arrow_box"><%= user.name %>さんの<br>ブックマーク</p>
+        <p class="arrow_box"><%= user.name.truncate(7) %>さんの<br>ブックマーク</p>
       </span>
 
       <span class="">
@@ -80,12 +80,12 @@
             <i class="fa-solid fa-lock"></i>
           <% end %>
         </span>
-        <p class="arrow_box"><%= user.name %>さんの<br>非公開投稿</p>
+        <p class="arrow_box"><%= user.name.truncate(7) %>さんの<br>非公開投稿</p>
       </span>
     </div>
  <% else %>
     <div id="menu">
-       <span class="ml-3 mr-4">
+       <span class="mr-1">
         <% if user.name != "guestuser" %>
          <span class="user-edit-btn">
           <%= link_to edit_user_path(user.id), class: "btn btn-lg btn-outline-warning" do %>
@@ -96,7 +96,7 @@
         <% end %>
        </span>
 
-      <span class="mr-4">
+      <span class="mr-1">
         <span class="new-group-btn">
           <%= link_to new_group_path, class: "btn btn-lg btn-outline-warning" do %>
             <i class="fa-solid fa-people-group"></i>
@@ -105,7 +105,7 @@
         <p class="arrow_box">新規コミュニテイ作成</p>
       </span>
 
-      <span class="mr-4">
+      <span class="mr-1">
         <span class="new-post-btn">
           <%= link_to new_post_path, class: 'btn btn-lg btn-outline-warning' do %>
             <i class="fa-solid fa-pen-to-square"></i>
@@ -114,14 +114,14 @@
         <p class="arrow_box">新規投稿</p>
       </span>
 
-      <span class="mr-3">
+      <span class="">
         <span class="favorite-post-btn">
           <%= link_to favorites_user_path(user), class: 'btn btn-lg btn-outline-warning' do %>
             <!--<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>-->
             <i class="fa-solid fa-heart-circle-check" aria-hidden="true" style="color: red;"></i>
           <% end %>
         </span>
-        <p class="arrow_box"><%= user.name %>さんの<br>ブックマーク</p>
+        <p class="arrow_box"><%= user.name.truncate(7) %>さんの<br>ブックマーク</p>
       </span>
     </div>
  <% end %>
@@ -130,10 +130,10 @@
 
 <div class='row mt-1 d-flex align-items-center justify-content-center'>
   <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
-    <%= link_to 'chatを始める', chat_path(user.id), class: "ml-2 btn btn-outline-warning" %>
+    <span style="margin-left: 7px;"><%= link_to 'chatを始める', chat_path(user.id), class: "btn btn-outline-warning" %></span>
   <% end %>
   <% if current_user != user %>
-    <span class="ml-2"><%= render "public/relationships/btn", user: user %></span>
+    <span class="ml-1"><%= render "public/relationships/btn", user: user %></span>
   <% end %>
 </div>
 
