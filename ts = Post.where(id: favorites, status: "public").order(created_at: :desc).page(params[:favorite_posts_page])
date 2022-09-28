@@ -1,0 +1,21 @@
+
+[1mFrom:[0m /home/ec2-user/environment/pf_asasapo/app/controllers/public/users_controller.rb:78 Public::UsersController#favorites:
+
+    [1;34m69[0m: [32mdef[0m [1;34mfavorites[0m
+    [1;34m70[0m:   favorites = [1;34;4mFavorite[0m.where([35muser_id[0m: @user.id).pluck([33m:post_id[0m)
+    [1;34m71[0m:   [1;34m# @favorite_posts =[0m
+    [1;34m72[0m:   [1;34m# favorites.each do |favorite|[0m
+    [1;34m73[0m:   [1;34m#   favorite_post = Post.where(id: favorite)[0m
+    [1;34m74[0m:   [1;34m# end[0m
+    [1;34m75[0m:   [1;34m#whereは複数のidを指定可能[0m
+    [1;34m76[0m:   @favorite_posts = [1;34;4mPost[0m.where([35mid[0m: favorites).order([35mcreated_at[0m: [33m:desc[0m).page(params[[33m:favorite_posts_page[0m])
+    [1;34m77[0m:   @public_favorite_posts = [1;34;4mPost[0m.where([35mid[0m: favorites, [35mstatus[0m: [31m[1;31m"[0m[31mpublic[1;31m"[0m[31m[0m).order([35mcreated_at[0m: [33m:desc[0m).page(params[[33m:favorite_posts_page[0m])
+ => [1;34m78[0m:   binding.pry
+    [1;34m79[0m:   @user_groups = @user.groups.page(params[[33m:user_groups_page[0m]).per([1;34m3[0m)
+    [1;34m80[0m:   respond_to [32mdo[0m |format|
+    [1;34m81[0m:     format.html
+    [1;34m82[0m:     format.js
+    [1;34m83[0m:   [32mend[0m
+    [1;34m84[0m:   [1;34m# @announcements = @user.announcements[0m
+    [1;34m85[0m: [32mend[0m
+

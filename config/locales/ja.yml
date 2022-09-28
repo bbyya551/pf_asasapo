@@ -9,6 +9,10 @@ ja:
     waiting: "対応待ち"
     keep: "保留"
     finish: "対応完了"
+  post:
+   status:
+    public: "公開"
+    private: "非公開"
 
  views:
   pagination:

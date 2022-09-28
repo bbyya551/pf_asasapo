@@ -10,7 +10,15 @@
       <div class="card-body">
         <h5 class="card-title">
           <%= link_to post_path(post.id), class: "text-dark",data: {"turbolinks"=>false} do %>
-            <strong><i class="fa-solid fa-feather"></i><span> <%= post.title.truncate(9) %></span></strong>
+            <strong>
+              <i class="fa-solid fa-feather"></i>
+              <span>
+                <%= post.title.truncate(9) %>
+                <% if post.status == "private" %>
+                  <i class="fa-solid fa-lock"></i>
+                <% end %>
+              </span>
+            </strong>
           <% end %>
         </h5>
         <h6 id="post_<%= post.id %>"><%= post.created_at.strftime('%Y/%m/%d') %>

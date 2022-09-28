@@ -1,11 +1,14 @@
 <div class="profile-border text-center">
   <table class='table table-borderless'>
-    <tr><h5 class="text-center title-color"><%= user.name %>さんの<br>プロフィール</h5></tr>
+    <tr>
+      <h5 class="d-flex align-items-center justify-content-center title-color">
+        <span>
+          <%= user.name %>さんの<br>プロフィール
+        </span>
+      </h5>
+    </tr>
     <tr>
       <%= image_tag user.get_profile_image(100, 100), class: "rounded-circle" %>
-      <% if current_user != user %>
-        <span><%= link_to "通報", new_user_report_path(user), class: "ml-3 btn btn-outline-danger" %></span>
-      <% end %>
     </tr>
     <tr>
   	  <th>ユーザー名</th>
@@ -29,70 +32,108 @@
     </tr>
   </table>
 
-<!--<%# unless user.id == current_user.id %>-->
-<!--  <%# if current_user.following?(user) && user.following?(current_user) %>-->
-<!--    <%# if @isRoom == true %>-->
-<!--      <%#= link_to "チャットへ", room_path(@roomId), class: "btn btn-outline-primary" %>-->
-<!--    <%# else %>-->
-<!--      <%#= form_with model: @room do |f| %>-->
-<!--        <%#= fields_for @user_room do |u| %>-->
-<!--          <%#= u.hidden_field :user_id, value: user.id %>-->
-<!--        <%# end %>-->
-<!--        <%#= f.submit "チャットを始める", class: "btn btn-outline-primary" %>-->
-<!--      <%# end %>-->
-<!--    <%# end %>-->
-<!--  <%# end %>-->
-<!--<%# end %>-->
-
 <!--<div class='d-flex align-items-center justify-content-center'>-->
- <div id="menu">
-   <span class="ml-3 mr-4">
-    <% if user.name != "guestuser" %>
-     <span class="user-edit-btn">
-      <%= link_to edit_user_path(user.id), class: "btn btn-lg btn-outline-warning" do %>
-        <i class="fa-solid fa-user-pen"></i>
-      <% end %>
-     </span>
-     <p class="arrow_box">ユーザー情報編集</p>
-    <% end %>
-   </span>
+ <% if user == current_user %>
+     <div id="menu">
+       <span class="">
+        <% if user.name != "guestuser" %>
+         <span class="user-edit-btn">
+          <%= link_to edit_user_path(user.id), class: "btn btn-lg btn-outline-warning" do %>
+            <i class="fa-solid fa-user-pen"></i>
+          <% end %>
+         </span>
+         <p class="arrow_box">ユーザー情報編集</p>
+        <% end %>
+       </span>
 
-  <span class="mr-4">
-    <span class="new-group-btn">
-      <%= link_to new_group_path, class: "btn btn-lg btn-outline-warning" do %>
-        <i class="fa-solid fa-people-group"></i>
-      <% end %>
-    </span>
-    <p class="arrow_box">新規コミュニテイ作成</p>
-  </span>
+      <span class="">
+        <span class="new-group-btn">
+          <%= link_to new_group_path, class: "btn btn-lg btn-outline-warning" do %>
+            <i class="fa-solid fa-people-group"></i>
+          <% end %>
+        </span>
+        <p class="arrow_box">新規コミュニテイ作成</p>
+      </span>
 
-  <span class="mr-4">
-    <span class="new-post-btn">
-      <%= link_to new_post_path, class: 'btn btn-lg btn-outline-warning' do %>
-        <i class="fa-solid fa-pen-to-square"></i>
-      <% end %>
-    </span>
-    <p class="arrow_box">新規投稿</p>
-  </span>
+      <span class="">
+        <span class="new-post-btn">
+          <%= link_to new_post_path, class: 'btn btn-lg btn-outline-warning' do %>
+            <i class="fa-solid fa-pen-to-square"></i>
+          <% end %>
+        </span>
+        <p class="arrow_box">新規投稿</p>
+      </span>
 
-  <span class="mr-3">
-    <span class="favorite-post-btn">
-      <%= link_to favorites_user_path(user), class: 'btn btn-lg btn-outline-warning' do %>
-        <!--<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>-->
-        <i class="fa-solid fa-heart-circle-check" aria-hidden="true" style="color: red;"></i>
-      <% end %>
-    </span>
-    <p class="arrow_box"><%= user.name %>さんの<br>ブックマーク</p>
-  </span>
-</div>
+      <span class="">
+        <span class="favorite-post-btn">
+          <%= link_to favorites_user_path(user), class: 'btn btn-lg btn-outline-warning' do %>
+            <!--<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>-->
+            <i class="fa-solid fa-heart-circle-check" aria-hidden="true" style="color: red;"></i>
+          <% end %>
+        </span>
+        <p class="arrow_box"><%= user.name.truncate(7) %>さんの<br>ブックマーク</p>
+      </span>
+
+      <span class="">
+        <span class="new-post-btn">
+          <%= link_to user_private_posts_path(user), class: 'btn btn-lg btn-outline-warning' do %>
+            <i class="fa-solid fa-lock"></i>
+          <% end %>
+        </span>
+        <p class="arrow_box"><%= user.name.truncate(7) %>さんの<br>非公開投稿</p>
+      </span>
+    </div>
+ <% else %>
+    <div id="menu">
+       <span class="mr-1">
+        <% if user.name != "guestuser" %>
+         <span class="user-edit-btn">
+          <%= link_to edit_user_path(user.id), class: "btn btn-lg btn-outline-warning" do %>
+            <i class="fa-solid fa-user-pen"></i>
+          <% end %>
+         </span>
+         <p class="arrow_box">ユーザー情報編集</p>
+        <% end %>
+       </span>
+
+      <span class="mr-1">
+        <span class="new-group-btn">
+          <%= link_to new_group_path, class: "btn btn-lg btn-outline-warning" do %>
+            <i class="fa-solid fa-people-group"></i>
+          <% end %>
+        </span>
+        <p class="arrow_box">新規コミュニテイ作成</p>
+      </span>
+
+      <span class="mr-1">
+        <span class="new-post-btn">
+          <%= link_to new_post_path, class: 'btn btn-lg btn-outline-warning' do %>
+            <i class="fa-solid fa-pen-to-square"></i>
+          <% end %>
+        </span>
+        <p class="arrow_box">新規投稿</p>
+      </span>
+
+      <span class="">
+        <span class="favorite-post-btn">
+          <%= link_to favorites_user_path(user), class: 'btn btn-lg btn-outline-warning' do %>
+            <!--<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>-->
+            <i class="fa-solid fa-heart-circle-check" aria-hidden="true" style="color: red;"></i>
+          <% end %>
+        </span>
+        <p class="arrow_box"><%= user.name.truncate(7) %>さんの<br>ブックマーク</p>
+      </span>
+    </div>
+ <% end %>
+
 <!--</div>-->
 
 <div class='row mt-1 d-flex align-items-center justify-content-center'>
   <% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
-    <%= link_to 'chatを始める', chat_path(user.id), class: "ml-2 btn btn-outline-warning" %>
+    <span style="margin-left: 7px;"><%= link_to 'chatを始める', chat_path(user.id), class: "btn btn-outline-warning" %></span>
   <% end %>
   <% if current_user != user %>
-    <span class="ml-2"><%= render "public/relationships/btn", user: user %></span>
+    <span class="ml-1"><%= render "public/relationships/btn", user: user %></span>
   <% end %>
 </div>
 

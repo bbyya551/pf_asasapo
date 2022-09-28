@@ -28,7 +28,25 @@ class Public::ChatsController < ApplicationController
 
   def create
     @chat = current_user.chats.new(chat_params)
+    #ここから追加
+    @room = @chat.room
+    #ここまで
     if @chat.save
+      #ここから追加
+      @roommembernotme = UserRoom.where(room_id: @room.id).where.not(user_id: current_user.id)
+      @theid = @roommembernotme.find_by(room_id: @room.id)
+      notification = current_user.active_notifications.new(
+        room_id: @room.id,
+        chat_id: @chat.id,
+        visited_id: @theid.user_id,
+        visitor_id: current_user.id,
+        action: 'dm'
+      )
+
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
       # 非同期化を行うため、room = Room.find(params[:chat][:room_id])を一行にまとめた。
       # インスタンス変数とローカル変数の棲み分けをしっかりしよう
       # @chats = Room.find(params[:chat][:room_id]).chats ⇦部分テンプレートを返すなら、これがいる。
