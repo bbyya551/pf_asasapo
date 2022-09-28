@@ -25,6 +25,14 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :status, Post.statuses_i18n[:public], value: Post.statuses.key(0) %>
+        <%= f.radio_button :status, Post.statuses.key(0) %>
+
+        <%= f.label :status, Post.statuses_i18n[:private], value: Post.statuses.key(1) %>
+        <%= f.radio_button :status, Post.statuses.key(1) %>
+      </div>
+
+      <div class="form-group">
         <%= f.submit '更新する', class: 'btn btn-outline-warning' %>
       </div>
     <% end %>

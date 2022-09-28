@@ -1,12 +1,12 @@
 <table class="table table-borderless">
   <thead>
     <tr>
-      <th></th>
       <th class="text-center">名前</th>
       <th class="text-center">意気込み</th>
-      <th class="text-center">趣味</th>
+      <!--<th class="text-center">趣味</th>-->
       <th></th>
-      <th colspan="5"></th>
+      <th></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -14,22 +14,27 @@
     <% users.each do |user| %>
       <tr class="hover-color shadow-sm">
         <td class="text-center">
-          <%= image_tag user.get_profile_image(50, 50), class:"rounded-circle"; %>
-        </td>
-        <td class="text-center">
-          <%= user.name %>
+          <%= link_to user_path(user.id) do %>
+            <%= image_tag user.get_profile_image(50, 50), class:"rounded-circle"; %>
+            <%= user.name.truncate(10) %>
+          <% end %>
         </td>
         <td class="text-center">
           <%= user.introduction %>
         </td>
-        <td class="text-center">
-          <%= user.hobby %>
-        </td>
+        <!--<td class="text-center">-->
+        <!--  <%#= user.hobby %>-->
+        <!--</td>-->
         <td class="text-center">
           <%= render "public/relationships/btn", user: user %>
         </td>
+        <!--<td class="text-center">-->
+        <!--  <%#= link_to "Show", user_path(user.id), class: 'btn btn-outline-warning' %>-->
+        <!--</td>-->
         <td class="text-center">
-          <%= link_to "Show", user_path(user.id), class: 'btn btn-outline-warning' %>
+          <% if current_user != user %>
+            <span><%= link_to "通報", new_user_report_path(user), class: "btn btn-sm btn-outline-danger" %></span>
+          <% end %>
         </td>
       </tr>
     <% end %>

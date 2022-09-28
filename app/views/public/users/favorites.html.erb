@@ -8,9 +8,17 @@
     <div class='col-md-8'>
       <h2 class="text-center"><%= @user.name %>さんのブックマーク <i class="fa-solid fa-heart-circle-check" aria-hidden="true"></i></h2>
       <% if @favorite_posts.exists? %>
+        <!--<div id="favorite-posts">-->
+          <%#if @user == current_user %>
         <div id="favorite-posts">
           <%= render 'public/users/favorite_posts', posts: @favorite_posts %>
         </div>
+          <%# else %>
+            <!--<div id="public-favorite-posts">-->
+            <!--  <%#= render 'public/users/favorite_posts', posts: @public_favorite_posts %>-->
+            <!--</div>-->
+          <%# end %>
+        <!--</div>-->
       <% else %>
         <div class="text-center mt-5">
           <h4 class="font-weight-bold">ブックマークはまだありません</h4>

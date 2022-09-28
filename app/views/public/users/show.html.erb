@@ -22,9 +22,17 @@
           <div id="tab1" class="tab">
               <!--<h2><＃= @user.name %>さんの投稿</h2>-->
             <% if @posts.exists? %>
+              <!--<div id="paginate-userposts">-->
+                <%# if @user == current_user %>
               <div id="paginate-userposts">
                 <%= render 'public/posts/index',posts: @posts %>
               </div>
+                <%# else %>
+                  <!--<div id="public-paginate-userposts">-->
+                  <!--  <%#= render 'public/posts/index',posts: @public_posts %>-->
+                  <!--</div>-->
+                <%# end %>
+              <!--</div>-->
             <% else %>
               <% if @user.id == current_user.id %>
                 <div class="text-center" id="menu">

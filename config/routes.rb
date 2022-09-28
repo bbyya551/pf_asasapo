@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
       resources :reports, only: [:new, :create]
+      get "private_posts" => "users#private_posts"
     end
 
     resources :posts do

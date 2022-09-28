@@ -16,7 +16,7 @@ class Genre < ApplicationRecord
       genres = Genre.where('name LIKE ?', '%' + content + '%')
     end
 
-    return genres.inject(init = []) {|result, genre| result + genre.posts}
+    return genres.inject(init = []) {|result, genre| result + genre.posts.status_public}
     #レシーバのgenresには上で取得したgenresが配列で入っている。
     #ここでinjectの引数は空なのでまず空がresultに入る。
     # =begin

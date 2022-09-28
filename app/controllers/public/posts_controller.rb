@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
+  before_action :private_post, only: [:show]
 
   def new
    @post = Post.new
@@ -21,7 +22,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.order(created_at: :desc).page(params[:posts_page])
+    @posts = Post.status_public.order(created_at: :desc).page(params[:posts_page])
     @user = current_user
     @user_groups = @user.groups.page(params[:user_groups_page]).per(3)
     respond_to do |format|
@@ -61,7 +62,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:post_image, :title, :body)
+    params.require(:post).permit(:post_image, :title, :body, :status)
   end
 
   def correct_user
@@ -69,6 +70,13 @@ class Public::PostsController < ApplicationController
     @user = @post.user
     unless @user == current_user
       redirect_to posts_path
+    end
+  end
+
+  def private_post
+    @post = Post.find(params[:id])
+    if @post.status == "private" && @post.user != current_user
+      redirect_to posts_path, notice: 'このページにはアクセスできません'
     end
   end
 end

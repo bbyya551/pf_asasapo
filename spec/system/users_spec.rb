@@ -29,9 +29,12 @@ describe 'ユーザー一覧画面のテスト' do
         expect(page).to have_content other_user.name
       end
 
-      it '自分と他人のshowリンクがそれぞれ表示される' do
-        expect(page).to have_link 'Show', href: user_path(user)
-        expect(page).to have_link 'Show', href: user_path(other_user)
+      # it '自分と他人のshowリンクがそれぞれ表示される' do
+      #   expect(page).to have_link 'Show', href: user_path(user)
+      #   expect(page).to have_link 'Show', href: user_path(other_user)
+      # end
+      it '他人の通報リンクが表示される' do
+        expect(page).to have_link '通報', href: new_user_report_path(other_user)
       end
     end
   end
