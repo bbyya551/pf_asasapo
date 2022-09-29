@@ -24,9 +24,11 @@ describe 'ユーザー一覧画面のテスト' do
         expect(all('img').size).to eq(4)
       end
 
-      it '自分と他人の名前がそれぞれ表示される' do
+      it '自分と他人の名前がそれぞれ表示され、遷移先が正しい' do
         expect(page).to have_content user.name
         expect(page).to have_content other_user.name
+        expect(page).to have_link user.name, href: user_path(user)
+        expect(page).to have_link other_user.name, href: user_path(other_user)
       end
 
       # it '自分と他人のshowリンクがそれぞれ表示される' do
