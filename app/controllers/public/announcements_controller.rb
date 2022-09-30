@@ -47,7 +47,7 @@ class Public::AnnouncementsController < ApplicationController
   def correct_user
     @user = User.find(params[:user_id])
     unless @user == current_user
-      redirect_to user_path(current_user.id)
+      redirect_to user_path(current_user.id), notice: "他ユーザーの朝活宣言は編集できません"
     end
   end
 
@@ -55,7 +55,7 @@ class Public::AnnouncementsController < ApplicationController
     # @user = User.find(params[:user_id])
     @announcement = Announcement.find(params[:id])
     unless @announcement.user_id == current_user.id
-      redirect_to user_path(current_user.id)
+      redirect_to user_path(current_user.id), notice: "他ユーザーの朝活宣言は編集できません"
     end
   end
 
