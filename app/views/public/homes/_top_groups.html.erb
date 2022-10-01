@@ -2,7 +2,7 @@
   <% count = 0 %>
   <% groups.each_with_index do |group, index| %>
   <% @owner = User.find(group.owner_id) %>
-    <div class="card mt-1 mr-3 ml-2 mb-1 px-0 shadow-lg hover-color col-4">
+    <div class="card mt-1 mr-3 ml-2 mb-1 px-0 shadow-lg hover-color col-md-4 col-sm-12">
       <%= image_tag group.get_image(200, 200), class: "card-img-top top-index-img" %>
       <div class="card-body">
         <h5 class="card-title">
