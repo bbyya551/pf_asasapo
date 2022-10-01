@@ -5,6 +5,8 @@
   <% posts.each_with_index do |post, index| %>
    <% unless post.user.is_deleted %>
     <!--<div class="card w-200 mx-auto mt-4 h-500 shadow-lg">-->
+    <!--レスポンシブ対応前の記述↓-->
+    <!--<div class="card mt-1 mr-2 ml-1 px-0 hover-color shadow-lg col-4">-->
     <div class="card mt-1 mr-2 ml-1 px-0 hover-color shadow-lg col-lg-4 col-md-4 col-sm-12">
       <%= image_tag post.get_post_image(300, 300), class: "card-img-top index-img" %>
       <div class="card-body">
