@@ -37,7 +37,7 @@
   <% @owner = User.find(group.owner_id)  %>
 
     <!--<div class="card w-200 mx-auto mt-4 h-500 shadow-lg">-->
-    <div class="card mt-1 mr-2 ml-1 mb-1 px-0 hover-color shadow-lg col-4">
+    <div class="card mt-1 mr-2 ml-1 mb-1 px-0 hover-color shadow-lg col-md-4 col-sm-12">
       <%= image_tag group.get_image(300, 300), class: "card-img-top index-img" %>
       <div class="card-body">
         <h5 class="card-title">
