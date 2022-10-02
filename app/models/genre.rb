@@ -22,7 +22,7 @@ class Genre < ApplicationRecord
     # =begin
     # =>''(injectの初期値)
     # =>genre.posts（初期値（result, ''）+配列の最初の要素（genre）に紐づいたpostsの合計）
-    # =>genre.posts + genre.posts （前回の処理の戻り値（genre.posts）がsumに入る+二番目の要素（genre.posts）の合計）
+    # =>genre.posts + genre.posts （前回の処理の戻り値（genre.posts）がresultに入る+二番目の要素（genre.posts）の合計）
     # =>genre.posts + genre.posts + genre.posts  （以下略）
     # =>genre.posts + genre.posts + genre.posts ...(全体の戻り値)
     # =end
