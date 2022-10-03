@@ -42,6 +42,12 @@ describe 'ユーザー一覧画面のテスト' do
       it 'フォローするボタンのリンク先が正しい' do
         expect(page).to have_link 'フォローする', href: user_relationships_path(other_user)
       end
+
+      it 'フォローするボタンを押すと、フォロー中ユーザーが一人増える' do
+        click_on "フォローする"
+        expect(user.followings.count).to eq 1
+        expect(other_user.followers.count).to eq 1
+      end
     end
   end
 end
