@@ -38,6 +38,10 @@ describe 'ユーザー一覧画面のテスト' do
       it '他人の通報リンクが表示される' do
         expect(page).to have_link '通報', href: new_user_report_path(other_user)
       end
+
+      it 'フォローするボタンのリンク先が正しい' do
+        expect(page).to have_link 'フォローする', href: user_relationships_path(other_user)
+      end
     end
   end
 end
