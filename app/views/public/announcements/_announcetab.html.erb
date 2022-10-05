@@ -6,14 +6,14 @@
         <div class="col-lg-6 col-xs-12">
           今日の朝活は、<strong><%= link_to announcement.announcement, edit_user_announcement_path(announcement.user, announcement.id) %></strong>です!
         </div>
-        <div class="col-lg-6 col-xs-12"><宣言日:<%= announcement.updated_at.strftime('%Y/%m/%d') %>>
+        <div class="col-lg-6 col-xs-12"><宣言日:<%= announcement.created_at.strftime('%Y/%m/%d') %>>
         <% else %>
 
         <div class="col-lg-6 col-xs-12">
           今日の朝活は、<strong><%= announcement.announcement %></strong>です!
         </div>
 
-        <div class="col-lg-6 col-xs-12"><宣言日:<%= announcement.updated_at.strftime('%Y/%m/%d') %>>
+        <div class="col-lg-6 col-xs-12"><宣言日:<%= announcement.created_at.strftime('%Y/%m/%d') %>>
         <% end %>
         <% if announcement.achieve_status == "nonachieve" %>
           <span class="text-danger">(<%= announcement.achieve_status_i18n %>)</span>
