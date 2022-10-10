@@ -10,7 +10,7 @@ describe 'コミュニティ一覧画面のテスト' do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
-    click_button 'Log in'
+    click_button 'ログイン'
   end
 
   describe 'コミュニティ一覧画面のテスト' do
@@ -100,7 +100,7 @@ describe 'コミュニティ一覧画面のテスト' do
       visit new_user_session_path
       fill_in 'user[email]', with: other_user.email
       fill_in 'user[password]', with: other_user.password
-      click_button 'Log in'
+      click_button 'ログイン'
       # byebug
       visit group_path(group.id)
       @owner = User.find(group.owner_id)
@@ -152,7 +152,7 @@ describe 'コミュニティ一覧画面のテスト' do
       visit new_user_session_path
       fill_in 'user[email]', with: group.users[0].email
       fill_in 'user[password]', with: group.users[0].password
-      click_button 'Log in'
+      click_button 'ログイン'
       #最初、visit new_user_session_pathの前にuser = User.find(3)と定義してログインしようとしたところ、ログインがそもそもできていなかった。
       # byebug
       visit group_path(group.id)
