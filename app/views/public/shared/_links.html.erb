@@ -3,6 +3,6 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "新規会員登録はこちら", new_registration_path(resource_name) %><br />
+  <%= link_to "新規会員登録はこちら", new_registration_path(resource_name), class: 'btn btn-outline-warning btn-block rounded-pill mt-3' %><br />
 <% end %>
 
