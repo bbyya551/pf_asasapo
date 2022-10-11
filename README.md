@@ -20,15 +20,10 @@
 ![朝サポ_ER図](https://user-images.githubusercontent.com/106591130/194593349-961cacbe-1991-4b8b-a928-3237c0c466c9.png)
 ### アプリケーション詳細設計
 [朝サポ_アプリケーション詳細設計書 .pdf](https://github.com/bbyya551/pf_asasapo/files/9666868/_.pdf)
-### テーブル定義所
+### テーブル定義書
 [朝サポ_テーブル定義書.pdf](https://github.com/bbyya551/pf_asasapo/files/9666873/_.pdf)
-<<<<<<<<< saved version
 
 =========
-
-## Qiita記事
-- URL: https://qiita.com/gogoserver578
->>>>>>>>> local version
 
 ## Qiita記事
 - URL: https://qiita.com/gogoserver578
