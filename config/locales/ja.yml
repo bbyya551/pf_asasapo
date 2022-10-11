@@ -30,6 +30,7 @@ ja:
      user:
        name: 名前
        email: メールアドレス
+       password: パスワード
        introduction: 意気込み
        hobby: 趣味
      post:
