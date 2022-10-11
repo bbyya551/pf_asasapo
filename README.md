@@ -23,8 +23,6 @@
 ### テーブル定義書
 [朝サポ_テーブル定義書.pdf](https://github.com/bbyya551/pf_asasapo/files/9666873/_.pdf)
 
-=========
-
 ## Qiita記事
 - URL: https://qiita.com/gogoserver578
 
