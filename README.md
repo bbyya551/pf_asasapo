@@ -23,6 +23,9 @@
 ### テーブル定義所
 [朝サポ_テーブル定義書.pdf](https://github.com/bbyya551/pf_asasapo/files/9666873/_.pdf)
 
+## Qiita記事
+- URL: https://qiita.com/gogoserver578
+
 ## 開発環境
 - OS：Amazon Linux2
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
@@ -33,6 +36,3 @@
 ## 使用素材
 - 画像引用元サービス : Pexels
 - URL: https://www.pexels.com/ja-jp/discover/
-
-## Qiita記事
-- URL: https://qiita.com/gogoserver578
