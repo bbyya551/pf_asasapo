@@ -7,26 +7,26 @@
       <%= render "public/shared/error_messages", resource: resource %>
 
       <div class="field">
-        <%= f.label :name %><br>
-        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+        <i class="fa-solid fa-circle-user"></i> <%= f.label :name %><br>
+        <%= f.text_field :name, autofocus: true, placeholder: "名前", class: "form-control" %>
       </div>
 
       <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        <i class="fa-regular fa-envelope"></i> <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", autocomplete: "email", class: "form-control" %>
       </div>
 
       <div class="field">
-        <%= f.label :password, "パスワード" %>
+        <i class="fa-solid fa-lock" style="font-size: 16px; color: black;"></i> <%= f.label :password, "パスワード" %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> 文字以内)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード", class: "form-control" %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation, "パスワード(確認用)" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+        <i class="fa-solid fa-lock" style="font-size: 16px; color: black;"></i> <%= f.label :password_confirmation, "パスワード(確認用)" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード(確認用)", class: "form-control" %>
       </div>
 
       <div class="actions mt-2">
