@@ -1,43 +1,85 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8">
-      <div class="card text-center m-5 shadow-sm" style="width: 22rem;">
-        <div class="card-body text-center">
-          <h2>ログイン(会員様)</h2>
+<div class='container'>
+  <div class='row no-gutters'>
+    <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
+    <h2 class="text-center text-dark bg-light p-4 mb-0">ログイン(会員様) <i class="fa-solid fa-right-to-bracket"></i></h2>
+    <div class="form-body bg-light p-4">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-              <div class="field">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-              </div>
-
-              <div class="field">
-                <%= f.label :password %><br />
-                <%= f.password_field :password, autocomplete: "current-password" %>
-              </div>
-
-              <% if devise_mapping.rememberable? %>
-                <div class="field">
-                  <%= f.check_box :remember_me %>
-                  <%= f.label :remember_me %>
-                </div>
-              <% end %>
-
-              <div class="actions">
-                <%= f.submit "Log in" %>
-              </div>
-            <% end %>
-
-            <%= render "public/shared/links" %>
-
-        </div>
+      <div class="field">
+        <i class="fa-regular fa-envelope"></i> <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", autocomplete: "email", class: "form-control" %>
       </div>
+      <div class="field">
+        <i class="fa-solid fa-lock" style="font-size: 16px; color: black;"></i> <%= f.label :password, "パスワード" %><br />
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "form-control" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, "ログインを記憶する" %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "ログイン", class: 'btn btn-outline-info btn-block rounded-pill' %>
+      </div>
+    <% end %>
+    <p class="text-center mt-3"><i class="fa-solid fa-check"></i> 会員登録がまだの方 </p>
+    <%= render "public/shared/links" %>
+    </div>
     </div>
   </div>
 </div>
 
-<!--<style>-->
-<!--  .card {-->
-<!--    background-color: #FFFFCC;-->
-<!--  }-->
-<!--</style>-->
+<style>
+  .fa-right-to-bracket {
+    color: #FFD700;
+  }
+
+  /*.form-body {*/
+  /*  background-color: #FFFFCC;*/
+  /*}*/
+</style>
+
+
+
+
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col-8">-->
+<!--      <div class="card text-center m-5 shadow-sm" style="width: 22rem;">-->
+<!--        <div class="card-body text-center">-->
+<!--          <h2>ログイン(会員様)</h2>-->
+
+<!--            <%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>-->
+<!--              <div class="field">-->
+<!--                <%#= f.label :email %><br />-->
+<!--                <%#= f.email_field :email, autofocus: true, autocomplete: "email" %>-->
+<!--              </div>-->
+
+<!--              <div class="field">-->
+<!--                <%#= f.label :password, "パスワード" %><br />-->
+<!--                <%#= f.password_field :password, autocomplete: "current-password" %>-->
+<!--              </div>-->
+
+<!--              <%# if devise_mapping.rememberable? %>-->
+<!--                <div class="field">-->
+<!--                  <%#= f.check_box :remember_me %>-->
+<!--                  <%#= f.label :remember_me, "ログインを記憶する" %>-->
+<!--                </div>-->
+<!--              <%# end %>-->
+
+<!--              <div class="actions">-->
+<!--                <%#= f.submit "ログイン" %>-->
+<!--              </div>-->
+<!--            <%# end %>-->
+
+<!--            <%#= render "public/shared/links" %>-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+

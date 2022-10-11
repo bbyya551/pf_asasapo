@@ -22,6 +22,13 @@
 [朝サポ_アプリケーション詳細設計書 .pdf](https://github.com/bbyya551/pf_asasapo/files/9666868/_.pdf)
 ### テーブル定義所
 [朝サポ_テーブル定義書.pdf](https://github.com/bbyya551/pf_asasapo/files/9666873/_.pdf)
+<<<<<<<<< saved version
+
+=========
+
+## Qiita記事
+- URL: https://qiita.com/gogoserver578
+>>>>>>>>> local version
 
 ## Qiita記事
 - URL: https://qiita.com/gogoserver578
