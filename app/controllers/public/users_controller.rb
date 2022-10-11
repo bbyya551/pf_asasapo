@@ -108,14 +108,14 @@ class Public::UsersController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     unless @user == current_user
-      redirect_to user_path(current_user.id)
+      redirect_to user_path(current_user.id), notice: "他のユーザーのプロフィールは編集できません"
     end
   end
 
   def correct_user_private
     @user = User.find(params[:user_id])
     unless @user == current_user
-      redirect_to user_path(current_user.id)
+      redirect_to user_path(current_user.id), notice: "こちらはご覧になることはできません"
     end
   end
 
