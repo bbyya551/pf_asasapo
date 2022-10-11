@@ -30,6 +30,9 @@
 - URL: https://qiita.com/gogoserver578
 >>>>>>>>> local version
 
+## Qiita記事
+- URL: https://qiita.com/gogoserver578
+
 ## 開発環境
 - OS：Amazon Linux2
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
