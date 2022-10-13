@@ -5,7 +5,9 @@
 
 # Example:
 #
+# 絶対パスから相対パス指定
 env :PATH, ENV['PATH']
+# ログファイルの出力先
 set :output, 'log/cron.log'
 set :environment, :production
 # set :environment, :development
