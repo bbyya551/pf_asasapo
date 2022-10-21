@@ -36,5 +36,25 @@ RSpec.describe Notification, type: :model do
       end
     end
   end
+  
+  describe 'アソシエーションのテスト' do
+    context 'Postモデルとの関係' do
+      it 'N:1となっている' do
+        expect(Notification.reflect_on_association(:post).macro).to eq :belongs_to
+      end
+    end
+
+    context 'PostCommentモデルとの関係' do
+      it 'N:1となっている' do
+        expect(Notification.reflect_on_association(:post_comment).macro).to eq :belongs_to
+      end
+    end
+
+    context 'Announcementモデルとの関係' do
+      it 'N:1となっている' do
+        expect(Notification.reflect_on_association(:announcement).macro).to eq :belongs_to
+      end
+    end
+  end
 end
 
