@@ -35,8 +35,18 @@ RSpec.describe Notification, type: :model do
         expect(notification).to be_valid
       end
     end
+
+    context "チャットの通知" do
+      it "チャットが送信された場合に保存できる" do
+        @chat = FactoryBot.build(:chat)
+        # @room = FactoryBot.build(:room)
+        @room = @chat.room
+        notification = FactoryBot.build(:notification, chat_id: @chat.id, room_id: @room.id, action: "dm")
+        expect(notification).to be_valid
+      end
+    end
   end
-  
+
   describe 'アソシエーションのテスト' do
     context 'Postモデルとの関係' do
       it 'N:1となっている' do
