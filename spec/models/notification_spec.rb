@@ -65,6 +65,18 @@ RSpec.describe Notification, type: :model do
         expect(Notification.reflect_on_association(:announcement).macro).to eq :belongs_to
       end
     end
+
+    context 'Chatモデルとの関係' do
+      it 'N:1となっている' do
+        expect(Notification.reflect_on_association(:chat).macro).to eq :belongs_to
+      end
+    end
+
+    context 'Roomモデルとの関係' do
+      it 'N:1となっている' do
+        expect(Notification.reflect_on_association(:room).macro).to eq :belongs_to
+      end
+    end
   end
 end
 
