@@ -45,6 +45,7 @@ $(document).on('turbolinks:load', function () {
   // https://qiita.com/kazu56/items/557740f398e82fc881df
   // if ( str.match(/hoge/)) ⇦ここの例で言うと、str = location.hrefを代入してもいい。
   // location.hrefでurlを取得してきて、その中にchatsが含まれるかと言う意味。
+  //ここから
   if (location.href.match(/chats/)) {
 
     let elm = document.documentElement;
@@ -53,6 +54,7 @@ $(document).on('turbolinks:load', function () {
     // 垂直方向へ移動window.scroll( 数値(水平) , 数値(垂直) ) ;
     window.scroll(0, bottom);
   }
+  // ここまで
 });
 
 // $(document).on('turbolinks:load', function () {
