@@ -75,4 +75,25 @@ describe '管理者ログイン後のテスト' do
       end
     end
   end
+
+  describe '投稿詳細画面のテスト' do
+    before do
+      visit admin_post_path(post.id)
+    end
+
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/admin/' + 'posts/' + post.id.to_s
+      end
+      it '投稿詳細と表示される' do
+        expect(page).to have_content '投稿詳細'
+      end
+      it 'ユーザー名のリンク先が正しい' do
+        expect(page).to have_link post.user.name, href: admin_user_path(post.user)
+      end
+      it '投稿のタイトルが表示される' do
+        expect(page).to have_content post.title
+      end
+    end
+  end
 end
