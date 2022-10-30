@@ -94,6 +94,15 @@ describe '管理者ログイン後のテスト' do
       it '投稿のタイトルが表示される' do
         expect(page).to have_content post.title
       end
+      it '投稿の本文が表示される' do
+        expect(page).to have_content post.body
+      end
+      it '投稿の削除リンクが表示される' do
+        expect(page).to have_link '削除する', href: admin_post_path(post)
+      end
+      it '投稿に、投稿日が表示される' do
+        expect(page).to have_content post.created_at.strftime('%Y/%m/%d')
+      end
     end
   end
 end
