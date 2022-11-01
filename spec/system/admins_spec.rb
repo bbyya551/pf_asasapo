@@ -4,11 +4,12 @@ describe '管理者ログイン後のテスト' do
   let(:admin) { create(:admin) }
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
-  let!(:post) { create(:post, user: user) }
+  let!(:post) { create(:post, :post_with_genres, user: user) }
   let!(:other_post) { create(:post, user: other_user) }
   let!(:group) { create(:group) }
   let!(:other_group) { create(:group) }
   let!(:post_comment) { create(:post_comment, post: post, user: user) }
+  let!(:genre) { Genre.first }
 
   before do
     visit new_admin_session_path
@@ -102,6 +103,13 @@ describe '管理者ログイン後のテスト' do
       end
       it '投稿に、投稿日が表示される' do
         expect(page).to have_content post.created_at.strftime('%Y/%m/%d')
+      end
+      it '投稿に、コメント数が表示される' do
+        expect(page).to have_content post.post_comments.count
+      end
+
+      it '投稿に、投稿ジャンルが表示される' do
+        expect(page).to have_content genre.name
       end
     end
   end
