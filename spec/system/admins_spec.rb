@@ -113,4 +113,21 @@ describe '管理者ログイン後のテスト' do
       end
     end
   end
+
+  describe 'コミュニティ一覧画面のテスト' do
+    before do
+      visit admin_groups_path
+    end
+
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/admin/groups'
+      end
+
+      it 'コミュニティ名のリンク先がそれぞれ正しい' do
+        expect(page).to have_link group.name, href: admin_group_path(group)
+        expect(page).to have_link other_group.name, href: admin_group_path(other_group)
+      end
+    end
+  end
 end
