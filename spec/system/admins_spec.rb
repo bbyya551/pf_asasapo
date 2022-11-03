@@ -6,8 +6,8 @@ describe '管理者ログイン後のテスト' do
   let!(:other_user) { create(:user) }
   let!(:post) { create(:post, :post_with_genres, user: user) }
   let!(:other_post) { create(:post, user: other_user) }
-  let!(:group) { create(:group) }
-  let!(:other_group) { create(:group) }
+  let!(:group) { create(:group, :group_with_users, owner_id: user.id) }
+  let!(:other_group) { create(:group, :group_with_users) }
   let!(:post_comment) { create(:post_comment, post: post, user: user) }
   let!(:genre) { Genre.first }
 
@@ -127,6 +127,11 @@ describe '管理者ログイン後のテスト' do
       it 'コミュニティ名のリンク先がそれぞれ正しい' do
         expect(page).to have_link group.name, href: admin_group_path(group)
         expect(page).to have_link other_group.name, href: admin_group_path(other_group)
+      end
+
+      it 'コミュニティに参加中のメンバーの人数が表示される' do
+        expect(page).to have_content group.group_users.count
+        expect(page).to have_content other_group.group_users.count
       end
     end
   end
